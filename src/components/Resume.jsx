@@ -198,140 +198,160 @@ const Resume = () => {
               transition={{ duration: 0.35, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
-              <div className="rmodal-header">
-                <div className="rmodal-header-left">
-                  <span className="rmodal-eyebrow">Daily Bugle Document</span>
-                  <h3 className="rmodal-title">THE FULL DOSSIER</h3>
+              {/* Close button — floats over masthead */}
+              <button className="rmodal-close" onClick={() => setModalOpen(false)} aria-label="Close">
+                <span className="rmodal-close-x">✕</span>
+              </button>
+
+              {/* ── Masthead ── */}
+              <header className="rmodal-masthead">
+                <div className="rmodal-masthead-left">
+                  <span className="rmodal-vol">VOL. I · NO. 1</span>
+                  <span className="rmodal-date">EST. 2024 · DHAKA</span>
                 </div>
-                <button className="rmodal-close" onClick={() => setModalOpen(false)}>
-                  <span className="rmodal-close-x">✕</span>
-                  <span className="rmodal-close-label">Close File</span>
-                </button>
+                <h1 className="rmodal-masthead-title">The Daily Bugle</h1>
+                <div className="rmodal-masthead-right">
+                  <span className="rmodal-price">PRICE: ONE CLICK</span>
+                  <span className="rmodal-edition">PORTFOLIO EDITION</span>
+                </div>
+              </header>
+
+              {/* ── Dateline strip ── */}
+              <div className="rmodal-dateline">
+                <span>“WITH GREAT POWER COMES GREAT CODE”</span>
+                <span className="rmodal-dateline-sep">◆</span>
+                <span>PLATFORM ENGINEERING DESK</span>
+                <span className="rmodal-dateline-sep">◆</span>
+                <span>SPECIAL ISSUE: ENGINEER PROFILE</span>
               </div>
 
-              {/* Body */}
-              <div className="rmodal-body">
+              {/* ── Hero headline ── */}
+              <section className="rmodal-hero-story">
+                <p className="rmodal-kicker">EXCLUSIVE · ENGINEER OF INTEREST</p>
+                <h2 className="rmodal-hero-headline">
+                  {resumeData.name}
+                </h2>
+                <p className="rmodal-deck">
+                  {resumeData.titles.join(' · ')}
+                </p>
 
-                {/* Name & Titles */}
-                <div className="rmodal-name-block">
-                  <h1 className="rmodal-name">{resumeData.name}</h1>
-                  <div className="rmodal-titles">
-                    {resumeData.titles.map((t, i) => (
-                      <span key={i}>{t}{i < resumeData.titles.length - 1 ? ' | ' : ''}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Contact Row */}
-                <div className="rmodal-contact">
+                <div className="rmodal-byline">
                   {resumeData.contact.map((c, i) => (
                     <span key={i} className="rmodal-contact-item">
                       <span className="rmodal-contact-icon">{c.icon}</span> {c.value}
                     </span>
                   ))}
                 </div>
+              </section>
 
-                <div className="rmodal-separator"></div>
+              {/* ── Two-column body ── */}
+              <div className="rmodal-body">
 
-                {/* Summary */}
-                <div className="rmodal-section">
-                  <h2 className="rmodal-section-title">Professional Summary</h2>
-                  <p className="rmodal-summary">{resumeData.summary}</p>
-                </div>
+                {/* Lead paragraph with drop cap */}
+                <p className="rmodal-lead">
+                  <span className="rmodal-dropcap">V</span>
+                  {resumeData.summary.replace(/^Versatile/, 'ersatile')}
+                </p>
 
-                <div className="rmodal-separator"></div>
+                <div className="rmodal-columns">
+                  {/* ── Left column: Experience + Education ── */}
+                  <div className="rmodal-col rmodal-col-left">
 
-                {/* Skills */}
-                <div className="rmodal-section">
-                  <h2 className="rmodal-section-title">Technical Skills</h2>
-                  <div className="rmodal-skills-grid">
-                    {resumeData.skills.map((s) => (
-                      <div className="rmodal-skill-row" key={s.category}>
-                        <span className="rmodal-skill-cat">{s.category}</span>
-                        <span className="rmodal-skill-items">{s.items}</span>
+                    <div className="rmodal-section">
+                      <h3 className="rmodal-section-title">Professional Experience</h3>
+                      {resumeData.experience.map((e, i) => (
+                        <article className="rmodal-exp" key={i}>
+                          <h4 className="rmodal-exp-role">{e.role}</h4>
+                          <div className="rmodal-exp-meta">
+                            {e.company && <span className="rmodal-exp-company">{e.company}</span>}
+                            {e.company && e.location && <span className="rmodal-exp-dash"> · </span>}
+                            <span className="rmodal-exp-location">{e.location}</span>
+                            <span className="rmodal-exp-dash"> · </span>
+                            <span className="rmodal-exp-period">{e.period}</span>
+                          </div>
+                          <ul className="rmodal-exp-bullets">
+                            {e.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                          </ul>
+                        </article>
+                      ))}
+                    </div>
+
+                    <div className="rmodal-section">
+                      <h3 className="rmodal-section-title">Education</h3>
+                      {resumeData.education.map((e, i) => (
+                        <article className="rmodal-edu" key={i}>
+                          <h4 className="rmodal-exp-role">{e.degree}</h4>
+                          <div className="rmodal-exp-meta">
+                            <span className="rmodal-exp-company">{e.school}</span>
+                            <span className="rmodal-exp-dash"> · </span>
+                            <span className="rmodal-exp-location">{e.location}</span>
+                            <span className="rmodal-exp-dash"> · </span>
+                            <span className="rmodal-exp-period">{e.period}</span>
+                          </div>
+                          {e.details && <p className="rmodal-edu-details">{e.details}</p>}
+                        </article>
+                      ))}
+                    </div>
+
+                  </div>
+
+                  {/* ── Right column: Projects + Skills ── */}
+                  <div className="rmodal-col rmodal-col-right">
+
+                    <div className="rmodal-section">
+                      <h3 className="rmodal-section-title">Key Projects</h3>
+                      {resumeData.projects.map((p) => (
+                        <article className="rmodal-project" key={p.name}>
+                          <h4 className="rmodal-project-name">{p.name}</h4>
+                          <p className="rmodal-project-subtitle">{p.subtitle}</p>
+                          <p className="rmodal-project-link">↗ {p.link}</p>
+                          <ul className="rmodal-project-bullets">
+                            {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                          </ul>
+                          <p className="rmodal-project-tech">{p.tech}</p>
+                        </article>
+                      ))}
+                    </div>
+
+                    <div className="rmodal-section">
+                      <h3 className="rmodal-section-title">Technical Skills</h3>
+                      <div className="rmodal-skills-grid">
+                        {resumeData.skills.map((s) => (
+                          <div className="rmodal-skill-row" key={s.category}>
+                            <span className="rmodal-skill-cat">{s.category}</span>
+                            <span className="rmodal-skill-items">{s.items}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
+
                   </div>
                 </div>
 
-                <div className="rmodal-separator"></div>
-
-                {/* Projects */}
-                <div className="rmodal-section">
-                  <h2 className="rmodal-section-title">Key Projects</h2>
-                  {resumeData.projects.map((p) => (
-                    <div className="rmodal-project" key={p.name}>
-                      <div className="rmodal-project-header">
-                        <h3 className="rmodal-project-name">▸ {p.name}</h3>
-                        <span className="rmodal-project-link">{p.link}</span>
-                      </div>
-                      <p className="rmodal-project-subtitle">{p.subtitle}</p>
-                      <p className="rmodal-project-tech">Tech: {p.tech}</p>
-                      <ul className="rmodal-project-bullets">
-                        {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                      </ul>
+                {/* ── Classifieds footer ── */}
+                <div className="rmodal-classifieds">
+                  <h3 className="rmodal-classifieds-title">— CLASSIFIEDS —</h3>
+                  <div className="rmodal-classifieds-grid">
+                    <div className="rmodal-classified">
+                      <strong>Languages</strong>
+                      <span>Bengali (Native) · English (Professional)</span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="rmodal-separator"></div>
-
-                {/* Experience */}
-                <div className="rmodal-section">
-                  <h2 className="rmodal-section-title">Professional Experience</h2>
-                  {resumeData.experience.map((e, i) => (
-                    <div className="rmodal-exp" key={i}>
-                      <div className="rmodal-exp-header">
-                        <h3 className="rmodal-exp-role">{e.role}</h3>
-                        <span className="rmodal-exp-period">{e.period}</span>
-                      </div>
-                      {(e.company || e.location) && (
-                        <div className="rmodal-exp-meta">
-                          {e.company && <span className="rmodal-exp-company">{e.company}</span>}
-                          {e.company && e.location && <span className="rmodal-exp-dash"> — </span>}
-                          <span className="rmodal-exp-location">{e.location}</span>
-                        </div>
-                      )}
-                      <ul className="rmodal-exp-bullets">
-                        {e.bullets.map((b, j) => <li key={j}>{b}</li>)}
-                      </ul>
+                    <div className="rmodal-classified">
+                      <strong>Open Source</strong>
+                      <span>Active contributor to Node.js ecosystem</span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="rmodal-separator"></div>
-
-                {/* Education */}
-                <div className="rmodal-section">
-                  <h2 className="rmodal-section-title">Education</h2>
-                  {resumeData.education.map((e, i) => (
-                    <div className="rmodal-edu" key={i}>
-                      <div className="rmodal-exp-header">
-                        <h3 className="rmodal-exp-role">{e.degree}</h3>
-                        <span className="rmodal-exp-period">{e.period}</span>
-                      </div>
-                      <div className="rmodal-exp-meta">
-                        <span className="rmodal-exp-company">{e.school}</span>
-                        <span className="rmodal-exp-dash"> — </span>
-                        <span className="rmodal-exp-location">{e.location}</span>
-                      </div>
-                      {e.details && <p className="rmodal-edu-details">{e.details}</p>}
+                    <div className="rmodal-classified">
+                      <strong>Interests</strong>
+                      <span>Distributed Systems · Cloud Architecture · AI/ML · DX</span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="rmodal-separator"></div>
-
-                {/* Additional */}
-                <div className="rmodal-section">
-                  <h2 className="rmodal-section-title">Additional</h2>
-                  <div className="rmodal-additional">
-                    <span><strong>Languages:</strong> Bengali (Native), English (Professional Working Proficiency)</span>
-                    <span><strong>Open Source:</strong> Active contributor to Node.js ecosystem projects</span>
-                    <span><strong>Interests:</strong> Distributed Systems, Cloud Architecture, AI/ML, Developer Experience</span>
                   </div>
                 </div>
+
+                {/* ── Print footer ── */}
+                <footer className="rmodal-print-footer">
+                  <span>— END OF EDITION —</span>
+                  <span>Printed in the Cloud · Distributed Worldwide · No trees harmed</span>
+                </footer>
 
               </div>
             </motion.div>

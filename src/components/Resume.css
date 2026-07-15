@@ -1,3 +1,6 @@
+/* ═══════════════════════════════════════════════════════════════
+   RESUME SECTION (the page block, outside the modal)
+   ═══════════════════════════════════════════════════════════════ */
 .resume-section {
   padding: 80px 0;
   background: var(--bg-deep);
@@ -89,13 +92,26 @@
   background: rgba(230, 36, 41, 0.12);
 }
 
-/* ────────────────────────────────────────────
-   THEMED RESUME MODAL
-   ──────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════════
+   RESUME MODAL — "THE DAILY BUGLE" NEWSPAPER LAYOUT
+   ═══════════════════════════════════════════════════════════════
+
+   Inspired by classic broadsheet newspapers (NYT, Daily Bugle from
+   Spider-Man). Always rendered on cream newsprint regardless of the
+   site theme — the newspaper IS the light theme inside the modal.
+
+   Typography stack:
+     - Playfair Display (serif, black weight)  → masthead title
+     - Oswald (condensed sans)                  → headlines, kickers
+     - Old Standard TT (serif)                  → body copy
+     - Crimson Pro                              → italic captions
+*/
+
 .resume-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(20, 15, 8, 0.88);
   backdrop-filter: blur(6px);
   z-index: 2000;
   display: flex;
@@ -105,391 +121,523 @@
   overflow-y: auto;
 }
 
+/* ── The paper itself ── */
 .resume-modal {
-  background: #0d0d0d;
-  border: 1px solid rgba(230, 36, 41, 0.25);
+  position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
+  background: #f4ecd8;                       /* aged newsprint cream */
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(180, 140, 80, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(120, 80, 40, 0.04) 0%, transparent 50%);
+  color: #1a1410;                            /* dark ink */
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    inset 0 0 80px rgba(120, 80, 40, 0.06);  /* subtle paper aging */
   display: flex;
   flex-direction: column;
-  position: relative;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(230, 36, 41, 0.05);
+  overflow: hidden;
 }
 
-/* Gold accent top line */
+/* Newsprint texture: very subtle dot pattern + paper grain */
 .resume-modal::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--red);
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.008) 0px,
+      rgba(0, 0, 0, 0.008) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  z-index: 1;
 }
 
-/* ── Modal Header ── */
-.rmodal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 28px;
-  border-bottom: 1px solid rgba(230, 36, 41, 0.12);
-  background: rgba(230, 36, 41, 0.02);
-  flex-shrink: 0;
+/* All children sit above the texture */
+.resume-modal > * {
+  position: relative;
+  z-index: 2;
 }
 
-.rmodal-eyebrow {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  color: rgba(255, 255, 255, 0.35);
-  text-transform: uppercase;
-  display: block;
-}
-
-.rmodal-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.15em;
-  color: var(--red);
-  margin: 2px 0 0;
-}
-
+/* ── Close button — circular, top-right corner of paper ── */
 .rmodal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(26, 20, 16, 0.06);
+  border: 1.5px solid rgba(26, 20, 16, 0.25);
+  color: #1a1410;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  padding: 6px 14px;
-  transition: all 0.25s ease;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  padding: 0;
 }
 
 .rmodal-close:hover {
-  border-color: var(--red);
-  color: var(--red);
+  background: #c81e1e;
+  border-color: #c81e1e;
+  color: #f4ecd8;
 }
 
 .rmodal-close-x {
   font-size: 14px;
+  line-height: 1;
+  font-family: 'Oswald', sans-serif;
 }
 
-.rmodal-close-label {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 11px;
+/* ── Masthead ── */
+.rmodal-masthead {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 36px 18px;
+  border-bottom: 3px double #1a1410;
+  text-align: center;
+}
+
+.rmodal-masthead-left,
+.rmodal-masthead-right {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  color: #5a4a38;
 }
 
-/* ── Modal Body ── */
-.rmodal-body {
-  padding: 32px 28px 40px;
-  overflow-y: auto;
+.rmodal-masthead-right {
+  text-align: right;
 }
 
-/* Name block */
-.rmodal-name-block {
-  margin-bottom: 20px;
+.rmodal-masthead-left {
+  text-align: left;
 }
 
-.rmodal-name {
-  font-family: 'Bangers', sans-serif;
-  font-size: 32px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
-  text-shadow: 2px 2px 0px var(--red-deep), 0 0 10px rgba(230, 36, 41, 0.3);
-}
-
-.rmodal-titles {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 15px;
+.rmodal-masthead-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
   font-style: italic;
-  color: var(--red);
-  margin-top: 4px;
-  letter-spacing: 0.03em;
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #1a1410;
+  margin: 0;
+  text-transform: none;
+  /* subtle letterpress shadow */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-/* Contact row */
-.rmodal-contact {
+/* ── Dateline strip ── */
+.rmodal-dateline {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
-  gap: 8px 20px;
-  margin-bottom: 24px;
+  padding: 10px 36px;
+  border-bottom: 1px solid #1a1410;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1a1410;
+  background: rgba(26, 20, 16, 0.03);
+}
+
+.rmodal-dateline-sep {
+  color: #c81e1e;
+  font-size: 8px;
+}
+
+/* ── Hero story (headline + deck + byline) ── */
+.rmodal-hero-story {
+  padding: 28px 36px 22px;
+  text-align: center;
+  border-bottom: 1px solid rgba(26, 20, 16, 0.4);
+}
+
+.rmodal-kicker {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c81e1e;
+  margin: 0 0 8px;
+}
+
+.rmodal-hero-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #1a1410;
+  margin: 0 0 10px;
+  text-transform: none;
+}
+
+.rmodal-deck {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #5a4a38;
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+}
+
+.rmodal-byline {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(26, 20, 16, 0.25);
 }
 
 .rmodal-contact-item {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.55);
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 12px;
+  color: #3a2e22;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .rmodal-contact-icon {
-  color: var(--red);
-  font-size: 12px;
+  color: #c81e1e;
+  font-size: 11px;
 }
 
-/* Separator */
-.rmodal-separator {
-  height: 1px;
-  background: linear-gradient(90deg, rgba(230, 36, 41, 0.25), rgba(230, 36, 41, 0.15), transparent);
-  margin: 24px 0;
+/* ── Body (lead paragraph + columns) ── */
+.rmodal-body {
+  padding: 28px 36px 36px;
 }
 
-/* Section */
+/* Lead paragraph with drop cap */
+.rmodal-lead {
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1a1410;
+  margin: 0 0 24px;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.rmodal-dropcap {
+  float: left;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 0.85;
+  margin: 6px 10px -4px 0;
+  color: #c81e1e;
+  text-shadow: 1px 1px 0 rgba(26, 20, 16, 0.15);
+}
+
+/* ── Two-column body ── */
+.rmodal-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid #1a1410;
+  border-bottom: 1px solid #1a1410;
+}
+
+.rmodal-col {
+  padding: 24px 0;
+}
+
+.rmodal-col-left {
+  padding-right: 28px;
+  border-right: 1px solid rgba(26, 20, 16, 0.4);
+}
+
+.rmodal-col-right {
+  padding-left: 28px;
+}
+
+/* ── Section title (column header) ── */
 .rmodal-section {
+  margin-bottom: 28px;
+}
+
+.rmodal-section:last-child {
   margin-bottom: 0;
 }
 
 .rmodal-section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.2em;
-  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: 16px;
-  padding-left: 16px;
+  color: #1a1410;
+  margin: 0 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #1a1410;
   position: relative;
 }
 
-.rmodal-section-title::before {
+.rmodal-section-title::after {
   content: '';
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
+  bottom: -2px;
+  width: 32px;
   height: 2px;
-  background: var(--red);
+  background: #c81e1e;
 }
 
-/* Summary */
-.rmodal-summary {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 14.5px;
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-/* Skills grid */
-.rmodal-skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.rmodal-skill-row {
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
-}
-
-.rmodal-skill-cat {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--red);
-  text-transform: uppercase;
-  min-width: 180px;
-  flex-shrink: 0;
-}
-
-.rmodal-skill-items {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
-}
-
-/* Projects */
+/* ── Experience / Education entries ── */
+.rmodal-exp,
+.rmodal-edu,
 .rmodal-project {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed rgba(26, 20, 16, 0.25);
 }
 
+.rmodal-exp:last-child,
+.rmodal-edu:last-child,
 .rmodal-project:last-child {
+  border-bottom: none;
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.rmodal-project-header {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
+.rmodal-exp-role,
+.rmodal-project-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #1a1410;
+  margin: 0 0 3px;
+  text-transform: uppercase;
 }
 
 .rmodal-project-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.08em;
-  color: #fff;
-  margin: 0;
+  color: #c81e1e;
+}
+
+.rmodal-exp-meta {
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 11.5px;
+  color: #5a4a38;
+  margin: 0 0 8px;
+  font-style: italic;
+}
+
+.rmodal-exp-company {
+  color: #1a1410;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.rmodal-exp-dash {
+  color: #c81e1e;
+  margin: 0 2px;
+}
+
+.rmodal-exp-period {
+  font-family: 'Oswald', sans-serif;
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c81e1e;
+}
+
+.rmodal-edu-details {
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #5a4a38;
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+/* ── Project extras ── */
+.rmodal-project-subtitle {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: 12.5px;
+  color: #5a4a38;
+  margin: 0 0 2px;
 }
 
 .rmodal-project-link {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 12px;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.35);
-}
-
-.rmodal-project-subtitle {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.45);
-  margin: 2px 0 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c81e1e;
+  margin: 0 0 6px;
 }
 
 .rmodal-project-tech {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 12px;
-  color: rgba(230, 36, 41, 0.6);
-  margin: 4px 0 8px;
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 10.5px;
+  color: #5a4a38;
+  margin: 8px 0 0;
+  padding-top: 6px;
+  border-top: 1px dotted rgba(26, 20, 16, 0.3);
+  line-height: 1.5;
 }
 
+/* ── Bullets (use small square marks, newspaper-style) ── */
+.rmodal-exp-bullets,
 .rmodal-project-bullets {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 6px 0 0;
 }
 
+.rmodal-exp-bullets li,
 .rmodal-project-bullets li {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  font-weight: 300;
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 12px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
+  color: #2a2218;
   padding-left: 14px;
   position: relative;
   margin-bottom: 4px;
+  text-align: justify;
+  hyphens: auto;
 }
 
+.rmodal-exp-bullets li::before,
 .rmodal-project-bullets li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 9px;
-  width: 6px;
-  height: 1px;
-  background: rgba(230, 36, 41, 0.4);
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  background: #c81e1e;
 }
 
-/* Experience */
-.rmodal-exp {
-  margin-bottom: 22px;
-}
-
-.rmodal-exp:last-child {
-  margin-bottom: 0;
-}
-
-.rmodal-exp-header {
+/* ── Skills grid ── */
+.rmodal-skills-grid {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rmodal-skill-row {
+  display: flex;
+  gap: 10px;
   align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding-bottom: 6px;
+  border-bottom: 1px dotted rgba(26, 20, 16, 0.2);
 }
 
-.rmodal-exp-role {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  color: #fff;
-  margin: 0;
+.rmodal-skill-row:last-child {
+  border-bottom: none;
 }
 
-.rmodal-exp-period {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 12px;
+.rmodal-skill-cat {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 10.5px;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.35);
   text-transform: uppercase;
+  color: #1a1410;
+  min-width: 140px;
   flex-shrink: 0;
 }
 
-.rmodal-exp-meta {
-  margin: 2px 0 8px;
+.rmodal-skill-items {
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 11.5px;
+  color: #3a2e22;
+  line-height: 1.5;
 }
 
-.rmodal-exp-company {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
+/* ── Classifieds footer ── */
+.rmodal-classifieds {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 3px double #1a1410;
+}
+
+.rmodal-classifieds-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
   font-style: italic;
-  color: var(--red);
+  font-size: 18px;
+  text-align: center;
+  color: #1a1410;
+  margin: 0 0 16px;
+  letter-spacing: 0.05em;
 }
 
-.rmodal-exp-dash {
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 12px;
+.rmodal-classifieds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-.rmodal-exp-location {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
+.rmodal-classified {
+  text-align: center;
+  padding: 12px;
+  border: 1px solid rgba(26, 20, 16, 0.25);
+  background: rgba(26, 20, 16, 0.02);
 }
 
-.rmodal-exp-bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.rmodal-classified strong {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c81e1e;
+  margin-bottom: 6px;
 }
 
-.rmodal-exp-bullets li {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
-  padding-left: 14px;
-  position: relative;
-  margin-bottom: 4px;
+.rmodal-classified span {
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 11.5px;
+  color: #1a1410;
+  line-height: 1.5;
 }
 
-.rmodal-exp-bullets li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 9px;
-  width: 6px;
-  height: 1px;
-  background: rgba(230, 36, 41, 0.5);
-}
-
-/* Education */
-.rmodal-edu-details {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.45);
-  margin: 4px 0 0;
-}
-
-/* Additional */
-.rmodal-additional {
+/* ── Print footer ── */
+.rmodal-print-footer {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(26, 20, 16, 0.3);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5a4a38;
 }
 
-.rmodal-additional span {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.rmodal-additional strong {
-  color: var(--red);
-  font-weight: 500;
+.rmodal-print-footer span:first-child {
+  color: #c81e1e;
+  font-weight: 600;
 }
 
 /* ── Modal Scrollbar ── */
@@ -502,19 +650,43 @@
 }
 
 .rmodal-body::-webkit-scrollbar-thumb {
-  background: rgba(230, 36, 41, 0.25);
+  background: rgba(26, 20, 16, 0.25);
   border-radius: 2px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .rmodal-skill-row {
-    flex-direction: column;
-    gap: 2px;
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 820px) {
+  /* Collapse two-column body to single column on narrow screens */
+  .rmodal-columns {
+    grid-template-columns: 1fr;
   }
 
-  .rmodal-skill-cat {
-    min-width: unset;
+  .rmodal-col-left {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid #1a1410;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+  }
+
+  .rmodal-col-right {
+    padding-left: 0;
+  }
+
+  .rmodal-masthead-title {
+    font-size: 42px;
+  }
+
+  .rmodal-hero-headline {
+    font-size: 30px;
+  }
+
+  .rmodal-classifieds-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -539,43 +711,80 @@
     padding: 12px;
   }
 
-  .rmodal-name {
-    font-size: 26px;
+  /* Stack masthead vertically on mobile */
+  .rmodal-masthead {
+    grid-template-columns: 1fr;
+    padding: 20px 20px 14px;
+    gap: 8px;
   }
 
-  .rmodal-header {
-    padding: 16px 20px;
+  .rmodal-masthead-left,
+  .rmodal-masthead-right {
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .rmodal-masthead-title {
+    font-size: 34px;
+  }
+
+  .rmodal-dateline {
+    padding: 8px 20px;
+    font-size: 9.5px;
+    gap: 8px;
+  }
+
+  .rmodal-hero-story {
+    padding: 20px 20px 16px;
+  }
+
+  .rmodal-hero-headline {
+    font-size: 24px;
+  }
+
+  .rmodal-deck {
+    font-size: 14px;
   }
 
   .rmodal-body {
-    padding: 20px 16px 28px;
+    padding: 20px 20px 24px;
   }
 
-  .rmodal-contact {
-    flex-direction: column;
-    gap: 6px;
+  .rmodal-lead {
+    font-size: 14px;
   }
 
-  .rmodal-exp-header {
+  .rmodal-dropcap {
+    font-size: 48px;
+  }
+
+  .rmodal-byline {
+    gap: 4px 12px;
+  }
+
+  .rmodal-contact-item {
+    font-size: 11px;
+  }
+
+  .rmodal-section-title {
+    font-size: 13px;
+  }
+
+  .rmodal-skill-row {
     flex-direction: column;
     gap: 2px;
   }
 
+  .rmodal-skill-cat {
+    min-width: unset;
+  }
+
   .rmodal-close {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 10px 16px;
-  }
-
-  .rmodal-section-title {
-    font-size: 14px;
-  }
-
-  .rmodal-project-name {
-    font-size: 14px;
-  }
-
-  .rmodal-exp-role {
-    font-size: 14px;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
   }
 }
