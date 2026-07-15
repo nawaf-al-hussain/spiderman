@@ -27,8 +27,8 @@ const Contact = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeIn}
         >
-          <span className="section-eyebrow">Answer the Call</span>
-          <h2 className="section-title">THE CALL</h2>
+          <span className="section-eyebrow">Say Hello from Queens</span>
+          <h2 className="section-title">GET IN TOUCH</h2>
           <div className="section-divider"></div>
         </motion.div>
 

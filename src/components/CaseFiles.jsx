@@ -87,8 +87,8 @@ const CaseFiles = () => {
           <h2 className="section-title">CASE FILES</h2>
           <div className="section-divider"></div>
           <p className="case-subtitle">
-            Declassified mission logs from past engagements. Each file documents
-            the threat, the investigation, and the countermeasure deployed.
+            Field notes from past projects. Each file walks through
+            the problem, the investigation, and what shipped in the end.
           </p>
         </motion.div>
 
@@ -122,7 +122,7 @@ const CaseFiles = () => {
                   </div>
                   <div className="case-head-main">
                     <h3 className="case-subject">{c.subject}</h3>
-                    <span className="case-threat">THREAT VECTOR: {c.threat}</span>
+                    <span className="case-threat">DOMAIN: {c.threat}</span>
                   </div>
                   <span className={`case-chevron ${open ? 'rotated' : ''}`} aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

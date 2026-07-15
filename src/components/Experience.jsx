@@ -87,8 +87,8 @@ const Experience = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeIn}
         >
-          <span className="section-eyebrow">Every Scar a Lesson</span>
-          <h2 className="section-title">THE MISSION</h2>
+          <span className="section-eyebrow">Building, Shipping, Scaling</span>
+          <h2 className="section-title">EXPERIENCE</h2>
           <div className="section-divider"></div>
         </motion.div>
 

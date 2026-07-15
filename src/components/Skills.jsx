@@ -116,7 +116,7 @@ const Skills = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeIn}
         >
-          <span className="section-eyebrow">Equipped for Every Mission</span>
+          <span className="section-eyebrow">Tools of the Trade</span>
           <h2 className="section-title">THE WEB SHOOTERS</h2>
           <div className="section-divider"></div>
         </motion.div>

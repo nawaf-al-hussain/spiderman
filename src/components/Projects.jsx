@@ -115,8 +115,8 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeIn}
         >
-          <span className="section-eyebrow">Weapons of Choice</span>
-          <h2 className="section-title">THE ARSENAL</h2>
+          <span className="section-eyebrow">Things I've Shipped</span>
+          <h2 className="section-title">PROJECTS</h2>
           <div className="section-divider"></div>
         </motion.div>
 

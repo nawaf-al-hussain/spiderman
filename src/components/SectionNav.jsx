@@ -6,11 +6,11 @@ const sections = [
   { id: 'about', label: 'Queens' },
   { id: 'skills', label: 'Web Shooters' },
   { id: 'matrix', label: 'Matrix' },
-  { id: 'projects', label: 'Arsenal' },
-  { id: 'experience', label: 'Mission' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
   { id: 'casefiles', label: 'Case Files' },
-  { id: 'resume', label: 'Dossier' },
-  { id: 'contact', label: 'Signal' },
+  { id: 'resume', label: 'Resume' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 const SectionNav = () => {

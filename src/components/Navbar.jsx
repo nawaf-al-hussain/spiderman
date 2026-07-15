@@ -38,9 +38,9 @@ const Navbar = () => {
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><a href="#about" onClick={handleLinkClick}>Queens</a></li>
           <li><a href="#skills" onClick={handleLinkClick}>Web Shooters</a></li>
-          <li><a href="#projects" onClick={handleLinkClick}>The Arsenal</a></li>
-          <li><a href="#experience" onClick={handleLinkClick}>The Mission</a></li>
-          <li><a href="#contact" onClick={handleLinkClick}>The Call</a></li>
+          <li><a href="#projects" onClick={handleLinkClick}>Projects</a></li>
+          <li><a href="#experience" onClick={handleLinkClick}>Experience</a></li>
+          <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
         </ul>
 
         <div className="nav-actions">
@@ -65,7 +65,7 @@ const Navbar = () => {
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
               </svg>
             ) : (
-              /* Bat/Moon icon — switch to dark */
+              /* Moon icon — switch to dark */
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
               </svg>

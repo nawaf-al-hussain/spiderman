@@ -158,12 +158,12 @@ const Resume = () => {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="section-eyebrow">The Full Dossier</span>
+        <span className="section-eyebrow">The Full Story</span>
         <h2 className="section-title">RESUME</h2>
         <div className="section-divider"></div>
 
         <p className="resume-tagline">
-          Every detail. Every battle. The complete record of skills, experience, and education —
+          Every detail. The complete record of skills, experience, and education —
           available for those who need the full picture.
         </p>
 
