@@ -13,7 +13,6 @@ import ScrollTop from './components/ScrollTop'
 import SectionNav from './components/SectionNav'
 import Particles from './components/Particles'
 import Loader from './components/Loader'
-import SpiderSenseMode from './components/SpiderSenseMode'
 import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
@@ -61,7 +60,6 @@ function App() {
           <Resume />
           <Contact />
           <ScrollTop />
-          <SpiderSenseMode />
         </>
       )}
     </ThemeProvider>
