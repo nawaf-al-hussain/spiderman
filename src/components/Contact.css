@@ -1,0 +1,206 @@
+.contact {
+  padding: 100px 0 0;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(192, 0, 26, 0.2);
+}
+
+.contact-content {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(192, 0, 26, 0.1);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #C0001A, #C0001A);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  border-color: rgba(192, 0, 26, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.contact-card:hover::after {
+  transform: scaleX(1);
+}
+
+.contact-icon {
+  font-size: 24px;
+  color: #C0001A;
+}
+
+.contact-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.contact-value {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  word-break: break-all;
+}
+
+/* ── Copy Email ── */
+.email-card {
+  position: relative;
+}
+
+.copy-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #C0001A;
+  background: rgba(192, 0, 26, 0.08);
+  border: 1px solid rgba(192, 0, 26, 0.2);
+  padding: 3px 10px;
+  margin-top: 6px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.copy-btn.copied {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.08);
+}
+
+@media (max-width: 640px) {
+  .copy-btn {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 80px;
+  padding: 30px 50px;
+  border-top: 1px solid rgba(192, 0, 26, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.footer-logo span {
+  color: #C0001A;
+}
+
+.footer-text {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-disclaimer {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.2);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .contact {
+    padding: 70px 0 0;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .contact-card {
+    padding: 20px 12px;
+  }
+
+  .contact-tagline {
+    font-size: 16px;
+  }
+
+  .footer {
+    padding: 24px 20px;
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+}
