@@ -8,10 +8,10 @@
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
+  background: rgba(10, 14, 26, 0.55);
+  backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(192, 0, 26, 0.2);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ── Logo ─────────────────────────────────── */
@@ -29,9 +29,10 @@
   cursor: pointer;
 }
 
-/* "DEV" in gold */
+/* "DEV" in spider-blue */
 .nav-logo span {
-  color: #C0001A;
+  color: var(--blue-light);
+  text-shadow: 0 0 12px var(--blue-glow);
 }
 
 /* ── Links ────────────────────────────────── */
@@ -60,7 +61,7 @@
   padding-bottom: 6px;
 }
 
-/* underline: gold on hover */
+/* underline: blue on hover */
 .nav-links li a::after {
   content: '';
   position: absolute;
@@ -68,7 +69,7 @@
   bottom: 0;
   width: 0%;
   height: 1.5px;
-  background: #C0001A;
+  background: linear-gradient(90deg, var(--blue-light), var(--red));
   transition: width 0.35s ease;
 }
 
@@ -115,7 +116,7 @@
 }
 
 .hamburger:hover {
-  border-color: #C0001A;
+  border-color: var(--red);
 }
 
 .hamburger span {
@@ -186,7 +187,7 @@
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: all;
-    border-left: 1px solid rgba(192, 0, 26, 0.2);
+    border-left: 1px solid rgba(230, 36, 41, 0.2);
   }
 
   .nav-links.open {
@@ -217,9 +218,9 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid rgba(192, 0, 26, 0.3);
-  background: rgba(192, 0, 26, 0.06);
-  color: #C0001A;
+  border: 1px solid rgba(230, 36, 41, 0.3);
+  background: rgba(230, 36, 41, 0.06);
+  color: var(--red);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,9 +230,9 @@
 }
 
 .theme-toggle:hover {
-  border-color: rgba(192, 0, 26, 0.6);
-  background: rgba(192, 0, 26, 0.12);
-  box-shadow: 0 0 12px rgba(192, 0, 26, 0.15);
+  border-color: rgba(230, 36, 41, 0.6);
+  background: rgba(230, 36, 41, 0.12);
+  box-shadow: 0 0 12px rgba(230, 36, 41, 0.15);
 }
 
 .theme-toggle svg {
@@ -268,7 +269,7 @@
 [data-theme="light"] .theme-toggle {
   border-color: rgba(146, 101, 10, 0.3);
   background: rgba(146, 101, 10, 0.06);
-  color: #7a000f;
+  color: var(--red-deep);
 }
 
 [data-theme="light"] .theme-toggle:hover {

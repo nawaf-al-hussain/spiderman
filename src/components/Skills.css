@@ -1,6 +1,6 @@
 .skills {
   padding: 100px 0;
-  background: #060606;
+  background: var(--bg-deep);
   position: relative;
 }
 
@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(192, 0, 26, 0.2);
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
 }
 
 .skills-grid {
@@ -21,8 +21,8 @@
 }
 
 .skill-category {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(192, 0, 26, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
   padding: 28px 22px;
   transition: all 0.3s ease;
   position: relative;
@@ -36,15 +36,15 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #C0001A, #C0001A);
+  background: linear-gradient(90deg, var(--blue-light), var(--red));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
 }
 
 .skill-category:hover {
-  border-color: rgba(192, 0, 26, 0.35);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+  background: var(--surface-2);
   transform: translateY(-2px);
 }
 
@@ -65,8 +65,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #C0001A;
+  color: var(--blue-light);
   flex-shrink: 0;
+  filter: drop-shadow(0 0 6px var(--blue-glow));
 }
 
 .skill-icon svg {
@@ -78,8 +79,9 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 18px;
   letter-spacing: 0.15em;
-  color: #C0001A;
+  color: var(--red);
   text-transform: uppercase;
+  text-shadow: 0 0 12px var(--red-glow2);
 }
 
 .skill-tags {
@@ -92,8 +94,8 @@
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 4px 12px;
   transition: all 0.25s ease;
@@ -102,8 +104,9 @@
 
 .skill-tag:hover {
   color: #fff;
-  border-color: rgba(192, 0, 26, 0.4);
-  background: rgba(192, 0, 26, 0.08);
+  border-color: var(--blue-light);
+  background: var(--blue-veil);
+  box-shadow: 0 0 12px var(--blue-glow);
 }
 
 /* ── Responsive ── */

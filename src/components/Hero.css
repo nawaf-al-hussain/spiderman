@@ -1,9 +1,4 @@
-:root {
-  --red:       #C0001A;
-  --red-glow:  rgba(192, 0, 26, 0.65);
-  --red-glow2: rgba(192, 0, 26, 0.35);
-  --gold:      #C0001A;
-}
+
 
 /* ── Hero ────────────────────────────────── */
 .hero {
@@ -32,7 +27,7 @@
   align-items: center;
   gap: 8px;
   pointer-events: none;
-  color: var(--gold);
+  color: var(--blue-light);
 }
 
 .scroll-hint-text {
@@ -40,13 +35,13 @@
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--blue-light);
   opacity: 0.85;
 }
 
 .scroll-hint-chevron {
   font-size: 14px;
-  color: var(--gold);
+  color: var(--blue-light);
   opacity: 0.7;
   animation: scrollBounce 1.8s ease-in-out infinite;
 }
@@ -62,7 +57,7 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--red), var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--blue-light), var(--red), var(--blue-light), transparent);
   z-index: 10;
 }
 
@@ -115,7 +110,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
   letter-spacing: 0.35em;
-  color: var(--gold);
+  color: var(--blue-light);
   text-transform: uppercase;
   padding-left: 1.4rem;
   position: relative;
@@ -128,7 +123,7 @@
 
 .typed-cursor {
   display: inline-block;
-  color: var(--gold);
+  color: var(--blue-light);
   animation: blink 0.7s step-end infinite;
   margin-left: 2px;
   font-weight: 300;
@@ -147,15 +142,15 @@
   transform: translateY(-50%);
   width: 1rem;
   height: 1.5px;
-  background: var(--gold);
+  background: var(--blue-light);
 }
 
 .right-eyebrow {
-  color: #C0001A;
+  color: var(--red);
 }
 
 .right-eyebrow::before {
-  background: #C0001A;
+  background: var(--red);
 }
 
 .st-title {
@@ -166,9 +161,10 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-shadow:
-    3px 3px 0px #7A000F,
-    0 0 12px var(--red-glow),
-    0 0 30px var(--red-glow2);
+    3px 3px 0px var(--red-deep),
+    0 0 14px var(--red-glow),
+    0 0 32px var(--red-glow2),
+    0 0 48px var(--blue-glow);
 }
 
 .st-desc {
@@ -203,13 +199,13 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--red);
+  background: linear-gradient(120deg, var(--red), var(--blue));
   transform: translateX(-105%) skewX(-6deg);
   transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
 }
 
-.st-btn:hover { border-color: #E8001F; }
+.st-btn:hover { border-color: var(--blue-light); }
 .st-btn:hover::after { transform: translateX(0) skewX(-6deg); }
 
 /* ── Right panel ─────────────────────────── */
@@ -228,7 +224,7 @@
   display: block;
   width: 48px;
   height: 2px;
-  background: var(--gold);
+  background: var(--blue-light);
   margin-bottom: -10px;
 }
 

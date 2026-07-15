@@ -26,19 +26,19 @@
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(192, 0, 26, 0.15);
+  border: 1px solid rgba(230, 36, 41, 0.15);
   transition: all 0.3s ease;
 }
 
 .section-dot:hover .dot {
-  background: rgba(192, 0, 26, 0.4);
-  border-color: rgba(192, 0, 26, 0.5);
+  background: rgba(230, 36, 41, 0.4);
+  border-color: rgba(230, 36, 41, 0.5);
 }
 
 .section-dot.active .dot {
-  background: #C0001A;
-  border-color: #C0001A;
-  box-shadow: 0 0 8px rgba(192, 0, 26, 0.4);
+  background: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 0 8px rgba(230, 36, 41, 0.4);
   width: 10px;
   height: 10px;
 }
@@ -49,7 +49,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 10px;
   letter-spacing: 0.15em;
-  color: #C0001A;
+  color: var(--red);
   white-space: nowrap;
   opacity: 0;
   transform: translateX(5px);

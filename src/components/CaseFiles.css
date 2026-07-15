@@ -1,6 +1,6 @@
 .case-files {
   padding: 100px 0;
-  background: #0a0a0a;
+  background: var(--bg);
   position: relative;
 }
 
@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #C0001A, #C0001A, #C0001A, transparent);
+  background: linear-gradient(90deg, transparent, var(--blue) 18%, var(--red) 50%, var(--blue) 82%, transparent);
 }
 
 .case-subtitle {
@@ -36,7 +36,7 @@
 .case-card {
   position: relative;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(192, 0, 26, 0.12);
+  border: 1px solid rgba(230, 36, 41, 0.12);
   transition: border-color 0.25s ease, transform 0.25s ease;
   overflow: hidden;
 }
@@ -47,7 +47,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, #C0001A, #C0001A);
+  background: linear-gradient(180deg, var(--red), var(--red));
   opacity: 0;
   transition: opacity 0.25s ease;
 }
@@ -55,7 +55,7 @@
   opacity: 1;
 }
 .case-card.open {
-  border-color: rgba(192, 0, 26, 0.3);
+  border-color: rgba(230, 36, 41, 0.3);
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -67,8 +67,8 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 11px;
   letter-spacing: 0.25em;
-  color: rgba(192, 0, 26, 0.85);
-  border: 1.5px solid rgba(192, 0, 26, 0.5);
+  color: rgba(230, 36, 41, 0.85);
+  border: 1.5px solid rgba(230, 36, 41, 0.5);
   padding: 4px 10px;
   transform: rotate(3deg);
   z-index: 2;
@@ -77,8 +77,8 @@
   backdrop-filter: blur(2px);
 }
 .case-stamp.active {
-  color: #ff6b4a;
-  border-color: rgba(255, 107, 74, 0.6);
+  color: var(--red);
+  border-color: rgba(230, 36, 41, 0.6);
 }
 
 /* ── Header (clickable) ── */
@@ -97,7 +97,7 @@
   position: relative;
 }
 .case-head:focus-visible {
-  outline: 2px solid #C0001A;
+  outline: 2px solid var(--red);
   outline-offset: -2px;
 }
 
@@ -112,7 +112,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 12px;
   letter-spacing: 0.18em;
-  color: #C0001A;
+  color: var(--red);
 }
 .case-date {
   font-family: 'Bebas Neue', sans-serif;
@@ -138,7 +138,7 @@
   transition: color 0.2s ease;
 }
 .case-card.open .case-subject {
-  color: #C0001A;
+  color: var(--red);
 }
 .case-threat {
   font-family: 'Crimson Pro', Georgia, serif;
@@ -152,7 +152,7 @@
   position: absolute;
   top: 28px;
   right: 28px;
-  color: #C0001A;
+  color: var(--red);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,7 +168,7 @@
 }
 .case-body-inner {
   padding: 0 30px 30px 30px;
-  border-top: 1px dashed rgba(192, 0, 26, 0.18);
+  border-top: 1px dashed rgba(230, 36, 41, 0.18);
   margin-top: 0;
   padding-top: 24px;
 }
@@ -180,7 +180,7 @@
   font-size: 16px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.7);
-  border-left: 2px solid #C0001A;
+  border-left: 2px solid var(--red);
   padding-left: 18px;
   margin-bottom: 24px;
 }
@@ -216,8 +216,8 @@
 }
 .redact-bar {
   color: transparent;
-  background: #1a1a1a;
-  border: 1px solid rgba(192, 0, 26, 0.3);
+  background: var(--surface-2);
+  border: 1px solid rgba(230, 36, 41, 0.3);
   padding: 0 6px;
   border-radius: 1px;
   position: relative;
@@ -238,11 +238,11 @@
 .redact-text {
   position: absolute;
   inset: 0;
-  color: #C0001A;
+  color: var(--red);
   opacity: 0;
   padding: 0 6px;
-  background: rgba(192, 0, 26, 0.08);
-  border: 1px solid rgba(192, 0, 26, 0.4);
+  background: rgba(230, 36, 41, 0.08);
+  border: 1px solid rgba(230, 36, 41, 0.4);
   white-space: nowrap;
 }
 .redact:hover .redact-bar,
@@ -258,7 +258,7 @@
 .case-evidence {
   margin-top: 24px;
   padding-top: 18px;
-  border-top: 1px dashed rgba(192, 0, 26, 0.18);
+  border-top: 1px dashed rgba(230, 36, 41, 0.18);
 }
 .evidence-label {
   display: block;
@@ -277,16 +277,16 @@
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 12px;
   font-weight: 500;
-  color: #C0001A;
-  background: rgba(192, 0, 26, 0.08);
-  border: 1px solid rgba(192, 0, 26, 0.3);
+  color: var(--red);
+  background: rgba(230, 36, 41, 0.08);
+  border: 1px solid rgba(230, 36, 41, 0.3);
   padding: 4px 11px;
   letter-spacing: 0.04em;
   transition: all 0.2s ease;
 }
 .evidence-tag:hover {
-  background: rgba(192, 0, 26, 0.15);
-  border-color: rgba(192, 0, 26, 0.55);
+  background: rgba(230, 36, 41, 0.15);
+  border-color: rgba(230, 36, 41, 0.55);
   color: #fff;
 }
 
@@ -300,16 +300,16 @@
 .outcome-marker {
   width: 8px;
   height: 8px;
-  background: #C0001A;
+  background: var(--red);
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(192, 0, 26, 0.7);
+  box-shadow: 0 0 8px rgba(230, 36, 41, 0.7);
   flex-shrink: 0;
 }
 .outcome-text {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
   letter-spacing: 0.22em;
-  color: #C0001A;
+  color: var(--red);
 }
 
 /* ── Responsive ── */

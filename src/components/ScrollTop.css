@@ -11,8 +11,8 @@
   gap: 4px;
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(192, 0, 26, 0.2);
-  color: #C0001A;
+  border: 1px solid rgba(230, 36, 41, 0.2);
+  color: var(--red);
   cursor: pointer;
   z-index: 900;
   opacity: 0;
@@ -28,9 +28,9 @@
 }
 
 .scroll-top:hover {
-  border-color: #C0001A;
+  border-color: var(--red);
   background: rgba(10, 10, 10, 0.95);
-  box-shadow: 0 0 20px rgba(192, 0, 26, 0.15);
+  box-shadow: 0 0 20px rgba(230, 36, 41, 0.15);
 }
 
 .spider-signal {
@@ -47,7 +47,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: #C0001A;
+  color: var(--red);
   opacity: 0.7;
 }
 

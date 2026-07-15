@@ -1,4 +1,37 @@
-*{
+:root {
+  /* ── Spider-Man palette ──────────────────────────────────── */
+  --red:           #E62429;   /* suit red */
+  --red-deep:      #9B0E14;   /* gradient depth, hover shadow */
+  --red-glow:      rgba(230, 36, 41, 0.55);
+  --red-glow2:     rgba(230, 36, 41, 0.25);
+
+  --blue:          #1E4FD8;   /* suit blue */
+  --blue-light:    #4F8FF7;   /* highlight / focus */
+  --blue-glow:     rgba(79, 143, 247, 0.55);
+  --blue-veil:     rgba(79, 143, 247, 0.08);
+
+  --bg:            #0A0E1A;   /* navy-tinted black (was var(--bg)) */
+  --bg-deep:       #060912;   /* deeper section bg (was var(--bg-deep)) */
+  --surface:       #11172A;   /* card surface */
+  --surface-2:     #161E36;   /* hover surface */
+  --border:        rgba(79, 143, 247, 0.18);
+  --border-strong: rgba(79, 143, 247, 0.35);
+  --border-red:    rgba(230, 36, 41, 0.32);
+
+  --text:          #F5F7FB;
+  --text-muted:    rgba(245, 247, 251, 0.62);
+  --text-faint:    rgba(245, 247, 251, 0.40);
+
+  --accent-grad:   linear-gradient(90deg, var(--blue-light), var(--red));
+  --accent-grad-soft: linear-gradient(90deg,
+                              transparent,
+                              var(--blue) 20%,
+                              var(--red) 50%,
+                              var(--blue) 80%,
+                              transparent);
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -12,7 +45,7 @@ html {
 body {
   overflow-x: clip;
   width: 100%;
-  background: #0a0a0a;
+  background: var(--bg);
   color: #fff;
   cursor: default;
 }
@@ -20,30 +53,31 @@ body {
 /* ── Custom Cursor — Spider-Man spider silhouette (desktop only) ── */
 @media (hover: hover) and (pointer: fine) {
   body {
-    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 11 11, auto;
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0U2MjQyOSIgc3Ryb2tlPSIjMEEwRTFBIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTYyNDI5IiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 11 11, auto;
   }
 
   a, button, [role="button"] {
-    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 12 12, pointer;
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0U2MjQyOSIgc3Ryb2tlPSIjMEEwRTFBIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTYyNDI5IiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 12 12, pointer;
   }
 }
 
 /* ── Light mode bat cursor ── */
 @media (hover: hover) and (pointer: fine) {
   [data-theme="light"] body {
-    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 11 11, auto;
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0U2MjQyOSIgc3Ryb2tlPSIjMEEwRTFBIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTYyNDI5IiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 11 11, auto;
   }
 
   [data-theme="light"] a,
   [data-theme="light"] button,
   [data-theme="light"] [role="button"] {
-    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 12 12, pointer;
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0U2MjQyOSIgc3Ryb2tlPSIjMEEwRTFBIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTYyNDI5IiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2MjQyOSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNFNjI0MjkiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 12 12, pointer;
   }
 }
 
 ::selection {
-  background: rgba(192, 0, 26, 0.3);
+  background: rgba(79, 143, 247, 0.32);
   color: #fff;
+  text-shadow: 0 0 8px rgba(79, 143, 247, 0.5);
 }
 
 ::-webkit-scrollbar {
@@ -51,16 +85,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(192, 0, 26, 0.3);
+  background: linear-gradient(180deg, var(--red), var(--blue));
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(192, 0, 26, 0.5);
+  background: linear-gradient(180deg, var(--blue-light), var(--red));
 }
 
 /* ── Section Fog Transitions ── */
@@ -70,9 +104,9 @@ section::after {
   height: 1px;
   background: linear-gradient(90deg,
     transparent,
-    rgba(192, 0, 26, 0.08),
-    rgba(192, 0, 26, 0.06),
-    rgba(192, 0, 26, 0.08),
+    rgba(79, 143, 247, 0.10),
+    rgba(230, 36, 41, 0.08),
+    rgba(79, 143, 247, 0.10),
     transparent
   );
   pointer-events: none;
@@ -110,13 +144,13 @@ section::after {
 
 /* ── Venom Mode (Konami code Easter egg) ── */
 body.venom-mode {
-  background: #0a0a0a;
+  background: var(--bg);
 }
 
 body.venom-mode .st-title,
 body.venom-mode .section-title,
 body.venom-mode .rmodal-name {
-  text-shadow: 3px 3px 0px #6B21A8, 0 0 12px rgba(34, 197, 94, 0.5), 0 0 30px rgba(34, 197, 94, 0.2) !important;
+  text-shadow: 3px 3px 0px var(--red-deep), 0 0 12px rgba(34, 197, 94, 0.5), 0 0 30px rgba(34, 197, 94, 0.2) !important;
 }
 
 body.venom-mode .nav-logo span,
@@ -165,7 +199,7 @@ body.venom-mode .case-stamp.active {
 }
 
 body.venom-mode .redact-bar {
-  background: #1a1a1a !important;
+  background: var(--surface-2) !important;
   border-color: rgba(34, 197, 94, 0.4) !important;
 }
 
@@ -256,7 +290,7 @@ body.venom-mode::after {
    ═══════════════════════════════════════════════════════════════ */
 
 body.spider-sense-mode {
-  background: #021222 !important;
+  background: var(--bg-deep) !important;
   color: #B3E5FC !important;
 }
 
@@ -270,7 +304,7 @@ body.spider-sense-mode .experience,
 body.spider-sense-mode .case-files,
 body.spider-sense-mode .resume-section,
 body.spider-sense-mode .contact {
-  background: #021222 !important;
+  background: var(--bg-deep) !important;
 }
 
 /* Shift gold accents to Arkham cyan */
@@ -356,7 +390,7 @@ body.spider-sense-mode .st-btn::after {
 /* Hero title glow ("Nawaf Al Hussain" + "The Code Behind The Cape") → cyan */
 body.spider-sense-mode .st-title {
   text-shadow:
-    3px 3px 0px #021222,
+    3px 3px 0px var(--bg-deep),
     0 0 12px rgba(30, 144, 255, 0.65),
     0 0 30px rgba(30, 144, 255, 0.35) !important;
 }
@@ -383,7 +417,7 @@ body.spider-sense-mode .timeline::before {
 body.spider-sense-mode .timeline-dot,
 body.spider-sense-mode .timeline-dot.edu-dot {
   background: #1E90FF !important;
-  border-color: #021222 !important;
+  border-color: var(--bg-deep) !important;
 }
 body.spider-sense-mode .timeline-bullets li::before {
   background: rgba(30, 144, 255, 0.5) !important;
@@ -408,7 +442,7 @@ body.spider-sense-mode .radar-area {
 
 body.spider-sense-mode .radar-point {
   fill: #1E90FF !important;
-  stroke: #021222 !important;
+  stroke: var(--bg-deep) !important;
 }
 
 /* Body text → soft cyan */
@@ -454,7 +488,7 @@ body.spider-sense-mode .section-title {
 
 /* Keep venom-mode priority if both are somehow on */
 body.spider-sense-mode.venom-mode {
-  background: #0a0a0a !important;
+  background: var(--bg) !important;
 }
 
 /* ── Crosshair cursor (replaces bat cursor while DM is on) ── */
@@ -485,7 +519,7 @@ body.spider-sense-mode .ss-evidence {
   --lm-text: #1c1917;
   --lm-text-secondary: rgba(28, 25, 23, 0.65);
   --lm-text-muted: rgba(28, 25, 23, 0.4);
-  --lm-gold: #7a000f;
+  --lm-gold: var(--red-deep);
   --lm-gold-light: rgba(146, 101, 10, 0.08);
   --lm-gold-border: rgba(146, 101, 10, 0.2);
   --lm-red: #991b1b;
@@ -818,27 +852,27 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .st-eyebrow {
-  color: #C0001A;
+  color: var(--red);
 }
 
 [data-theme="light"] .st-eyebrow::before {
-  background: #C0001A;
+  background: var(--red);
 }
 
 [data-theme="light"] .right-eyebrow {
-  color: #C0001A;
+  color: var(--red);
 }
 
 [data-theme="light"] .right-eyebrow::before {
-  background: #C0001A;
+  background: var(--red);
 }
 
 [data-theme="light"] .st-title {
   color: #fff;
   text-shadow:
-    3px 3px 0px #7A000F,
-    0 0 12px rgba(192, 0, 26, 0.55),
-    0 0 30px rgba(192, 0, 26, 0.25);
+    3px 3px 0px var(--red-deep),
+    0 0 12px rgba(230, 36, 41, 0.55),
+    0 0 30px rgba(230, 36, 41, 0.25);
 }
 
 [data-theme="light"] .st-desc,
@@ -868,29 +902,29 @@ body.spider-sense-mode .ss-evidence {
 [data-theme="light"] .hero-reveal-btn {
   background: rgba(248, 245, 238, 0.8);
   border-color: rgba(146, 101, 10, 0.3);
-  color: #7a000f;
+  color: var(--red-deep);
 }
 
 [data-theme="light"] .hero-reveal-btn:active,
 [data-theme="light"] .hero-reveal-btn.active {
-  border-color: #7a000f;
+  border-color: var(--red-deep);
   background: rgba(146, 101, 10, 0.12);
   box-shadow: 0 0 20px rgba(146, 101, 10, 0.2);
 }
 
 [data-theme="light"] .reveal-label {
-  color: #7a000f;
+  color: var(--red-deep);
 }
 
 /* ── ScrollTop ── */
 [data-theme="light"] .scroll-top {
   background: rgba(248, 245, 238, 0.9);
   border-color: rgba(146, 101, 10, 0.2);
-  color: #7a000f;
+  color: var(--red-deep);
 }
 
 [data-theme="light"] .scroll-top-label {
-  color: #7a000f;
+  color: var(--red-deep);
 }
 
 [data-theme="light"] .scroll-top:hover {

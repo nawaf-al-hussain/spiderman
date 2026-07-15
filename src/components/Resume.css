@@ -1,6 +1,6 @@
 .resume-section {
   padding: 80px 0;
-  background: #060606;
+  background: var(--bg-deep);
   position: relative;
   text-align: center;
 }
@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(192, 0, 26, 0.2);
+  background: rgba(230, 36, 41, 0.2);
 }
 
 .resume-section .section-eyebrow {
@@ -29,7 +29,7 @@
   transform: translateY(-50%);
   width: 1rem;
   height: 1.5px;
-  background: #C0001A;
+  background: var(--red);
 }
 
 .resume-section .section-title {
@@ -65,7 +65,7 @@
   padding: 14px 28px;
   background: transparent;
   color: #fff;
-  border: 1px solid rgba(192, 0, 26, 0.3);
+  border: 1px solid rgba(230, 36, 41, 0.3);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -76,17 +76,17 @@
 }
 
 .resume-btn:hover {
-  border-color: #C0001A;
-  background: rgba(192, 0, 26, 0.08);
+  border-color: var(--red);
+  background: rgba(230, 36, 41, 0.08);
 }
 
 .resume-btn .btn-icon {
   font-size: 16px;
-  color: #C0001A;
+  color: var(--red);
 }
 
 .view-btn:hover {
-  background: rgba(192, 0, 26, 0.12);
+  background: rgba(230, 36, 41, 0.12);
 }
 
 /* ────────────────────────────────────────────
@@ -107,13 +107,13 @@
 
 .resume-modal {
   background: #0d0d0d;
-  border: 1px solid rgba(192, 0, 26, 0.25);
+  border: 1px solid rgba(230, 36, 41, 0.25);
   width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(192, 0, 26, 0.05);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(230, 36, 41, 0.05);
 }
 
 /* Gold accent top line */
@@ -124,7 +124,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #C0001A, #C0001A, #C0001A, transparent);
+  background: linear-gradient(90deg, transparent, var(--blue) 18%, var(--red) 50%, var(--blue) 82%, transparent);
 }
 
 /* ── Modal Header ── */
@@ -133,8 +133,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 28px;
-  border-bottom: 1px solid rgba(192, 0, 26, 0.12);
-  background: rgba(192, 0, 26, 0.02);
+  border-bottom: 1px solid rgba(230, 36, 41, 0.12);
+  background: rgba(230, 36, 41, 0.02);
   flex-shrink: 0;
 }
 
@@ -151,7 +151,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   letter-spacing: 0.15em;
-  color: #C0001A;
+  color: var(--red);
   margin: 2px 0 0;
 }
 
@@ -168,8 +168,8 @@
 }
 
 .rmodal-close:hover {
-  border-color: #C0001A;
-  color: #C0001A;
+  border-color: var(--red);
+  color: var(--red);
 }
 
 .rmodal-close-x {
@@ -201,14 +201,14 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.15;
-  text-shadow: 2px 2px 0px #7A000F, 0 0 10px rgba(192, 0, 26, 0.3);
+  text-shadow: 2px 2px 0px var(--red-deep), 0 0 10px rgba(230, 36, 41, 0.3);
 }
 
 .rmodal-titles {
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 15px;
   font-style: italic;
-  color: #C0001A;
+  color: var(--red);
   margin-top: 4px;
   letter-spacing: 0.03em;
 }
@@ -231,14 +231,14 @@
 }
 
 .rmodal-contact-icon {
-  color: #C0001A;
+  color: var(--red);
   font-size: 12px;
 }
 
 /* Separator */
 .rmodal-separator {
   height: 1px;
-  background: linear-gradient(90deg, rgba(192, 0, 26, 0.25), rgba(192, 0, 26, 0.15), transparent);
+  background: linear-gradient(90deg, rgba(230, 36, 41, 0.25), rgba(230, 36, 41, 0.15), transparent);
   margin: 24px 0;
 }
 
@@ -266,7 +266,7 @@
   transform: translateY(-50%);
   width: 8px;
   height: 2px;
-  background: #C0001A;
+  background: var(--red);
 }
 
 /* Summary */
@@ -295,7 +295,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: #C0001A;
+  color: var(--red);
   text-transform: uppercase;
   min-width: 180px;
   flex-shrink: 0;
@@ -350,7 +350,7 @@
 .rmodal-project-tech {
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 12px;
-  color: rgba(192, 0, 26, 0.6);
+  color: rgba(230, 36, 41, 0.6);
   margin: 4px 0 8px;
 }
 
@@ -378,7 +378,7 @@
   top: 9px;
   width: 6px;
   height: 1px;
-  background: rgba(192, 0, 26, 0.4);
+  background: rgba(230, 36, 41, 0.4);
 }
 
 /* Experience */
@@ -423,7 +423,7 @@
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 13px;
   font-style: italic;
-  color: #C0001A;
+  color: var(--red);
 }
 
 .rmodal-exp-dash {
@@ -461,7 +461,7 @@
   top: 9px;
   width: 6px;
   height: 1px;
-  background: rgba(192, 0, 26, 0.5);
+  background: rgba(230, 36, 41, 0.5);
 }
 
 /* Education */
@@ -488,7 +488,7 @@
 }
 
 .rmodal-additional strong {
-  color: #C0001A;
+  color: var(--red);
   font-weight: 500;
 }
 
@@ -502,7 +502,7 @@
 }
 
 .rmodal-body::-webkit-scrollbar-thumb {
-  background: rgba(192, 0, 26, 0.25);
+  background: rgba(230, 36, 41, 0.25);
   border-radius: 2px;
 }
 

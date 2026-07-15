@@ -1,6 +1,6 @@
 .experience {
   padding: 100px 0;
-  background: #060606;
+  background: var(--bg-deep);
   position: relative;
 }
 
@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(192, 0, 26, 0.2);
+  background: rgba(230, 36, 41, 0.2);
 }
 
 .exp-edu-grid {
@@ -24,11 +24,11 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 16px;
   letter-spacing: 0.2em;
-  color: #C0001A;
+  color: var(--red);
   text-transform: uppercase;
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(192, 0, 26, 0.2);
+  border-bottom: 1px solid rgba(230, 36, 41, 0.2);
 }
 
 .timeline {
@@ -43,7 +43,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: rgba(192, 0, 26, 0.15);
+  background: rgba(230, 36, 41, 0.15);
 }
 
 .timeline-item {
@@ -62,14 +62,14 @@
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: #C0001A;
-  border: 2px solid #060606;
+  background: var(--red);
+  border: 2px solid var(--bg-deep);
   z-index: 1;
 }
 
 .timeline-dot.edu-dot {
-  background: #C0001A;
-  border-color: #060606;
+  background: var(--red);
+  border-color: var(--bg-deep);
 }
 
 .timeline-content {
@@ -99,7 +99,7 @@
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 14px;
   font-style: italic;
-  color: #C0001A;
+  color: var(--red);
   display: block;
   margin-bottom: 2px;
 }
@@ -136,7 +136,7 @@
   top: 9px;
   width: 5px;
   height: 1px;
-  background: rgba(192, 0, 26, 0.4);
+  background: rgba(230, 36, 41, 0.4);
 }
 
 .timeline-details {

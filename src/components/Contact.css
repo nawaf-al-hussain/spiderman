@@ -1,6 +1,6 @@
 .contact {
   padding: 100px 0 0;
-  background: #0a0a0a;
+  background: var(--bg);
   position: relative;
   overflow: hidden;
 }
@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(192, 0, 26, 0.2);
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
 }
 
 .contact-content {
@@ -38,8 +38,8 @@
 }
 
 .contact-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(192, 0, 26, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
   padding: 28px 16px;
   display: flex;
   flex-direction: column;
@@ -58,14 +58,14 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #C0001A, #C0001A);
+  background: linear-gradient(90deg, var(--blue-light), var(--red));
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
 .contact-card:hover {
-  border-color: rgba(192, 0, 26, 0.4);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+  background: var(--surface-2);
   transform: translateY(-2px);
 }
 
@@ -75,7 +75,14 @@
 
 .contact-icon {
   font-size: 24px;
-  color: #C0001A;
+  color: var(--blue-light);
+  filter: drop-shadow(0 0 8px var(--blue-glow));
+  transition: color 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+  color: var(--red);
+  filter: drop-shadow(0 0 10px var(--red-glow));
 }
 
 .contact-label {
@@ -103,9 +110,9 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 10px;
   letter-spacing: 0.15em;
-  color: #C0001A;
-  background: rgba(192, 0, 26, 0.08);
-  border: 1px solid rgba(192, 0, 26, 0.2);
+  color: var(--red);
+  background: rgba(230, 36, 41, 0.08);
+  border: 1px solid rgba(230, 36, 41, 0.2);
   padding: 3px 10px;
   margin-top: 6px;
   text-transform: uppercase;
@@ -113,9 +120,9 @@
 }
 
 .copy-btn.copied {
-  color: #4ade80;
-  border-color: rgba(74, 222, 128, 0.3);
-  background: rgba(74, 222, 128, 0.08);
+  color: var(--blue-light);
+  border-color: rgba(79, 143, 247, 0.3);
+  background: rgba(79, 143, 247, 0.08);
 }
 
 @media (max-width: 640px) {
@@ -129,8 +136,9 @@
 .footer {
   margin-top: 80px;
   padding: 30px 50px;
-  border-top: 1px solid rgba(192, 0, 26, 0.1);
-  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--border);
+  background: rgba(6, 9, 18, 0.6);
+  backdrop-filter: blur(8px);
 }
 
 .footer-content {
@@ -152,7 +160,8 @@
 }
 
 .footer-logo span {
-  color: #C0001A;
+  color: var(--blue-light);
+  text-shadow: 0 0 12px var(--blue-glow);
 }
 
 .footer-text {
