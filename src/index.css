@@ -535,12 +535,12 @@ body.spider-sense-mode .ss-evidence {
 
 
 /* ══════════════════════════════════════════════════════════════
-   LIGHT MODE — "Daily Bugle" Theme (warm paper + spider-red)
+   LIGHT MODE — "Daily Bugle" Theme (cream + spider-red + navy)
    ══════════════════════════════════════════════════════════════ */
 
 [data-theme="light"] {
-  /* Light theme: warm paper + true Spider-Man red.
-   * No navy, no maroon, no gold — just cream + red + ink.
+  /* Light theme: warm paper + Spider-Man red + deep navy.
+   * Mirrors the suit: cream backdrop, red primary, navy secondary.
    */
   --lm-bg:           #faf6ee;   /* page — warm cream */
   --lm-bg-alt:       #f1ebdf;   /* alt section — slightly deeper cream */
@@ -548,10 +548,14 @@ body.spider-sense-mode .ss-evidence {
   --lm-text:         #1a1a1a;   /* near-black ink */
   --lm-text-secondary: rgba(26, 26, 26, 0.68);
   --lm-text-muted:     rgba(26, 26, 26, 0.42);
-  --lm-gold:         #c81e1e;   /* primary accent — true spider-red (NOT maroon) */
+  --lm-gold:         #c81e1e;   /* primary accent — spider-red */
   --lm-gold-light:   rgba(200, 30, 30, 0.08);
   --lm-gold-border:  rgba(200, 30, 30, 0.22);
   --lm-red:          #b91c1c;   /* deep red for borders / pressed states */
+  --lm-blue:         #1e3a8a;   /* secondary accent — deep navy */
+  --lm-blue-light:   #2563eb;   /* brighter navy for hover states */
+  --lm-blue-soft:    rgba(30, 58, 138, 0.08);
+  --lm-blue-border:  rgba(30, 58, 138, 0.22);
   --lm-border:       rgba(26, 26, 26, 0.10);
 }
 
@@ -1188,49 +1192,141 @@ body.spider-sense-mode .ss-evidence {
   background: rgba(200, 30, 30, 0.25);
 }
 
-/* ── Light-mode fix: kill leftover electric-blue accents ───────
- * These elements referenced var(--blue-light) from the dark theme
- * with no light override, so they stayed #4F8FF7 on cream.
- * In light mode we want red accents, not blue.
+/* ── Light-mode: restore navy as a secondary accent ──────────
+ * The Spider-Man suit is red + blue, so the light theme should be
+ * cream + red + navy — not cream + red only. These elements were
+ * originally blue in dark mode (electric #4F8FF7) but had no light
+ * override; in light mode we restore them to a deeper, classier
+ * navy (#1e3a8a) that complements the cream + red.
  */
 [data-theme="light"] .hero-scroll-hint,
 [data-theme="light"] .scroll-hint-text,
 [data-theme="light"] .scroll-hint-chevron {
-  color: var(--lm-gold);
+  color: var(--lm-blue);
 }
 
 [data-theme="light"] .typed-cursor {
-  color: var(--lm-gold);
+  color: var(--lm-blue);
 }
 
 [data-theme="light"] .right::before {
-  background: var(--lm-gold);
+  background: var(--lm-blue);
 }
 
 [data-theme="light"] .project-title:hover,
 [data-theme="light"] .project-card:hover .project-title {
-  color: var(--lm-gold);
+  color: var(--lm-blue);
 }
 
 [data-theme="light"] .contact-icon:hover,
 [data-theme="light"] .contact-card:hover .contact-icon {
-  color: var(--lm-gold);
+  color: var(--lm-blue);
 }
 
-/* ── Light-mode fix: dim the hero canvas ──────────────────────
- * The masked-Spider-Man PNG is drawn at full opacity even in light
- * mode, which makes the top of the page read as a dark navy block
- * against the cream body. Drop it to ~35% so the hero feels light
- * and the red text-shadow on the title still pops.
+/* ── Navy section eyebrow ::before bar (alternates with red) ──
+ * The left-panel hero eyebrow stays red (.right-eyebrow), but the
+ * right-panel and section eyebrows pick up navy so the page has
+ * both Spider-Man colors visible at a glance.
+ */
+[data-theme="light"] .right-eyebrow::before {
+  background: var(--lm-blue);
+}
+
+/* ── Skill-tag hover: navy instead of red ──
+ * Skill tags are dense; making them all red on hover is heavy.
+ * Navy on hover gives the skills section its own color identity.
+ */
+[data-theme="light"] .skill-tag:hover {
+  color: var(--lm-blue);
+  border-color: var(--lm-blue-border);
+  background: var(--lm-blue-soft);
+}
+
+/* ── Tech-tag (projects): navy on hover ── */
+[data-theme="light"] .tech-tag:hover {
+  color: var(--lm-blue);
+  border-color: var(--lm-blue-border);
+}
+
+/* ── Timeline edu-dot: navy (work = red, edu = blue) ──
+ * Two-tone timeline: red dots for work experience, navy dots for
+ * education. Already implemented for .edu-dot in dark mode.
+ */
+[data-theme="light"] .timeline-dot.edu-dot {
+  background: var(--lm-blue);
+  border-color: var(--lm-bg-alt);
+}
+
+/* ── Section divider: navy instead of red ──
+ * Section dividers are subtle horizontal lines; making them navy
+ * (not red) keeps them from competing with the red section eyebrows.
+ */
+[data-theme="light"] .section-divider {
+  background: var(--lm-blue);
+  opacity: 0.5;
+}
+
+/* ── Hero canvas: keep visible but soften ──
+ * Previously dimmed to 0.35 which made the hero feel washed-out.
+ * Restore to 0.7 so the masked Spider-Man is clearly visible
+ * against the cream — the navy in the image provides the "deep
+ * navy" presence at the top of the page.
  */
 [data-theme="light"] .hero-canvas {
-  opacity: 0.35;
-  filter: saturate(0.85) brightness(1.05);
+  opacity: 0.7;
+  filter: saturate(0.95) brightness(1.02);
 }
 
-/* Soften the hero::before top accent in light mode so it doesn't
- * fight with the dimmed canvas. */
+/* Hero top accent: red→navy two-tone (solid, no gradient blend) */
 [data-theme="light"] .hero::before {
-  background: linear-gradient(90deg, transparent, var(--lm-gold), transparent);
-  opacity: 0.6;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--lm-gold) 30%,
+    var(--lm-gold) 50%,
+    var(--lm-blue) 50%,
+    var(--lm-blue) 70%,
+    transparent 100%);
+  opacity: 0.85;
+}
+
+/* ── ScrollTop: navy accent in light mode ── */
+[data-theme="light"] .scroll-top {
+  border-color: var(--lm-blue-border);
+  color: var(--lm-blue);
+}
+
+[data-theme="light"] .scroll-top:hover {
+  border-color: var(--lm-blue);
+  box-shadow: 0 0 20px rgba(30, 58, 138, 0.18);
+}
+
+/* ── Footer logo "DEV" span: navy (instead of red) ──
+ * Adds a second touch of navy at the bottom of the page.
+ */
+[data-theme="light"] .footer-logo span {
+  color: var(--lm-blue);
+}
+
+/* ── Project-link hover: navy ── */
+[data-theme="light"] .project-link:hover {
+  color: var(--lm-blue);
+}
+
+/* ── Resume-modal project-link: navy ── */
+[data-theme="light"] .rmodal-project-link:hover {
+  color: var(--lm-blue);
+}
+
+/* ── Selection color: navy tint (instead of red) ── */
+[data-theme="light"] ::selection {
+  background: rgba(30, 58, 138, 0.18);
+  color: var(--lm-text);
+}
+
+/* ── Scrollbar: navy thumb ── */
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(30, 58, 138, 0.3);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 58, 138, 0.5);
 }
