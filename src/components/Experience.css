@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(230, 36, 41, 0.2);
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
 }
 
 .exp-edu-grid {
@@ -28,7 +28,7 @@
   text-transform: uppercase;
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(230, 36, 41, 0.2);
+  border-bottom: 1px solid var(--border);
 }
 
 .timeline {
@@ -43,7 +43,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: rgba(230, 36, 41, 0.15);
+  background: var(--border);
 }
 
 .timeline-item {
@@ -80,7 +80,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 12px;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-faint);
   text-transform: uppercase;
   display: block;
   margin-bottom: 4px;

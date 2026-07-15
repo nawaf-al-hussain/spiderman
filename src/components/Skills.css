@@ -23,10 +23,12 @@
 .skill-category {
   background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 28px 22px;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .skill-category::after {
@@ -36,10 +38,10 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue-light), var(--red));
+  background: var(--red);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
 .skill-category:hover {
@@ -65,9 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--blue-light);
+  color: var(--red);
   flex-shrink: 0;
-  filter: drop-shadow(0 0 6px var(--blue-glow));
 }
 
 .skill-icon svg {
@@ -81,7 +82,6 @@
   letter-spacing: 0.15em;
   color: var(--red);
   text-transform: uppercase;
-  text-shadow: 0 0 12px var(--red-glow2);
 }
 
 .skill-tags {
@@ -104,9 +104,8 @@
 
 .skill-tag:hover {
   color: #fff;
-  border-color: var(--blue-light);
-  background: var(--blue-veil);
-  box-shadow: 0 0 12px var(--blue-glow);
+  border-color: var(--red);
+  background: var(--red-soft);
 }
 
 /* ── Responsive ── */

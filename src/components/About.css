@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--blue) 18%, var(--red) 50%, var(--blue) 82%, transparent);
+  background: var(--red);
 }
 
 .section-container {
@@ -39,7 +39,7 @@
   transform: translateY(-50%);
   width: 1rem;
   height: 1.5px;
-  background: linear-gradient(90deg, var(--blue-light), var(--red));
+  background: var(--red);
 }
 
 .section-title {
@@ -49,15 +49,13 @@
   text-transform: uppercase;
   margin-top: 8px;
   letter-spacing: 0.02em;
-  text-shadow:
-    2px 2px 0px var(--red-deep),
-    0 0 24px var(--red-glow2);
+  text-shadow: 0 2px 12px rgba(230, 36, 41, 0.20);
 }
 
 .section-divider {
   width: 80px;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue-light), var(--red), transparent);
+  background: var(--red);
   margin-top: 16px;
   margin-bottom: 40px;
   border-radius: 1px;
@@ -81,12 +79,11 @@
 
 .about-text strong {
   color: var(--red);
-  font-weight: 500;
-  text-shadow: 0 0 12px var(--red-glow2);
+  font-weight: 600;
 }
 
 .about-text em {
-  color: var(--blue-light);
+  color: var(--red);
   font-style: italic;
 }
 
@@ -99,11 +96,13 @@
 .stat-card {
   background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 28px 20px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .stat-card::before {
@@ -113,7 +112,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue-light), var(--red));
+  background: var(--red);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -132,10 +131,8 @@
   display: block;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 42px;
-  background: linear-gradient(135deg, var(--blue-light), var(--red));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--red);
+  text-shadow: 0 2px 8px rgba(230, 36, 41, 0.25);
   letter-spacing: 0.05em;
   line-height: 1;
 }

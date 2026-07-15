@@ -124,7 +124,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--blue) 18%, var(--red) 50%, var(--blue) 82%, transparent);
+  background: var(--red);
 }
 
 /* ── Modal Header ── */

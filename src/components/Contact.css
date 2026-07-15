@@ -40,15 +40,17 @@
 .contact-card {
   background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 28px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .contact-card::after {
@@ -58,15 +60,16 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue-light), var(--red));
+  background: var(--red);
   transform: scaleX(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
 .contact-card:hover {
-  border-color: var(--border-strong);
+  border-color: var(--border-red);
   background: var(--surface-2);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .contact-card:hover::after {
@@ -75,14 +78,12 @@
 
 .contact-icon {
   font-size: 24px;
-  color: var(--blue-light);
-  filter: drop-shadow(0 0 8px var(--blue-glow));
-  transition: color 0.3s ease;
+  color: var(--red);
+  transition: transform 0.25s ease;
 }
 
 .contact-card:hover .contact-icon {
-  color: var(--red);
-  filter: drop-shadow(0 0 10px var(--red-glow));
+  transform: scale(1.1);
 }
 
 .contact-label {
@@ -160,8 +161,7 @@
 }
 
 .footer-logo span {
-  color: var(--blue-light);
-  text-shadow: 0 0 12px var(--blue-glow);
+  color: var(--red);
 }
 
 .footer-text {
