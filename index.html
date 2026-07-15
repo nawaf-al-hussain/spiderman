@@ -27,7 +27,24 @@
     <meta property="twitter:image" content="https://nawaf-al-hussain.vercel.app/images/one.jpg" />
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#0A1428" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Set dark theme BEFORE React mounts to avoid light-mode flash.
+         The Spider-Man game-menu aesthetic is dark-first. Users can still
+         toggle to light via the navbar button, but the initial paint should
+         match the design intent. -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme = saved || 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   </head>

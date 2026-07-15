@@ -9,7 +9,10 @@ export const ThemeProvider = ({ children }) => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme')
       if (saved) return saved
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+      // Spider-Man game-menu aesthetic is dark-first — default to dark
+      // regardless of prefers-color-scheme. Users can toggle to light
+      // via the navbar button.
+      return 'dark'
     }
     return 'dark'
   })

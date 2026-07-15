@@ -1,34 +1,29 @@
 :root {
-  /* ── Spider-Man palette ──────────────────────────────────── */
-  --red:           #E62429;   /* suit red */
-  --red-deep:      #9B0E14;   /* gradient depth, hover shadow */
-  --red-glow:      rgba(230, 36, 41, 0.55);
-  --red-glow2:     rgba(230, 36, 41, 0.25);
+  /* ── Spider-Man game-menu palette ────────────────────────── */
+  --red:           #E62429;   /* suit red — solid, no gradient */
+  --red-deep:      #9B0E14;   /* pressed / shadow tone */
+  --red-soft:      rgba(230, 36, 41, 0.12);
 
-  --blue:          #1E4FD8;   /* suit blue */
-  --blue-light:    #4F8FF7;   /* highlight / focus */
-  --blue-glow:     rgba(79, 143, 247, 0.55);
-  --blue-veil:     rgba(79, 143, 247, 0.08);
+  --blue:          #1A237E;   /* deep indigo for bg gradient only */
+  --blue-light:    #4F8FF7;   /* used SPARINGLY for hover accents */
 
-  --bg:            #0A0E1A;   /* navy-tinted black (was var(--bg)) */
-  --bg-deep:       #060912;   /* deeper section bg (was var(--bg-deep)) */
-  --surface:       #11172A;   /* card surface */
-  --surface-2:     #161E36;   /* hover surface */
-  --border:        rgba(79, 143, 247, 0.18);
-  --border-strong: rgba(79, 143, 247, 0.35);
-  --border-red:    rgba(230, 36, 41, 0.32);
+  --bg:            #0A1428;   /* deep navy (game menu feel) */
+  --bg-deep:       #060D1C;
+  --surface:       #131E3A;   /* card surface — solid, no gradient */
+  --surface-2:     #1A2647;   /* hover surface */
 
-  --text:          #F5F7FB;
-  --text-muted:    rgba(245, 247, 251, 0.62);
-  --text-faint:    rgba(245, 247, 251, 0.40);
+  --border:        rgba(255, 255, 255, 0.10);   /* neutral white */
+  --border-strong: rgba(255, 255, 255, 0.20);
+  --border-red:    rgba(230, 36, 41, 0.45);
 
-  --accent-grad:   linear-gradient(90deg, var(--blue-light), var(--red));
-  --accent-grad-soft: linear-gradient(90deg,
-                              transparent,
-                              var(--blue) 20%,
-                              var(--red) 50%,
-                              var(--blue) 80%,
-                              transparent);
+  --text:          #FFFFFF;
+  --text-muted:    #C9D1D9;
+  --text-faint:    rgba(201, 209, 217, 0.65);
+
+  --shadow-card:   0 6px 20px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.2);
+  --shadow-hover:  0 12px 32px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-red);
+  --shadow-btn:    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+                   0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -45,10 +40,44 @@ html {
 body {
   overflow-x: clip;
   width: 100%;
-  background: var(--bg);
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--text);
   cursor: default;
 }
+
+/* ── Spiderweb pattern overlay (visible but subtle, ~12% opacity) ──
+ * Layered approach: a faint radial webbing from the top-left corner,
+ * plus a sparse repeating dot pattern that catches the eye without
+ * competing with content. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background-image:
+    /* Concentric web rings — emanate from top-left */
+    repeating-radial-gradient(circle at 15% 0%,
+      transparent 0,
+      transparent 120px,
+      rgba(230, 36, 41, 0.35) 120px,
+      rgba(230, 36, 41, 0.35) 121px),
+    /* Radial spokes from the same origin */
+    repeating-conic-gradient(from -30deg at 15% 0%,
+      transparent 0deg,
+      transparent 25deg,
+      rgba(230, 36, 41, 0.25) 25deg,
+      rgba(230, 36, 41, 0.25) 26deg);
+  background-size: 100% 100%, 100% 100%;
+}
+
+/* Make sure section content sits above the pattern */
+section, .navbar, .section-nav, .scroll-top, .loader {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* ── Custom Cursor — Spider-Man spider silhouette (desktop only) ── */
 @media (hover: hover) and (pointer: fine) {
@@ -75,9 +104,8 @@ body {
 }
 
 ::selection {
-  background: rgba(79, 143, 247, 0.32);
+  background: rgba(230, 36, 41, 0.35);
   color: #fff;
-  text-shadow: 0 0 8px rgba(79, 143, 247, 0.5);
 }
 
 ::-webkit-scrollbar {
@@ -89,12 +117,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--red), var(--blue));
+  background: var(--red);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--blue-light), var(--red));
+  background: #FF3B3F;
 }
 
 /* ── Section Fog Transitions ── */
@@ -104,9 +132,7 @@ section::after {
   height: 1px;
   background: linear-gradient(90deg,
     transparent,
-    rgba(79, 143, 247, 0.10),
-    rgba(230, 36, 41, 0.08),
-    rgba(79, 143, 247, 0.10),
+    rgba(230, 36, 41, 0.10),
     transparent
   );
   pointer-events: none;
