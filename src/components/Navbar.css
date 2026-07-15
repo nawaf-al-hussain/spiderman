@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 72px;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(192, 0, 26, 0.2);
+}
+
+/* ── Logo ─────────────────────────────────── */
+.nav-logo {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 0.1em;
+  font-size: 22px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+/* "DEV" in gold */
+.nav-logo span {
+  color: #C0001A;
+}
+
+/* ── Links ────────────────────────────────── */
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.15em;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.70);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  pointer-events: all;
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* underline: gold on hover */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1.5px;
+  background: #C0001A;
+  transition: width 0.35s ease;
+}
+
+.nav-links li a:hover {
+  color: #fff;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* ── Mobile overlay ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+}
+
+/* ── Hamburger Button ─────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 1001;
+  padding: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.hamburger:hover {
+  border-color: #C0001A;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Responsive: Tablet ───────────────────── */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 30px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+}
+
+/* ── Responsive: Mobile ───────────────────── */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-overlay {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 220px;
+    height: 100vh;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 80px 24px 30px;
+    align-items: flex-start;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: all;
+    border-left: 1px solid rgba(192, 0, 26, 0.2);
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links li a {
+    font-size: 18px;
+    padding: 14px 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* ── Nav actions (toggle + hamburger) ── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: all;
+}
+
+/* ── Theme Toggle ── */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(192, 0, 26, 0.3);
+  background: rgba(192, 0, 26, 0.06);
+  color: #C0001A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 6px;
+}
+
+.theme-toggle:hover {
+  border-color: rgba(192, 0, 26, 0.6);
+  background: rgba(192, 0, 26, 0.12);
+  box-shadow: 0 0 12px rgba(192, 0, 26, 0.15);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Light Mode ── */
+[data-theme="light"] .navbar {
+  background: rgba(248, 245, 238, 0.85);
+  border-bottom-color: rgba(146, 101, 10, 0.15);
+}
+
+[data-theme="light"] .nav-logo {
+  color: #1c1917;
+}
+
+[data-theme="light"] .nav-links li a {
+  color: rgba(28, 25, 23, 0.65);
+}
+
+[data-theme="light"] .nav-links li a:hover {
+  color: #1c1917;
+}
+
+[data-theme="light"] .hamburger {
+  border-color: rgba(28, 25, 23, 0.2);
+}
+
+[data-theme="light"] .hamburger span {
+  background: #1c1917;
+}
+
+[data-theme="light"] .theme-toggle {
+  border-color: rgba(146, 101, 10, 0.3);
+  background: rgba(146, 101, 10, 0.06);
+  color: #7a000f;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  border-color: rgba(146, 101, 10, 0.5);
+  background: rgba(146, 101, 10, 0.12);
+}
+
+[data-theme="light"] .nav-overlay {
+  background: rgba(248, 245, 238, 0.5);
+}
+
+[data-theme="light"] .nav-links {
+  background: rgba(248, 245, 238, 0.97);
+  border-left-color: rgba(146, 101, 10, 0.15);
+}
+
+[data-theme="light"] .nav-links li a {
+  border-bottom-color: rgba(28, 25, 23, 0.08);
+}
