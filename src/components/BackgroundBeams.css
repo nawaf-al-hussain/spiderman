@@ -1,0 +1,34 @@
+/* ── BackgroundBeams ───────────────────────────
+ * Diagonal light beams behind the Contact section.
+ * Canvas-based, respects prefers-reduced-motion.
+ * SS-aware: swaps gold/red beams for cyan.
+ *
+ * FEATURE FLAG: add class `no-beams` on any ancestor
+ * element (e.g. <section class="contact no-beams">)
+ * to hide the beams instantly — no code removal needed.
+ */
+
+.bg-beams {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-beams-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Feature-flag fallback ── */
+.no-beams .bg-beams {
+  display: none;
+}
+
+/* ── DM awareness (canvas reads body.spider-sense-mode at runtime,
+ *   but this ensures the container doesn't interfere) ── */
+body.spider-sense-mode .bg-beams {
+  /* no visual change needed — canvas handles color swap */
+}
