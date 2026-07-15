@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Vanished into the Shadows</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@1,300&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #050505;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #C0001A, #C0001A, #C0001A, transparent);
+    }
+    .container { position: relative; z-index: 1; }
+    .code {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      letter-spacing: 0.05em;
+      color: #C0001A;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(192, 0, 26, 0.2);
+    }
+    .message {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .sub {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 16px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 16px;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 32px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: #C0001A;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border: 1px solid rgba(192, 0, 26, 0.3);
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+      transition: all 0.3s ease;
+    }
+    .back:hover {
+      background: rgba(192, 0, 26, 0.08);
+      border-color: #C0001A;
+    }
+    .bat {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      opacity: 0.03;
+    }
+  </style>
+</head>
+<body>
+  <svg class="bat" viewBox="0 0 100 100" fill="#C0001A">
+    <path d="M50 10 C35 10, 20 25, 20 40 C20 55, 30 70, 50 90 C70 70, 80 55, 80 40 C80 25, 65 10, 50 10Z"/>
+  </svg>
+  <div class="container">
+    <div class="code">404</div>
+    <div class="message">This page has vanished into the shadows</div>
+    <p class="sub">Even the Dark Knight couldn't find what you're looking for. Perhaps it never existed — or it was swallowed by the night.</p>
+    <a href="/" class="back">Return to Queens</a>
+  </div>
+</body>
+</html>

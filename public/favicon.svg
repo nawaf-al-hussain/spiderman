@@ -1,0 +1,15 @@
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="4" fill="#0a0a0a"/>
+  <!-- Spider body -->
+  <ellipse cx="16" cy="18" rx="4" ry="5" fill="#C0001A"/>
+  <ellipse cx="16" cy="10" rx="2.5" ry="3" fill="#C0001A"/>
+  <!-- Spider legs -->
+  <path d="M14 10 Q10 7 6 8 Q9 10 12 12" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M18 10 Q22 7 26 8 Q23 10 20 12" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M13 13 Q8 13 4 15 Q7 15 11 15" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M19 13 Q24 13 28 15 Q25 15 21 15" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M13 17 Q8 18 5 21 Q8 19 12 19" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M19 17 Q24 18 27 21 Q24 19 20 19" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M14 21 Q11 23 10 26 Q12 24 14 23" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M18 21 Q21 23 22 26 Q20 24 18 23" stroke="#C0001A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+</svg>
