@@ -6,7 +6,7 @@
  * via spread on the <g> element.
  *
  * Usage: <svg viewBox="0 0 24 24">
- *          <SpiderPath fill="#C0001A" />
+ *          <SpiderPath fill="#E62429" />
  *        </svg>
  */
 const SpiderPath = (props) => (

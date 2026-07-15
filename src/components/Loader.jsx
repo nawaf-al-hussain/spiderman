@@ -31,17 +31,23 @@ const Loader = ({ onComplete }) => {
     <div className={`loader ${fadeOut ? 'fade-out' : ''}`}>
       <div className="loader-content">
         <svg viewBox="0 0 80 80" className="spider-loader" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="loader-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#4F8FF7"/>
+              <stop offset="100%" stopColor="#E62429"/>
+            </linearGradient>
+          </defs>
           {/* Background ring */}
-          <circle cx="40" cy="40" r="36" stroke="rgba(192, 0, 26, 0.15)" strokeWidth="1.5"/>
+          <circle cx="40" cy="40" r="36" stroke="rgba(79, 143, 247, 0.12)" strokeWidth="1.5"/>
           {/* Progress ring */}
-          <circle cx="40" cy="40" r="36" stroke="#C0001A" strokeWidth="1.5"
+          <circle cx="40" cy="40" r="36" stroke="url(#loader-grad)" strokeWidth="2"
                   strokeDasharray={`${(progress / 100) * 226} 226`}
                   strokeLinecap="round"
                   transform="rotate(-90 40 40)"
                   className="loader-ring"/>
           {/* Spider silhouette centered in the ring */}
           <g transform="translate(14, 27) scale(12.5)">
-            <SpiderPath fill="#C0001A" opacity="0.7"/>
+            <SpiderPath fill="#E62429" opacity="0.85"/>
           </g>
         </svg>
         <div className="loader-text">
