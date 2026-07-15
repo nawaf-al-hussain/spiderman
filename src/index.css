@@ -1266,15 +1266,16 @@ body.spider-sense-mode .ss-evidence {
   opacity: 0.5;
 }
 
-/* ── Hero canvas: keep visible but soften ──
- * Previously dimmed to 0.35 which made the hero feel washed-out.
- * Restore to 0.7 so the masked Spider-Man is clearly visible
- * against the cream — the navy in the image provides the "deep
- * navy" presence at the top of the page.
+/* ── Hero canvas: full opacity in light mode ──
+ * Previously dimmed to 0.7, which let the cream body bleed through
+ * and made the dark Spider-Man image look milky/whitish. Restoring
+ * to opacity 1.0 keeps the image rich; the bottom fade overlay
+ * (see .hero::after below) handles the transition into the cream
+ * body so the dark block doesn't feel abrupt.
  */
 [data-theme="light"] .hero-canvas {
-  opacity: 0.7;
-  filter: saturate(0.95) brightness(1.02);
+  opacity: 1;
+  filter: saturate(0.95);
 }
 
 /* Hero top accent: red→navy two-tone (solid, no gradient blend) */
@@ -1287,6 +1288,40 @@ body.spider-sense-mode .ss-evidence {
     var(--lm-blue) 70%,
     transparent 100%);
   opacity: 0.85;
+}
+
+/* ── Hero bottom fade: dark image → cream body ──
+ * The hero image (one.png) is dark (avg RGB ~67,51,65). At full
+ * opacity it sits as a dark block on the cream page. This overlay
+ * fades from transparent at the top to the cream body color at the
+ * bottom, giving a smooth cinematic transition. Only the bottom
+ * 40% of the hero gets the fade so the masked Spider-Man stays
+ * fully visible in the upper portion.
+ *
+ * NOTE: uses ::after (not ::before) — ::before is the top accent.
+ */
+[data-theme="light"] .hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(250, 246, 238, 0.15) 30%,
+    rgba(250, 246, 238, 0.55) 60%,
+    var(--lm-bg) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* On mobile, the hero is taller (sticky scroll reveal) — extend
+ * the fade so the transition still covers the bottom of the hero. */
+@media (max-width: 700px) {
+  [data-theme="light"] .hero::after {
+    height: 35%;
+  }
 }
 
 /* ── ScrollTop: navy accent in light mode ── */
