@@ -544,40 +544,40 @@ const Hero = () => {
           {/* LEFT */}
           <motion.div className="left" variants={item}>
             <motion.span className="st-eyebrow" variants={item}
-              style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.25em' }}>
+              style={{ fontFamily: "'Bangers', cursive", letterSpacing: '0.15em' }}>
               <span className="typed-title">{titleText}</span>
               <span className="typed-cursor">|</span>
             </motion.span>
             <h1 className="st-title"
-              style={{ fontFamily: "'Bebas Neue', 'Cinzel Decorative', cursive", letterSpacing: '0.05em' }}>
+              style={{ fontFamily: "'Bangers', cursive", letterSpacing: '0.04em' }}>
               NAWAF<br />AL HUSSAIN
             </h1>
             <motion.p className="st-desc" variants={item}
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic' }}>
+              style={{ fontFamily: "'Crimson Pro', Georgia, serif" }}>
               Building high-availability systems that handle 10K+ concurrent users —
-              because Queens's infrastructure never sleeps, and neither does great code.
+              because Queens never sleeps, and neither does great code.
             </motion.p>
             <motion.a href="#projects" className="st-btn" variants={item}
-              style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.2em' }}>
-              View The Arsenal
+              style={{ fontFamily: "'Bangers', cursive", letterSpacing: '0.15em' }}>
+              See What I Build
             </motion.a>
           </motion.div>
 
           {/* RIGHT */}
           <motion.div className="right" variants={item}>
             <motion.span className="st-eyebrow right-eyebrow" variants={item}
-              style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.25em' }}>
-              Architect of Systems
+              style={{ fontFamily: "'Bangers', cursive", letterSpacing: '0.15em' }}>
+              Friendly Neighborhood Engineer
             </motion.span>
             <h1 className="st-title"
-              style={{ fontFamily: "'Bebas Neue', 'Cinzel Decorative', cursive", letterSpacing: '0.05em' }}>
-              THE CODE<br />BEHIND THE MASK
+              style={{ fontFamily: "'Bangers', cursive", letterSpacing: '0.04em' }}>
+              WITH GREAT POWER<br />COMES GREAT CODE
             </h1>
             <motion.p className="st-text" variants={item}
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic' }}>
-              From distributed microservices to AI-powered platforms — every system
-              is a weapon in the arsenal. Distributed systems. Cloud-native solutions.
-              The darkness obeys well-architected code.
+              style={{ fontFamily: "'Crimson Pro', Georgia, serif" }}>
+              From distributed microservices to AI-powered platforms — I build
+              systems that stay up when it matters most. Cloud-native. Resilient.
+              Built to scale like the web itself.
             </motion.p>
           </motion.div>
         </motion.div>
