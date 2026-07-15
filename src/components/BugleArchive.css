@@ -1,10 +1,10 @@
-.case-files {
+.bugle-archive {
   padding: 100px 0;
   background: var(--bg);
   position: relative;
 }
 
-.case-files::before {
+.bugle-archive::before {
   content: '';
   position: absolute;
   top: 0;
@@ -14,7 +14,7 @@
   background: var(--red);
 }
 
-.case-subtitle {
+.bugle-subtitle {
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 15px;
   line-height: 1.7;
@@ -25,15 +25,15 @@
   font-style: italic;
 }
 
-/* ── Stack of case cards ── */
-.case-stack {
+/* ── Stack of bugle cards ── */
+.bugle-stack {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* ── Case card ── */
-.case-card {
+/* ── Bugle card ── */
+.bugle-card {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -42,7 +42,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-card);
 }
-.case-card::before {
+.bugle-card::before {
   content: '';
   position: absolute;
   left: 0;
@@ -53,17 +53,17 @@
   opacity: 0;
   transition: opacity 0.25s ease;
 }
-.case-card.open::before {
+.bugle-card.open::before {
   opacity: 1;
 }
-.case-card.open {
+.bugle-card.open {
   border-color: var(--border-red);
   background: var(--surface-2);
   box-shadow: var(--shadow-hover);
 }
 
 /* ── Classification stamp ── */
-.case-stamp {
+.bugle-stamp {
   position: absolute;
   top: 18px;
   right: 18px;
@@ -80,13 +80,13 @@
   background: rgba(10, 14, 26, 0.7);
   backdrop-filter: blur(2px);
 }
-.case-stamp.active {
+.bugle-stamp.active {
   color: var(--red);
   border-color: rgba(230, 36, 41, 0.6);
 }
 
 /* ── Header (clickable) ── */
-.case-head {
+.bugle-head {
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -100,39 +100,39 @@
   font: inherit;
   position: relative;
 }
-.case-head:focus-visible {
+.bugle-head:focus-visible {
   outline: 2px solid var(--red);
   outline-offset: -2px;
 }
 
-.case-head-meta {
+.bugle-head-meta {
   display: flex;
   flex-direction: column;
   gap: 6px;
   min-width: 150px;
   padding-top: 4px;
 }
-.case-number {
+.bugle-number {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--red);
 }
-.case-date {
+.bugle-date {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.4);
 }
 
-.case-head-main {
+.bugle-head-main {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
   padding-right: 60px;
 }
-.case-subject {
+.bugle-subject {
   font-family: 'Bangers', sans-serif;
   font-size: 26px;
   letter-spacing: 0.01em;
@@ -141,10 +141,10 @@
   line-height: 1.1;
   transition: color 0.2s ease;
 }
-.case-card.open .case-subject {
+.bugle-card.open .bugle-subject {
   color: var(--red);
 }
-.case-threat {
+.bugle-threat {
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 12px;
   letter-spacing: 0.1em;
@@ -152,7 +152,7 @@
   text-transform: uppercase;
 }
 
-.case-chevron {
+.bugle-chevron {
   position: absolute;
   top: 28px;
   right: 28px;
@@ -162,15 +162,15 @@
   justify-content: center;
   transition: transform 0.3s ease, color 0.2s ease;
 }
-.case-chevron.rotated {
+.bugle-chevron.rotated {
   transform: rotate(180deg);
 }
 
 /* ── Body ── */
-.case-body {
+.bugle-body {
   overflow: hidden;
 }
-.case-body-inner {
+.bugle-body-inner {
   padding: 0 30px 30px 30px;
   border-top: 1px dashed rgba(230, 36, 41, 0.18);
   margin-top: 0;
@@ -178,7 +178,7 @@
 }
 
 /* ── Summary ── */
-.case-summary {
+.bugle-summary {
   font-family: 'Crimson Pro', Georgia, serif;
   font-style: italic;
   font-size: 16px;
@@ -190,16 +190,16 @@
 }
 
 /* ── Narrative ── */
-.case-narrative {
+.bugle-narrative {
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 15px;
   line-height: 1.85;
   color: rgba(255, 255, 255, 0.72);
 }
-.case-narrative p {
+.bugle-narrative p {
   margin-bottom: 14px;
 }
-.case-narrative p:last-child {
+.bugle-narrative p:last-child {
   margin-bottom: 0;
 }
 
@@ -259,7 +259,7 @@
 }
 
 /* ── Evidence tags ── */
-.case-evidence {
+.bugle-evidence {
   margin-top: 24px;
   padding-top: 18px;
   border-top: 1px dashed rgba(230, 36, 41, 0.18);
@@ -295,7 +295,7 @@
 }
 
 /* ── Outcome ── */
-.case-outcome {
+.bugle-outcome {
   margin-top: 22px;
   display: flex;
   align-items: center;
@@ -318,38 +318,38 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .case-head {
+  .bugle-head {
     flex-direction: column;
     gap: 12px;
     padding: 22px 22px;
   }
-  .case-head-meta {
+  .bugle-head-meta {
     flex-direction: row;
     justify-content: space-between;
     min-width: 0;
     width: 100%;
     padding-top: 0;
   }
-  .case-head-main {
+  .bugle-head-main {
     padding-right: 40px;
   }
-  .case-subject {
+  .bugle-subject {
     font-size: 20px;
   }
-  .case-chevron {
+  .bugle-chevron {
     top: 22px;
     right: 22px;
   }
-  .case-body-inner {
+  .bugle-body-inner {
     padding: 22px 22px 24px;
   }
-  .case-summary {
+  .bugle-summary {
     font-size: 14px;
   }
-  .case-narrative {
+  .bugle-narrative {
     font-size: 14px;
   }
-  .case-stamp {
+  .bugle-stamp {
     top: 12px;
     right: 12px;
     font-size: 9px;
@@ -358,68 +358,68 @@
 }
 
 @media (max-width: 640px) {
-  .case-files {
+  .bugle-archive {
     padding: 70px 0;
   }
-  .case-subtitle {
+  .bugle-subtitle {
     font-size: 13px;
     margin-bottom: 36px;
   }
 }
 
 /* ── Light mode ── */
-[data-theme="light"] .case-files {
+[data-theme="light"] .bugle-archive {
   background: var(--lm-bg);
 }
-[data-theme="light"] .case-files::before {
+[data-theme="light"] .bugle-archive::before {
   background: linear-gradient(90deg, transparent, var(--lm-gold), var(--lm-red), var(--lm-gold), transparent);
 }
-[data-theme="light"] .case-subtitle {
+[data-theme="light"] .bugle-subtitle {
   color: var(--lm-text-secondary);
 }
-[data-theme="light"] .case-card {
+[data-theme="light"] .bugle-card {
   background: rgba(28, 25, 23, 0.02);
   border-color: rgba(200, 30, 30, 0.15);
 }
-[data-theme="light"] .case-card.open {
+[data-theme="light"] .bugle-card.open {
   background: rgba(28, 25, 23, 0.03);
   border-color: rgba(200, 30, 30, 0.3);
 }
-[data-theme="light"] .case-stamp {
+[data-theme="light"] .bugle-stamp {
   color: var(--lm-gold);
   border-color: rgba(200, 30, 30, 0.5);
   background: rgba(248, 245, 239, 0.8);
 }
-[data-theme="light"] .case-stamp.active {
+[data-theme="light"] .bugle-stamp.active {
   color: var(--lm-red);
   border-color: rgba(200, 30, 30, 0.5);
 }
-[data-theme="light"] .case-number {
+[data-theme="light"] .bugle-number {
   color: var(--lm-gold);
 }
-[data-theme="light"] .case-date {
+[data-theme="light"] .bugle-date {
   color: var(--lm-text-muted);
 }
-[data-theme="light"] .case-subject {
+[data-theme="light"] .bugle-subject {
   color: var(--lm-text);
 }
-[data-theme="light"] .case-card.open .case-subject {
+[data-theme="light"] .bugle-card.open .bugle-subject {
   color: var(--lm-gold);
 }
-[data-theme="light"] .case-threat {
+[data-theme="light"] .bugle-threat {
   color: var(--lm-text-secondary);
 }
-[data-theme="light"] .case-chevron {
+[data-theme="light"] .bugle-chevron {
   color: var(--lm-gold);
 }
-[data-theme="light"] .case-body-inner {
+[data-theme="light"] .bugle-body-inner {
   border-top-color: rgba(200, 30, 30, 0.2);
 }
-[data-theme="light"] .case-summary {
+[data-theme="light"] .bugle-summary {
   color: var(--lm-text-secondary);
   border-left-color: var(--lm-gold);
 }
-[data-theme="light"] .case-narrative {
+[data-theme="light"] .bugle-narrative {
   color: var(--lm-text);
 }
 [data-theme="light"] .redact-bar {
@@ -440,7 +440,7 @@
   background: rgba(200, 30, 30, 0.08);
   border-color: rgba(200, 30, 30, 0.4);
 }
-[data-theme="light"] .case-evidence {
+[data-theme="light"] .bugle-evidence {
   border-top-color: rgba(200, 30, 30, 0.2);
 }
 [data-theme="light"] .evidence-label {

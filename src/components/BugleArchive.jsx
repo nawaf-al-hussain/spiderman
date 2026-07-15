@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import './CaseFiles.css'
+import './BugleArchive.css'
 
-/* ── Case file data ──
- * Each entry is styled as a declassified Spider-Verse case file.
+/* ── Bugle file data ──
+ * Each entry is styled as a declassified Daily Bugle newsroom file.
  * - redacted: array of { word, hint } segments rendered as black bars
  *   on first view, revealed on expand. Use sparingly — punchy effect.
  * - evidence: gold tags shown alongside the body.
  * - classification: appears as the rotating stamp on the corner.
  */
-const CASES = [
+const FILES = [
   {
-    number: 'CASE FILE №. 001',
+    number: 'FILE №. 001',
     date: 'ARCHIVED — Q3 2024',
-    classification: 'DECRYPTED',
+    classification: 'PUBLISHED',
     subject: 'The Ghosting Phantom',
     threat: 'Recruitment Pipeline',
     summary:
@@ -26,12 +26,12 @@ const CASES = [
       'Deployed behind a feature flag in the recruiter dashboard. Recruiters see a 1–5 risk score and the top three contributing signals, so the intervention is explainable rather than magical. Ghosting rate dropped from 24% to 9% in the first quarter of rollout.',
     ],
     evidence: ['NLP', 'XGBoost', 'Feature Importance', 'AUC 0.87', '−15pp ghosting'],
-    outcome: 'CASE CLOSED — DEPLOYED',
+    outcome: 'FILE CLOSED — DEPLOYED',
   },
   {
-    number: 'CASE FILE №. 002',
+    number: 'FILE №. 002',
     date: 'ARCHIVED — Q1 2025',
-    classification: 'DECRYPTED',
+    classification: 'PUBLISHED',
     subject: 'The Latency Beast',
     threat: 'Real-Time Multiplayer Engine',
     summary:
@@ -45,12 +45,12 @@ const CASES = [
       'Post-deployment telemetry over 30 days showed 99th percentile input latency at 92ms and ranked-mode abandonment dropped 71%.',
     ],
     evidence: ['WebSocket/STOMP', 'Redis Pub/Sub', 'MessagePack', 'Client Prediction', 'p99 92ms'],
-    outcome: 'CASE CLOSED — DEPLOYED',
+    outcome: 'FILE CLOSED — DEPLOYED',
   },
   {
-    number: 'CASE FILE №. 003',
+    number: 'FILE №. 003',
     date: 'ACTIVE FILE — Q2 2025',
-    classification: 'IN PROGRESS',
+    classification: 'BREAKING',
     subject: 'The Inference Bottleneck',
     threat: 'On-Prem LLM Serving',
     summary:
@@ -65,17 +65,17 @@ const CASES = [
       'Next phase: explore speculative decoding to bring cold-start under 1.5s.',
     ],
     evidence: ['GGUF 4-bit', 'LoRA/PEFT', 'KV-Cache', '2.7s p50', '95% accuracy retained'],
-    outcome: 'CASE ONGOING',
+    outcome: 'DEVELOPING STORY',
   },
 ]
 
-const CaseFiles = () => {
+const BugleArchive = () => {
   const [openIdx, setOpenIdx] = useState(0) // first one open by default
 
   const toggle = (i) => setOpenIdx(openIdx === i ? -1 : i)
 
   return (
-    <section className="case-files" id="casefiles">
+    <section className="bugle-archive" id="bugle">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -83,48 +83,48 @@ const CaseFiles = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow">Daily Bugle Archive</span>
-          <h2 className="section-title">CASE FILES</h2>
+          <span className="section-eyebrow">From the Newsroom</span>
+          <h2 className="section-title">BUGLE ARCHIVES</h2>
           <div className="section-divider"></div>
-          <p className="case-subtitle">
+          <p className="bugle-subtitle">
             Field notes from past projects. Each file walks through
             the problem, the investigation, and what shipped in the end.
           </p>
         </motion.div>
 
-        <div className="case-stack">
-          {CASES.map((c, i) => {
+        <div className="bugle-stack">
+          {FILES.map((c, i) => {
             const open = openIdx === i
             return (
               <motion.article
                 key={c.number}
-                className={`case-card ${open ? 'open' : ''}`}
+                className={`bugle-card ${open ? 'open' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
               >
                 {/* Classification stamp */}
-                <span className={`case-stamp ${c.classification === 'IN PROGRESS' ? 'active' : ''}`}>
+                <span className={`bugle-stamp ${c.classification === 'BREAKING' ? 'active' : ''}`}>
                   {c.classification}
                 </span>
 
                 {/* Card header — always visible */}
                 <button
-                  className="case-head"
+                  className="bugle-head"
                   onClick={() => toggle(i)}
                   aria-expanded={open}
-                  aria-controls={`case-body-${i}`}
+                  aria-controls={`bugle-body-${i}`}
                 >
-                  <div className="case-head-meta">
-                    <span className="case-number">{c.number}</span>
-                    <span className="case-date">{c.date}</span>
+                  <div className="bugle-head-meta">
+                    <span className="bugle-number">{c.number}</span>
+                    <span className="bugle-date">{c.date}</span>
                   </div>
-                  <div className="case-head-main">
-                    <h3 className="case-subject">{c.subject}</h3>
-                    <span className="case-threat">DOMAIN: {c.threat}</span>
+                  <div className="bugle-head-main">
+                    <h3 className="bugle-subject">{c.subject}</h3>
+                    <span className="bugle-threat">DOMAIN: {c.threat}</span>
                   </div>
-                  <span className={`case-chevron ${open ? 'rotated' : ''}`} aria-hidden="true">
+                  <span className={`bugle-chevron ${open ? 'rotated' : ''}`} aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
@@ -135,17 +135,17 @@ const CaseFiles = () => {
                 <AnimatePresence initial={false}>
                   {open && (
                     <motion.div
-                      id={`case-body-${i}`}
-                      className="case-body"
+                      id={`bugle-body-${i}`}
+                      className="bugle-body"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.35, ease: 'easeInOut' }}
                     >
-                      <div className="case-body-inner">
-                        <p className="case-summary">{c.summary}</p>
+                      <div className="bugle-body-inner">
+                        <p className="bugle-summary">{c.summary}</p>
 
-                        <div className="case-narrative">
+                        <div className="bugle-narrative">
                           {c.body.map((seg, idx) => {
                             if (typeof seg === 'string') {
                               return <p key={idx}>{seg}</p>
@@ -167,7 +167,7 @@ const CaseFiles = () => {
                           })}
                         </div>
 
-                        <div className="case-evidence">
+                        <div className="bugle-evidence">
                           <span className="evidence-label">EVIDENCE TAGS</span>
                           <div className="evidence-tags">
                             {c.evidence.map((e) => (
@@ -176,7 +176,7 @@ const CaseFiles = () => {
                           </div>
                         </div>
 
-                        <div className="case-outcome">
+                        <div className="bugle-outcome">
                           <span className="outcome-marker"></span>
                           <span className="outcome-text">{c.outcome}</span>
                         </div>
@@ -193,4 +193,4 @@ const CaseFiles = () => {
   )
 }
 
-export default CaseFiles
+export default BugleArchive

@@ -6,7 +6,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
 import SkillMatrix from './components/SkillMatrix'
-import CaseFiles from './components/CaseFiles'
+import BugleArchive from './components/BugleArchive'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import ScrollTop from './components/ScrollTop'
@@ -56,7 +56,7 @@ function App() {
           <SkillMatrix />
           <Projects />
           <Experience />
-          <CaseFiles />
+          <BugleArchive />
           <Resume />
           <Contact />
           <ScrollTop />
