@@ -379,20 +379,20 @@
 }
 [data-theme="light"] .case-card {
   background: rgba(28, 25, 23, 0.02);
-  border-color: rgba(146, 101, 10, 0.15);
+  border-color: rgba(200, 30, 30, 0.15);
 }
 [data-theme="light"] .case-card.open {
   background: rgba(28, 25, 23, 0.03);
-  border-color: rgba(146, 101, 10, 0.3);
+  border-color: rgba(200, 30, 30, 0.3);
 }
 [data-theme="light"] .case-stamp {
   color: var(--lm-gold);
-  border-color: rgba(146, 101, 10, 0.5);
+  border-color: rgba(200, 30, 30, 0.5);
   background: rgba(248, 245, 239, 0.8);
 }
 [data-theme="light"] .case-stamp.active {
   color: var(--lm-red);
-  border-color: rgba(153, 27, 27, 0.5);
+  border-color: rgba(200, 30, 30, 0.5);
 }
 [data-theme="light"] .case-number {
   color: var(--lm-gold);
@@ -413,7 +413,7 @@
   color: var(--lm-gold);
 }
 [data-theme="light"] .case-body-inner {
-  border-top-color: rgba(146, 101, 10, 0.2);
+  border-top-color: rgba(200, 30, 30, 0.2);
 }
 [data-theme="light"] .case-summary {
   color: var(--lm-text-secondary);
@@ -424,7 +424,7 @@
 }
 [data-theme="light"] .redact-bar {
   background: var(--lm-text);
-  border-color: rgba(146, 101, 10, 0.3);
+  border-color: rgba(200, 30, 30, 0.3);
 }
 [data-theme="light"] .redact-bar::before {
   background: repeating-linear-gradient(
@@ -437,28 +437,28 @@
 }
 [data-theme="light"] .redact-text {
   color: var(--lm-gold);
-  background: rgba(146, 101, 10, 0.08);
-  border-color: rgba(146, 101, 10, 0.4);
+  background: rgba(200, 30, 30, 0.08);
+  border-color: rgba(200, 30, 30, 0.4);
 }
 [data-theme="light"] .case-evidence {
-  border-top-color: rgba(146, 101, 10, 0.2);
+  border-top-color: rgba(200, 30, 30, 0.2);
 }
 [data-theme="light"] .evidence-label {
   color: var(--lm-text-muted);
 }
 [data-theme="light"] .evidence-tag {
   color: var(--lm-gold);
-  background: rgba(146, 101, 10, 0.08);
-  border-color: rgba(146, 101, 10, 0.3);
+  background: rgba(200, 30, 30, 0.08);
+  border-color: rgba(200, 30, 30, 0.3);
 }
 [data-theme="light"] .evidence-tag:hover {
-  background: rgba(146, 101, 10, 0.15);
-  border-color: rgba(146, 101, 10, 0.55);
+  background: rgba(200, 30, 30, 0.15);
+  border-color: rgba(200, 30, 30, 0.55);
   color: var(--lm-text);
 }
 [data-theme="light"] .outcome-marker {
   background: var(--lm-gold);
-  box-shadow: 0 0 8px rgba(146, 101, 10, 0.7);
+  box-shadow: 0 0 8px rgba(200, 30, 30, 0.7);
 }
 [data-theme="light"] .outcome-text {
   color: var(--lm-gold);

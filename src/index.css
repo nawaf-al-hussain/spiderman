@@ -535,21 +535,24 @@ body.spider-sense-mode .ss-evidence {
 
 
 /* ══════════════════════════════════════════════════════════════
-   LIGHT MODE — "Wayne Manor" Theme
+   LIGHT MODE — "Daily Bugle" Theme (warm paper + spider-red)
    ══════════════════════════════════════════════════════════════ */
 
 [data-theme="light"] {
-  --lm-bg: #f8f5ef;
-  --lm-bg-alt: #f0ebe3;
-  --lm-bg-card: #e8e2d8;
-  --lm-text: #1c1917;
-  --lm-text-secondary: rgba(28, 25, 23, 0.65);
-  --lm-text-muted: rgba(28, 25, 23, 0.4);
-  --lm-gold: var(--red-deep);
-  --lm-gold-light: rgba(146, 101, 10, 0.08);
-  --lm-gold-border: rgba(146, 101, 10, 0.2);
-  --lm-red: #991b1b;
-  --lm-border: rgba(28, 25, 23, 0.08);
+  /* Light theme: warm paper + true Spider-Man red.
+   * No navy, no maroon, no gold — just cream + red + ink.
+   */
+  --lm-bg:           #faf6ee;   /* page — warm cream */
+  --lm-bg-alt:       #f1ebdf;   /* alt section — slightly deeper cream */
+  --lm-bg-card:      #ece4d4;   /* card surface */
+  --lm-text:         #1a1a1a;   /* near-black ink */
+  --lm-text-secondary: rgba(26, 26, 26, 0.68);
+  --lm-text-muted:     rgba(26, 26, 26, 0.42);
+  --lm-gold:         #c81e1e;   /* primary accent — true spider-red (NOT maroon) */
+  --lm-gold-light:   rgba(200, 30, 30, 0.08);
+  --lm-gold-border:  rgba(200, 30, 30, 0.22);
+  --lm-red:          #b91c1c;   /* deep red for borders / pressed states */
+  --lm-border:       rgba(26, 26, 26, 0.10);
 }
 
 /* ── Global body & scrollbar ── */
@@ -559,7 +562,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] ::selection {
-  background: rgba(146, 101, 10, 0.2);
+  background: rgba(200, 30, 30, 0.2);
   color: var(--lm-text);
 }
 
@@ -568,20 +571,20 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] ::-webkit-scrollbar-thumb {
-  background: rgba(146, 101, 10, 0.25);
+  background: rgba(200, 30, 30, 0.25);
 }
 
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(146, 101, 10, 0.4);
+  background: rgba(200, 30, 30, 0.4);
 }
 
 /* ── Section divider ── */
 [data-theme="light"] section::after {
   background: linear-gradient(90deg,
     transparent,
-    rgba(146, 101, 10, 0.12),
-    rgba(153, 27, 27, 0.08),
-    rgba(146, 101, 10, 0.12),
+    rgba(200, 30, 30, 0.12),
+    rgba(200, 30, 30, 0.08),
+    rgba(200, 30, 30, 0.12),
     transparent
   );
 }
@@ -634,7 +637,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .stat-card:hover {
-  border-color: rgba(146, 101, 10, 0.4);
+  border-color: rgba(200, 30, 30, 0.4);
   background: var(--lm-bg-card);
 }
 
@@ -652,11 +655,11 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .skills::before {
-  background: rgba(146, 101, 10, 0.15);
+  background: rgba(200, 30, 30, 0.15);
 }
 
 [data-theme="light"] .skill-category {
-  background: rgba(146, 101, 10, 0.03);
+  background: rgba(200, 30, 30, 0.03);
   border-color: var(--lm-gold-border);
 }
 
@@ -665,8 +668,8 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .skill-category:hover {
-  border-color: rgba(146, 101, 10, 0.4);
-  background: rgba(146, 101, 10, 0.06);
+  border-color: rgba(200, 30, 30, 0.4);
+  background: rgba(200, 30, 30, 0.06);
 }
 
 [data-theme="light"] .skill-cat-title {
@@ -685,7 +688,7 @@ body.spider-sense-mode .ss-evidence {
 
 [data-theme="light"] .skill-tag:hover {
   color: var(--lm-text);
-  border-color: rgba(146, 101, 10, 0.4);
+  border-color: rgba(200, 30, 30, 0.4);
   background: var(--lm-gold-light);
 }
 
@@ -695,7 +698,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .projects::before {
-  background: rgba(146, 101, 10, 0.15);
+  background: rgba(200, 30, 30, 0.15);
 }
 
 [data-theme="light"] .project-card {
@@ -708,7 +711,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .project-card:hover {
-  border-color: rgba(146, 101, 10, 0.4);
+  border-color: rgba(200, 30, 30, 0.4);
   background: var(--lm-bg-card);
 }
 
@@ -746,7 +749,7 @@ body.spider-sense-mode .ss-evidence {
 
 [data-theme="light"] .project-status.ongoing {
   color: var(--lm-gold);
-  border-color: rgba(146, 101, 10, 0.3);
+  border-color: rgba(200, 30, 30, 0.3);
   background: var(--lm-gold-light);
 }
 
@@ -756,7 +759,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .experience::before {
-  background: rgba(146, 101, 10, 0.15);
+  background: rgba(200, 30, 30, 0.15);
 }
 
 [data-theme="light"] .column-title {
@@ -765,7 +768,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .timeline::before {
-  background: rgba(146, 101, 10, 0.2);
+  background: rgba(200, 30, 30, 0.2);
 }
 
 [data-theme="light"] .timeline-dot {
@@ -799,7 +802,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .timeline-bullets li::before {
-  background: rgba(146, 101, 10, 0.4);
+  background: rgba(200, 30, 30, 0.4);
 }
 
 [data-theme="light"] .timeline-details {
@@ -812,7 +815,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .contact::before {
-  background: rgba(146, 101, 10, 0.15);
+  background: rgba(200, 30, 30, 0.15);
 }
 
 [data-theme="light"] .contact-tagline {
@@ -829,7 +832,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .contact-card:hover {
-  border-color: rgba(146, 101, 10, 0.4);
+  border-color: rgba(200, 30, 30, 0.4);
   background: var(--lm-bg-card);
 }
 
@@ -927,15 +930,15 @@ body.spider-sense-mode .ss-evidence {
 /* ── Mobile Reveal Button ── */
 [data-theme="light"] .hero-reveal-btn {
   background: rgba(248, 245, 238, 0.8);
-  border-color: rgba(146, 101, 10, 0.3);
+  border-color: rgba(200, 30, 30, 0.3);
   color: var(--red-deep);
 }
 
 [data-theme="light"] .hero-reveal-btn:active,
 [data-theme="light"] .hero-reveal-btn.active {
   border-color: var(--red-deep);
-  background: rgba(146, 101, 10, 0.12);
-  box-shadow: 0 0 20px rgba(146, 101, 10, 0.2);
+  background: rgba(200, 30, 30, 0.12);
+  box-shadow: 0 0 20px rgba(200, 30, 30, 0.2);
 }
 
 [data-theme="light"] .reveal-label {
@@ -945,7 +948,7 @@ body.spider-sense-mode .ss-evidence {
 /* ── ScrollTop ── */
 [data-theme="light"] .scroll-top {
   background: rgba(248, 245, 238, 0.9);
-  border-color: rgba(146, 101, 10, 0.2);
+  border-color: rgba(200, 30, 30, 0.2);
   color: var(--red-deep);
 }
 
@@ -955,25 +958,25 @@ body.spider-sense-mode .ss-evidence {
 
 [data-theme="light"] .scroll-top:hover {
   background: rgba(248, 245, 238, 0.98);
-  border-color: rgba(146, 101, 10, 0.5);
-  box-shadow: 0 0 20px rgba(146, 101, 10, 0.12);
+  border-color: rgba(200, 30, 30, 0.5);
+  box-shadow: 0 0 20px rgba(200, 30, 30, 0.12);
 }
 
 /* ── SectionNav ── */
 [data-theme="light"] .dot {
   background: rgba(28, 25, 23, 0.2);
-  border-color: rgba(146, 101, 10, 0.2);
+  border-color: rgba(200, 30, 30, 0.2);
 }
 
 [data-theme="light"] .section-dot:hover .dot {
-  background: rgba(146, 101, 10, 0.4);
-  border-color: rgba(146, 101, 10, 0.5);
+  background: rgba(200, 30, 30, 0.4);
+  border-color: rgba(200, 30, 30, 0.5);
 }
 
 [data-theme="light"] .section-dot.active .dot {
   background: var(--lm-gold);
   border-color: var(--lm-gold);
-  box-shadow: 0 0 8px rgba(146, 101, 10, 0.4);
+  box-shadow: 0 0 8px rgba(200, 30, 30, 0.4);
 }
 
 [data-theme="light"] .dot-label {
@@ -999,7 +1002,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .spider-loader circle {
-  stroke: rgba(146, 101, 10, 0.2);
+  stroke: rgba(200, 30, 30, 0.2);
 }
 
 [data-theme="light"] .loader-ring {
@@ -1017,7 +1020,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .resume-section::before {
-  background: rgba(146, 101, 10, 0.2);
+  background: rgba(200, 30, 30, 0.2);
 }
 
 [data-theme="light"] .resume-tagline {
@@ -1046,7 +1049,7 @@ body.spider-sense-mode .ss-evidence {
 [data-theme="light"] .resume-modal {
   background: var(--lm-bg);
   border-color: var(--lm-gold-border);
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.15), 0 0 20px rgba(146, 101, 10, 0.08);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.15), 0 0 20px rgba(200, 30, 30, 0.08);
 }
 
 [data-theme="light"] .resume-modal::before {
@@ -1094,7 +1097,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .rmodal-separator {
-  background: linear-gradient(90deg, rgba(146, 101, 10, 0.25), rgba(153, 27, 27, 0.15), transparent);
+  background: linear-gradient(90deg, rgba(200, 30, 30, 0.25), rgba(200, 30, 30, 0.15), transparent);
 }
 
 [data-theme="light"] .rmodal-section-title {
@@ -1130,7 +1133,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .rmodal-project-tech {
-  color: rgba(146, 101, 10, 0.6);
+  color: rgba(200, 30, 30, 0.6);
 }
 
 [data-theme="light"] .rmodal-project-bullets li {
@@ -1138,7 +1141,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .rmodal-project-bullets li::before {
-  background: rgba(146, 101, 10, 0.4);
+  background: rgba(200, 30, 30, 0.4);
 }
 
 [data-theme="light"] .rmodal-exp-role {
@@ -1166,7 +1169,7 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .rmodal-exp-bullets li::before {
-  background: rgba(146, 101, 10, 0.4);
+  background: rgba(200, 30, 30, 0.4);
 }
 
 [data-theme="light"] .rmodal-edu-details {
@@ -1182,5 +1185,52 @@ body.spider-sense-mode .ss-evidence {
 }
 
 [data-theme="light"] .rmodal-body::-webkit-scrollbar-thumb {
-  background: rgba(146, 101, 10, 0.25);
+  background: rgba(200, 30, 30, 0.25);
+}
+
+/* ── Light-mode fix: kill leftover electric-blue accents ───────
+ * These elements referenced var(--blue-light) from the dark theme
+ * with no light override, so they stayed #4F8FF7 on cream.
+ * In light mode we want red accents, not blue.
+ */
+[data-theme="light"] .hero-scroll-hint,
+[data-theme="light"] .scroll-hint-text,
+[data-theme="light"] .scroll-hint-chevron {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .typed-cursor {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .right::before {
+  background: var(--lm-gold);
+}
+
+[data-theme="light"] .project-title:hover,
+[data-theme="light"] .project-card:hover .project-title {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .contact-icon:hover,
+[data-theme="light"] .contact-card:hover .contact-icon {
+  color: var(--lm-gold);
+}
+
+/* ── Light-mode fix: dim the hero canvas ──────────────────────
+ * The masked-Spider-Man PNG is drawn at full opacity even in light
+ * mode, which makes the top of the page read as a dark navy block
+ * against the cream body. Drop it to ~35% so the hero feels light
+ * and the red text-shadow on the title still pops.
+ */
+[data-theme="light"] .hero-canvas {
+  opacity: 0.35;
+  filter: saturate(0.85) brightness(1.05);
+}
+
+/* Soften the hero::before top accent in light mode so it doesn't
+ * fight with the dimmed canvas. */
+[data-theme="light"] .hero::before {
+  background: linear-gradient(90deg, transparent, var(--lm-gold), transparent);
+  opacity: 0.6;
 }
