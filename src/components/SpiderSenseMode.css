@@ -1,0 +1,863 @@
+/* ───────────────────────────────────────────────────────────────
+   SPIDER-SENSE MODE
+   Self-contained stylesheet. Removing this file + SpiderSenseMode.jsx
+   + the App.jsx import + the body.spider-sense-mode block in index.css
+   fully reverts the feature.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Toggle button (box-free — just the magnifier icon + "DM" text) ── */
+.ss-toggle {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  color: #C0001A;
+  cursor: pointer;
+  z-index: 900;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease, color 0.3s ease;
+  pointer-events: none;
+  font-family: 'Bebas Neue', sans-serif;
+  padding: 4px;
+}
+.ss-toggle.ready {
+  opacity: 0.85;
+  transform: translateY(0);
+  pointer-events: all;
+}
+.ss-toggle:hover {
+  color: #1E90FF;
+  opacity: 1;
+}
+.ss-toggle svg {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.3s ease;
+}
+.ss-toggle:hover svg {
+  transform: scale(1.1);
+}
+.ss-toggle-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  opacity: 0.85;
+  line-height: 1;
+}
+
+/* Active state — just brightens + turns cyan, no box */
+.ss-toggle.active {
+  color: #1E90FF;
+  opacity: 1;
+}
+.ss-toggle:hover .ss-toggle-label,
+.ss-toggle.active .ss-toggle-label {
+  opacity: 1;
+}
+
+/* ── Full-screen overlay ── */
+.ss-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 850;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.ss-overlay.on {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Scan lines */
+.ss-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(30, 144, 255, 0.04) 0px,
+    rgba(30, 144, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
+}
+
+/* Vignette + blue tint */
+.ss-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 30%, rgba(2, 18, 34, 0.45) 100%),
+    linear-gradient(180deg, rgba(30, 144, 255, 0.05), rgba(2, 18, 34, 0.08));
+  mix-blend-mode: multiply;
+}
+
+/* HUD corner brackets at viewport */
+.ss-bracket {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgba(30, 144, 255, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.2s;
+}
+.ss-overlay.on .ss-bracket {
+  opacity: 0.8;
+}
+.dm-br-tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+.dm-br-tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
+.dm-br-bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
+.dm-br-br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+
+/* Top status bar */
+.ss-statusbar {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+  padding: 6px 14px;
+  background: rgba(2, 18, 34, 0.75);
+  border: 1px solid rgba(30, 144, 255, 0.4);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #1E90FF;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.3s;
+}
+.ss-overlay.on .ss-statusbar {
+  opacity: 1;
+}
+.dm-status-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ss-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1E90FF;
+  box-shadow: 0 0 8px #1E90FF;
+  animation: dm-blink 1.4s ease-in-out infinite;
+}
+@keyframes dm-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+.dm-status-time {
+  opacity: 0.7;
+}
+
+/* ── Section annotations ──
+ * Each section gets .ss-target + a .ss-annotation child.
+ * Hidden by default, shown only when body.spider-sense-mode is active.
+ */
+.ss-target {
+  position: relative;
+}
+
+.ss-annotation {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 240px;
+  padding: 12px 14px;
+  background: rgba(2, 18, 34, 0.85);
+  border: 1px solid rgba(30, 144, 255, 0.4);
+  backdrop-filter: blur(4px);
+  font-family: 'Bebas Neue', sans-serif;
+  color: #1E90FF;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 0 12px rgba(30, 144, 255, 0.05);
+}
+
+body.spider-sense-mode .ss-annotation {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Annotation corner ticks */
+.ss-annotation::before,
+.ss-annotation::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #1E90FF;
+}
+.ss-annotation::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.ss-annotation::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.ss-anno-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed rgba(30, 144, 255, 0.25);
+}
+.ss-anno-tag {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: #1E90FF;
+  opacity: 0.8;
+}
+.ss-anno-id {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: rgba(30, 144, 255, 0.5);
+}
+
+.ss-anno-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 3px 0;
+}
+.ss-anno-key {
+  color: rgba(30, 144, 255, 0.55);
+  letter-spacing: 0.2em;
+}
+.ss-anno-val {
+  color: #B3E5FC;
+  text-align: right;
+}
+.ss-threat-critical { color: #FF5252 !important; }
+.ss-threat-high     { color: #FFB74D !important; }
+.ss-threat-moderate { color: #FFEB3B !important; }
+.ss-threat-low      { color: #69F0AE !important; }
+
+.ss-anno-analysis {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(30, 144, 255, 0.25);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(179, 229, 252, 0.75);
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HIDDEN EVIDENCE MARKERS
+   Glowing cyan dots placed at specific spots across sections.
+   Hidden by default; only visible while DM is active.
+   Hover reveals a small evidence card.
+   ═══════════════════════════════════════════════════════════════ */
+.ss-evidence {
+  position: absolute;
+  z-index: 6;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  cursor: help;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease 0.3s;
+}
+
+body.spider-sense-mode .ss-evidence {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ss-evidence-dot {
+  position: absolute;
+  inset: 4px;
+  background: #1E90FF;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #1E90FF, 0 0 16px rgba(30, 144, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.ss-evidence-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(30, 144, 255, 0.5);
+  border-radius: 50%;
+  animation: ss-evidence-pulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ss-evidence-pulse {
+  0%   { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Hover state — dot brightens, ring stops */
+.ss-evidence:hover .ss-evidence-dot {
+  background: #fff;
+  box-shadow: 0 0 14px #1E90FF, 0 0 28px rgba(30, 144, 255, 0.9);
+  transform: scale(1.4);
+}
+.ss-evidence:hover .ss-evidence-ring {
+  animation: none;
+  opacity: 0;
+}
+
+/* Tooltip card */
+.ss-evidence-tip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  width: 240px;
+  padding: 12px 14px;
+  background: rgba(2, 18, 34, 0.96);
+  border: 1px solid rgba(30, 144, 255, 0.5);
+  backdrop-filter: blur(4px);
+  font-family: 'Bebas Neue', sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5),
+              inset 0 0 12px rgba(30, 144, 255, 0.06);
+  /* small triangle pointer */
+}
+.ss-evidence-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: rgba(30, 144, 255, 0.5);
+}
+
+/* Corner ticks on the tooltip */
+.ss-evidence-tip::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid #1E90FF;
+  border-left: 1px solid #1E90FF;
+}
+
+.ss-evidence:hover .ss-evidence-tip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.ss-evidence-tag {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: #1E90FF;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed rgba(30, 144, 255, 0.3);
+}
+
+.ss-evidence-text {
+  display: block;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(179, 229, 252, 0.85);
+  letter-spacing: 0.02em;
+}
+
+/* If tooltip would overflow top of section, flip it below the dot */
+.ss-evidence.flip-below .ss-evidence-tip {
+  bottom: auto;
+  top: calc(100% + 14px);
+}
+.ss-evidence.flip-below .ss-evidence-tip::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: rgba(30, 144, 255, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MINI-MAP — building floor plan
+   Shows all 9 sections as rooms; current room glows cyan with a
+   "you are here" marker. Click any room to scroll there.
+   ═══════════════════════════════════════════════════════════════ */
+.ss-minimap {
+  position: fixed;
+  top: 90px;
+  left: 20px;
+  width: 158px;
+  background: rgba(2, 18, 34, 0.92);
+  border: 1px solid rgba(30, 144, 255, 0.4);
+  backdrop-filter: blur(6px);
+  z-index: 870;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+  font-family: 'Bebas Neue', sans-serif;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.ss-minimap.on {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Header */
+.ss-minimap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed rgba(30, 144, 255, 0.3);
+}
+.ss-minimap-title {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #1E90FF;
+}
+.ss-minimap-coord {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: rgba(30, 144, 255, 0.55);
+}
+
+/* Grid of rooms — 3 cols, 4 rows */
+.ss-minimap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 3px;
+}
+
+/* Individual room cell */
+.ss-room {
+  background: rgba(30, 144, 255, 0.08);
+  border: 1px solid rgba(30, 144, 255, 0.22);
+  color: rgba(179, 229, 252, 0.55);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  padding: 6px 4px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.ss-room:hover {
+  background: rgba(30, 144, 255, 0.2);
+  border-color: rgba(30, 144, 255, 0.55);
+  color: #B3E5FC;
+}
+
+.ss-room.here {
+  background: rgba(30, 144, 255, 0.28);
+  border-color: #1E90FF;
+  color: #fff;
+  box-shadow: inset 0 0 10px rgba(30, 144, 255, 0.35),
+              0 0 8px rgba(30, 144, 255, 0.3);
+}
+
+.ss-room-label {
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Pulsing "you are here" marker inside the active room */
+.ss-room-marker {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 4px;
+  height: 4px;
+  background: #1E90FF;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #1E90FF;
+  animation: dm-blink 1.4s ease-in-out infinite;
+}
+
+/* Footer */
+.ss-minimap-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(30, 144, 255, 0.3);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: rgba(30, 144, 255, 0.75);
+}
+
+.ss-minimap-marker-dot {
+  width: 5px;
+  height: 5px;
+  background: #1E90FF;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #1E90FF;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   END new sections
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .ss-annotation {
+    width: 180px;
+    top: 12px;
+    right: 12px;
+    padding: 10px 11px;
+  }
+  .ss-anno-row {
+    font-size: 10px;
+  }
+  .ss-anno-analysis {
+    font-size: 10px;
+  }
+  /* Hide mini-map on tablet and smaller — too cluttered with SectionNav dots */
+  .ss-minimap {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .ss-toggle {
+    bottom: 20px;
+    left: 16px;
+  }
+  .ss-toggle svg {
+    width: 22px;
+    height: 22px;
+  }
+  /* Hide annotations on small phones — too cluttered.
+     The toggle + overlay still work; surveillance vibe preserved. */
+  .ss-annotation {
+    display: none;
+  }
+  /* Evidence markers stay visible — they're small and fun to hunt for */
+  .ss-evidence-tip {
+    width: 160px;
+    font-size: 10px;
+  }
+  .ss-statusbar {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    gap: 14px;
+    padding: 5px 10px;
+  }
+}
+
+/* ── Light mode compatibility (toggle button only — the overlay
+   is its own dark blue look regardless of theme) ── */
+[data-theme="light"] .ss-toggle {
+  color: #7a000f;
+}
+[data-theme="light"] .ss-toggle:hover {
+  color: #0288D1;
+}
+[data-theme="light"] .ss-toggle.active {
+  color: #1E90FF;
+}
+[data-theme="light"] .ss-audio-toggle {
+  color: #7a000f;
+}
+[data-theme="light"] .ss-audio-toggle:hover {
+  color: #0288D1;
+}
+[data-theme="light"] .ss-audio-toggle.active {
+  color: #1E90FF;
+}
+/* ═════════════════════════════════════════════════════════════════
+   FEATURE #4 — AUDIO TOGGLE BUTTON
+   Speaker icon + "AUDIO" label, sitting just above the DM toggle.
+   Only visible while DM is on. Amber when muted, cyan when active.
+   ═════════════════════════════════════════════════════════════════ */
+.ss-audio-toggle {
+  position: fixed;
+  bottom: 96px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  color: #C0001A;
+  cursor: pointer;
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  font-family: 'Bebas Neue', sans-serif;
+  padding: 4px;
+}
+.ss-audio-toggle.on {
+  opacity: 0.85;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.ss-audio-toggle:hover {
+  color: #1E90FF;
+  opacity: 1;
+}
+.ss-audio-toggle.active {
+  color: #1E90FF;
+  opacity: 1;
+}
+.ss-audio-toggle svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+.ss-audio-toggle:hover svg {
+  transform: scale(1.1);
+}
+.dm-audio-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  opacity: 0.85;
+  line-height: 1;
+}
+
+/* ── Mobile — hide audio toggle on small phones (the DM toggle is
+   already bare-minimum UI on mobile; audio is a desktop nicety) ── */
+@media (max-width: 640px) {
+  .ss-audio-toggle {
+    bottom: 80px;
+    left: 16px;
+  }
+  .ss-audio-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   FEATURE — RESUME MODAL DM TREATMENT
+   When DM is on and the resume modal opens, recolor + add HUD
+   atmosphere INSIDE the modal. The global DM overlay (z-index 850)
+   is hidden behind the modal's z-index: 2000 backdrop, so we
+   replicate the DM aesthetic inside the modal frame itself. When
+   DM is off, the modal keeps its red/blue Spider-Man palette.
+   ═════════════════════════════════════════════════════════════════ */
+
+/* Section tagline → soft cyan */
+body.spider-sense-mode .resume-tagline {
+  color: rgba(179, 229, 252, 0.6);
+}
+
+/* View / Download buttons — cyan instead of gold */
+body.spider-sense-mode .resume-btn {
+  border-color: rgba(30, 144, 255, 0.3);
+  color: #B3E5FC;
+}
+body.spider-sense-mode .resume-btn:hover {
+  border-color: #1E90FF;
+  background: rgba(30, 144, 255, 0.1);
+}
+body.spider-sense-mode .resume-btn .btn-icon {
+  color: #1E90FF;
+}
+body.spider-sense-mode .view-btn:hover {
+  background: rgba(30, 144, 255, 0.14);
+}
+
+/* ── Modal overlay backdrop — DM navy + cyan radial glow ── */
+body.spider-sense-mode .resume-modal-overlay {
+  background: radial-gradient(ellipse at center,
+    rgba(2, 18, 34, 0.85) 0%,
+    rgba(0, 0, 0, 0.95) 100%);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Modal frame ── */
+body.spider-sense-mode .resume-modal {
+  background: #021222;
+  border-color: rgba(30, 144, 255, 0.4);
+  box-shadow:
+    0 0 60px rgba(0, 0, 0, 0.85),
+    0 0 30px rgba(30, 144, 255, 0.12),
+    inset 0 0 40px rgba(30, 144, 255, 0.04);
+}
+
+/* Top accent stripe → cyan gradient (replaces gold/crimson) */
+body.spider-sense-mode .resume-modal::before {
+  background: linear-gradient(90deg,
+    transparent, #1E90FF, #B3E5FC, #1E90FF, transparent);
+}
+
+/* HUD corner brackets — 4 L-shapes drawn with 8 background gradients
+   (2 per corner: horizontal bar + vertical bar). Painted via ::after
+   so it sits on top of the frame but pointer-events:none keeps it
+   inert. Brackets are 18px×1.5px, offset 6px from each edge — they
+   land inside the header/body padding so they don't overlap text. */
+body.spider-sense-mode .resume-modal::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  pointer-events: none;
+  background:
+    linear-gradient(#1E90FF, #1E90FF) top left / 18px 1.5px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) top left / 1.5px 18px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) top right / 18px 1.5px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) top right / 1.5px 18px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) bottom left / 18px 1.5px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) bottom left / 1.5px 18px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) bottom right / 18px 1.5px no-repeat,
+    linear-gradient(#1E90FF, #1E90FF) bottom right / 1.5px 18px no-repeat;
+  opacity: 0.75;
+}
+
+/* ── Modal body — subtle scanlines behind content ── */
+body.spider-sense-mode .rmodal-body {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(30, 144, 255, 0.03) 0px,
+    rgba(30, 144, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* ── Header ── */
+body.spider-sense-mode .rmodal-header {
+  border-bottom-color: rgba(30, 144, 255, 0.2);
+  background: rgba(30, 144, 255, 0.03);
+}
+
+/* Eyebrow — cyan tint + pulsing diamond prefix (signals "DM is watching") */
+body.spider-sense-mode .rmodal-eyebrow {
+  color: rgba(30, 144, 255, 0.75);
+}
+body.spider-sense-mode .rmodal-eyebrow::before {
+  content: '◆ ';
+  color: #1E90FF;
+  animation: dm-blink 1.4s ease-in-out infinite;
+}
+
+/* Title → cyan + glow */
+body.spider-sense-mode .rmodal-title {
+  color: #1E90FF;
+  text-shadow: 0 0 12px rgba(30, 144, 255, 0.3);
+}
+
+/* Close button → cyan */
+body.spider-sense-mode .rmodal-close {
+  border-color: rgba(30, 144, 255, 0.25);
+  color: rgba(179, 229, 252, 0.6);
+}
+body.spider-sense-mode .rmodal-close:hover {
+  border-color: #1E90FF;
+  color: #1E90FF;
+}
+
+/* ── Name block — cyan shadow (replaces crimson) ── */
+body.spider-sense-mode .rmodal-name {
+  text-shadow:
+    2px 2px 0px #013E58,
+    0 0 12px rgba(30, 144, 255, 0.35);
+}
+body.spider-sense-mode .rmodal-titles {
+  color: #1E90FF;
+}
+
+/* Contact icons → cyan */
+body.spider-sense-mode .rmodal-contact-icon {
+  color: #1E90FF;
+}
+
+/* Separators → cyan gradient (replaces gold/crimson) */
+body.spider-sense-mode .rmodal-separator {
+  background: linear-gradient(90deg,
+    rgba(30, 144, 255, 0.3),
+    rgba(179, 229, 252, 0.15),
+    transparent);
+}
+
+/* Section titles → cyan marker + cyan glow */
+body.spider-sense-mode .rmodal-section-title {
+  color: #B3E5FC;
+  text-shadow: 0 0 10px rgba(30, 144, 255, 0.25);
+}
+body.spider-sense-mode .rmodal-section-title::before {
+  background: #1E90FF;
+}
+
+/* Summary text → soft cyan */
+body.spider-sense-mode .rmodal-summary {
+  color: rgba(179, 229, 252, 0.78);
+}
+
+/* Skill categories → cyan */
+body.spider-sense-mode .rmodal-skill-cat {
+  color: #1E90FF;
+}
+body.spider-sense-mode .rmodal-skill-items {
+  color: rgba(179, 229, 252, 0.72);
+}
+
+/* Project tech → cyan; bullet markers → cyan */
+body.spider-sense-mode .rmodal-project-tech {
+  color: rgba(30, 144, 255, 0.7);
+}
+body.spider-sense-mode .rmodal-project-bullets li::before {
+  background: rgba(30, 144, 255, 0.5);
+}
+
+/* Experience company → cyan; bullet markers → cyan */
+body.spider-sense-mode .rmodal-exp-company {
+  color: #1E90FF;
+}
+body.spider-sense-mode .rmodal-exp-bullets li::before {
+  background: rgba(30, 144, 255, 0.5);
+}
+
+/* Additional strong tags → cyan */
+body.spider-sense-mode .rmodal-additional strong {
+  color: #1E90FF;
+}
+
+/* Scrollbar thumb → cyan */
+body.spider-sense-mode .rmodal-body::-webkit-scrollbar-thumb {
+  background: rgba(30, 144, 255, 0.3);
+}
