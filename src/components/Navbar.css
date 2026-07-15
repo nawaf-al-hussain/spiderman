@@ -29,10 +29,9 @@
   cursor: pointer;
 }
 
-/* "DEV" in spider-blue */
+/* "DEV" in spider-red */
 .nav-logo span {
-  color: var(--blue-light);
-  text-shadow: 0 0 12px var(--blue-glow);
+  color: var(--red);
 }
 
 /* ── Links ────────────────────────────────── */
@@ -61,7 +60,7 @@
   padding-bottom: 6px;
 }
 
-/* underline: blue on hover */
+/* underline: red on hover */
 .nav-links li a::after {
   content: '';
   position: absolute;
@@ -69,8 +68,8 @@
   bottom: 0;
   width: 0%;
   height: 1.5px;
-  background: linear-gradient(90deg, var(--blue-light), var(--red));
-  transition: width 0.35s ease;
+  background: var(--red);
+  transition: width 0.3s ease;
 }
 
 .nav-links li a:hover {

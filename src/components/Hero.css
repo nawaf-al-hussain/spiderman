@@ -57,7 +57,7 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--blue-light), var(--red), var(--blue-light), transparent);
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
   z-index: 10;
 }
 
@@ -162,9 +162,7 @@
   letter-spacing: -0.01em;
   text-shadow:
     3px 3px 0px var(--red-deep),
-    0 0 14px var(--red-glow),
-    0 0 32px var(--red-glow2),
-    0 0 48px var(--blue-glow);
+    0 0 18px rgba(230, 36, 41, 0.35);
 }
 
 .st-desc {
@@ -186,7 +184,7 @@
   background-color: transparent;
   color: #fff;
   border: 1.5px solid var(--red);
-  border-radius: 0;
+  border-radius: 4px;
   cursor: pointer;
   clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
   position: relative;
@@ -199,13 +197,13 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, var(--red), var(--blue));
+  background: var(--red);
   transform: translateX(-105%) skewX(-6deg);
   transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
 }
 
-.st-btn:hover { border-color: var(--blue-light); }
+.st-btn:hover { border-color: var(--red); }
 .st-btn:hover::after { transform: translateX(0) skewX(-6deg); }
 
 /* ── Right panel ─────────────────────────── */
