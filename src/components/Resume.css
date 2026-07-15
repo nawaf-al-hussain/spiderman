@@ -1,0 +1,581 @@
+.resume-section {
+  padding: 80px 0;
+  background: #060606;
+  position: relative;
+  text-align: center;
+}
+
+.resume-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(192, 0, 26, 0.2);
+}
+
+.resume-section .section-eyebrow {
+  display: inline-block;
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.resume-section .section-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1.5px;
+  background: #C0001A;
+}
+
+.resume-section .section-title {
+  text-align: center;
+}
+
+.resume-section .section-divider {
+  margin: 16px auto 30px;
+}
+
+.resume-tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 600px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resume-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(192, 0, 26, 0.3);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+
+.resume-btn:hover {
+  border-color: #C0001A;
+  background: rgba(192, 0, 26, 0.08);
+}
+
+.resume-btn .btn-icon {
+  font-size: 16px;
+  color: #C0001A;
+}
+
+.view-btn:hover {
+  background: rgba(192, 0, 26, 0.12);
+}
+
+/* ────────────────────────────────────────────
+   THEMED RESUME MODAL
+   ──────────────────────────────────────────── */
+.resume-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+
+.resume-modal {
+  background: #0d0d0d;
+  border: 1px solid rgba(192, 0, 26, 0.25);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(192, 0, 26, 0.05);
+}
+
+/* Gold accent top line */
+.resume-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C0001A, #C0001A, #C0001A, transparent);
+}
+
+/* ── Modal Header ── */
+.rmodal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(192, 0, 26, 0.12);
+  background: rgba(192, 0, 26, 0.02);
+  flex-shrink: 0;
+}
+
+.rmodal-eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  display: block;
+}
+
+.rmodal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.15em;
+  color: #C0001A;
+  margin: 2px 0 0;
+}
+
+.rmodal-close {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 6px 14px;
+  transition: all 0.25s ease;
+}
+
+.rmodal-close:hover {
+  border-color: #C0001A;
+  color: #C0001A;
+}
+
+.rmodal-close-x {
+  font-size: 14px;
+}
+
+.rmodal-close-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── Modal Body ── */
+.rmodal-body {
+  padding: 32px 28px 40px;
+  overflow-y: auto;
+}
+
+/* Name block */
+.rmodal-name-block {
+  margin-bottom: 20px;
+}
+
+.rmodal-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-shadow: 2px 2px 0px #7A000F, 0 0 10px rgba(192, 0, 26, 0.3);
+}
+
+.rmodal-titles {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #C0001A;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* Contact row */
+.rmodal-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 24px;
+}
+
+.rmodal-contact-item {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rmodal-contact-icon {
+  color: #C0001A;
+  font-size: 12px;
+}
+
+/* Separator */
+.rmodal-separator {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(192, 0, 26, 0.25), rgba(192, 0, 26, 0.15), transparent);
+  margin: 24px 0;
+}
+
+/* Section */
+.rmodal-section {
+  margin-bottom: 0;
+}
+
+.rmodal-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.rmodal-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 2px;
+  background: #C0001A;
+}
+
+/* Summary */
+.rmodal-summary {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Skills grid */
+.rmodal-skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rmodal-skill-row {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.rmodal-skill-cat {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #C0001A;
+  text-transform: uppercase;
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+.rmodal-skill-items {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+
+/* Projects */
+.rmodal-project {
+  margin-bottom: 24px;
+}
+
+.rmodal-project:last-child {
+  margin-bottom: 0;
+}
+
+.rmodal-project-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rmodal-project-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin: 0;
+}
+
+.rmodal-project-link {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.rmodal-project-subtitle {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 2px 0 4px;
+}
+
+.rmodal-project-tech {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 12px;
+  color: rgba(192, 0, 26, 0.6);
+  margin: 4px 0 8px;
+}
+
+.rmodal-project-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rmodal-project-bullets li {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.rmodal-project-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1px;
+  background: rgba(192, 0, 26, 0.4);
+}
+
+/* Experience */
+.rmodal-exp {
+  margin-bottom: 22px;
+}
+
+.rmodal-exp:last-child {
+  margin-bottom: 0;
+}
+
+.rmodal-exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rmodal-exp-role {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: #fff;
+  margin: 0;
+}
+
+.rmodal-exp-period {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.rmodal-exp-meta {
+  margin: 2px 0 8px;
+}
+
+.rmodal-exp-company {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #C0001A;
+}
+
+.rmodal-exp-dash {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+.rmodal-exp-location {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.rmodal-exp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rmodal-exp-bullets li {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.rmodal-exp-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1px;
+  background: rgba(192, 0, 26, 0.5);
+}
+
+/* Education */
+.rmodal-edu-details {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 4px 0 0;
+}
+
+/* Additional */
+.rmodal-additional {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rmodal-additional span {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.rmodal-additional strong {
+  color: #C0001A;
+  font-weight: 500;
+}
+
+/* ── Modal Scrollbar ── */
+.rmodal-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rmodal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rmodal-body::-webkit-scrollbar-thumb {
+  background: rgba(192, 0, 26, 0.25);
+  border-radius: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .rmodal-skill-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rmodal-skill-cat {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 640px) {
+  .resume-section {
+    padding: 60px 0;
+  }
+
+  .resume-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resume-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  .resume-modal-overlay {
+    padding: 12px;
+  }
+
+  .rmodal-name {
+    font-size: 26px;
+  }
+
+  .rmodal-header {
+    padding: 16px 20px;
+  }
+
+  .rmodal-body {
+    padding: 20px 16px 28px;
+  }
+
+  .rmodal-contact {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .rmodal-exp-header {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rmodal-close {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 16px;
+  }
+
+  .rmodal-section-title {
+    font-size: 14px;
+  }
+
+  .rmodal-project-name {
+    font-size: 14px;
+  }
+
+  .rmodal-exp-role {
+    font-size: 14px;
+  }
+}
