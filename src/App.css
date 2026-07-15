@@ -1,0 +1,4 @@
+/* Global section styles are in individual component CSS files */
+html {
+  scroll-behavior: smooth;
+}

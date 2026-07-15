@@ -1,0 +1,1126 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
+  width: 100%;
+  background: #0a0a0a;
+  color: #fff;
+  cursor: default;
+}
+
+/* ── Custom Cursor — Spider-Man spider silhouette (desktop only) ── */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 11 11, auto;
+  }
+
+  a, button, [role="button"] {
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 12 12, pointer;
+  }
+}
+
+/* ── Light mode bat cursor ── */
+@media (hover: hover) and (pointer: fine) {
+  [data-theme="light"] body {
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 11 11, auto;
+  }
+
+  [data-theme="light"] a,
+  [data-theme="light"] button,
+  [data-theme="light"] [role="button"] {
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPGcgZmlsbD0iI0MwMDAxQSIgc3Ryb2tlPSIjMWExYTFhIiBzdHJva2Utd2lkdGg9IjAuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjEzIiByeD0iMy41IiByeT0iNC41Ii8+CjxlbGxpcHNlIGN4PSIxMiIgY3k9IjciIHJ4PSIyIiByeT0iMi41Ii8+CjxwYXRoIGQ9Ik0xMCA3IFE3IDUgNCA2IFE2IDcgOCA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCA3IFExNyA1IDIwIDYgUTE4IDcgMTYgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAwMDFBIiBzdHJva2Utd2lkdGg9IjEuMiIvPgo8cGF0aCBkPSJNOSAxMCBRNSAxMCAyIDEyIFE0IDEyIDcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTE1IDEwIFExOSAxMCAyMiAxMiBRMjAgMTIgMTcgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMDAxQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KPHBhdGggZD0iTTkgMTMgUTUgMTQgMyAxNyBRNSAxNSA4IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNSAxMyBRMTkgMTQgMjEgMTcgUTE5IDE1IDE2IDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xMCAxNiBRNyAxOCA2IDIxIFE4IDE5IDEwIDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjxwYXRoIGQ9Ik0xNCAxNiBRMTcgMTggMTggMjEgUTE2IDE5IDE0IDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDAwMUEiIHN0cm9rZS13aWR0aD0iMS4yIi8+CjwvZz4KPC9zdmc+") 12 12, pointer;
+  }
+}
+
+::selection {
+  background: rgba(192, 0, 26, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(192, 0, 26, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 0, 26, 0.5);
+}
+
+/* ── Section Fog Transitions ── */
+section::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(192, 0, 26, 0.08),
+    rgba(192, 0, 26, 0.06),
+    rgba(192, 0, 26, 0.08),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ── Global 480px mobile breakpoint ── */
+@media (max-width: 480px) {
+  .section-container {
+    padding: 0 16px !important;
+  }
+
+  .section-title {
+    font-size: 28px !important;
+  }
+}
+
+/* ── Prefers reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .typed-cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .particles-canvas {
+    display: none !important;
+  }
+}
+
+/* ── Venom Mode (Konami code Easter egg) ── */
+body.venom-mode {
+  background: #0a0a0a;
+}
+
+body.venom-mode .st-title,
+body.venom-mode .section-title,
+body.venom-mode .rmodal-name {
+  text-shadow: 3px 3px 0px #6B21A8, 0 0 12px rgba(34, 197, 94, 0.5), 0 0 30px rgba(34, 197, 94, 0.2) !important;
+}
+
+body.venom-mode .nav-logo span,
+body.venom-mode .section-eyebrow,
+body.venom-mode .stat-number,
+body.venom-mode .skill-cat-title,
+body.venom-mode .project-title,
+body.venom-mode .rmodal-section-title::before,
+body.venom-mode .modal-title,
+body.venom-mode .rmodal-titles,
+body.venom-mode .rmodal-skill-cat,
+body.venom-mode .rmodal-exp-company,
+body.venom-mode .case-number,
+body.venom-mode .case-subject,
+body.venom-mode .evidence-tag,
+body.venom-mode .outcome-text,
+body.venom-mode .readout-label,
+body.venom-mode .readout-pct,
+body.venom-mode .readout-stamp,
+body.venom-mode .radar-label,
+body.venom-mode .radar-value,
+body.venom-mode .hud-val,
+body.venom-mode .radar-area,
+body.venom-mode .radar-point {
+  color: #22c55e !important;
+}
+
+body.venom-mode .radar-area {
+  stroke: #22c55e !important;
+  fill: rgba(34, 197, 94, 0.18) !important;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4)) !important;
+}
+
+body.venom-mode .radar-point {
+  fill: #22c55e !important;
+}
+
+body.venom-mode .case-stamp {
+  color: #a855f7 !important;
+  border-color: rgba(168, 85, 247, 0.5) !important;
+}
+
+body.venom-mode .case-stamp.active {
+  color: #ef4444 !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+}
+
+body.venom-mode .redact-bar {
+  background: #1a1a1a !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+body.venom-mode .redact-text {
+  color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.08) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+body.venom-mode .case-card::before,
+body.venom-mode .matrix-readout::before {
+  background: linear-gradient(90deg, #22c55e, #a855f7) !important;
+}
+
+body.venom-mode .readout-bar-fill {
+  background: linear-gradient(90deg, #22c55e, #a855f7) !important;
+}
+
+body.venom-mode .outcome-marker {
+  background: #22c55e !important;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.7) !important;
+}
+
+body.venom-mode .radar-frame,
+body.venom-mode .matrix-readout,
+body.venom-mode .case-card {
+  border-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+body.venom-mode .bracket {
+  border-color: #22c55e !important;
+}
+
+body.venom-mode .st-eyebrow::before,
+body.venom-mode .right-eyebrow::before,
+body.venom-mode .section-divider,
+body.venom-mode .section-eyebrow::before {
+  background: #22c55e !important;
+}
+
+body.venom-mode .st-btn {
+  border-color: #22c55e !important;
+}
+
+body.venom-mode .st-btn::after {
+  background: #22c55e !important;
+}
+
+body.venom-mode .navbar {
+  border-bottom-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+body.venom-mode .project-status.live {
+  color: #a855f7 !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+  background: rgba(168, 85, 247, 0.08) !important;
+}
+
+body.venom-mode .hero::before {
+  background: linear-gradient(90deg, transparent, #22c55e, #a855f7, #22c55e, transparent) !important;
+}
+
+body.venom-mode::after {
+  content: '😈 HAHAHA!';
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: #22c55e;
+  z-index: 9999;
+  animation: jokerLaugh 2s ease infinite;
+}
+
+@media (max-width: 640px) {
+  body.venom-mode::after {
+    bottom: 70px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SPIDER-SENSE MODE — global body overrides
+   Arkham-style cyan/blue tint layered on top of either theme.
+   To revert: delete this block + SpiderSenseMode.jsx + SpiderSenseMode.css
+   + the App.jsx import line.
+   ═══════════════════════════════════════════════════════════════ */
+
+body.spider-sense-mode {
+  background: #021222 !important;
+  color: #B3E5FC !important;
+}
+
+/* Force dark background on all major sections */
+body.spider-sense-mode .hero,
+body.spider-sense-mode .about,
+body.spider-sense-mode .skills,
+body.spider-sense-mode .skill-matrix,
+body.spider-sense-mode .projects,
+body.spider-sense-mode .experience,
+body.spider-sense-mode .case-files,
+body.spider-sense-mode .resume-section,
+body.spider-sense-mode .contact {
+  background: #021222 !important;
+}
+
+/* Shift gold accents to Arkham cyan */
+body.spider-sense-mode .section-eyebrow,
+body.spider-sense-mode .section-eyebrow::before,
+body.spider-sense-mode .section-divider,
+body.spider-sense-mode .nav-logo span,
+body.spider-sense-mode .stat-number,
+body.spider-sense-mode .skill-cat-title,
+body.spider-sense-mode .skill-icon,
+body.spider-sense-mode .case-number,
+body.spider-sense-mode .case-subject,
+body.spider-sense-mode .evidence-tag,
+body.spider-sense-mode .outcome-text,
+body.spider-sense-mode .readout-label,
+body.spider-sense-mode .readout-pct,
+body.spider-sense-mode .readout-stamp,
+body.spider-sense-mode .radar-label,
+body.spider-sense-mode .hud-val,
+body.spider-sense-mode .theme-toggle,
+body.spider-sense-mode .scroll-top,
+body.spider-sense-mode .scroll-top-label,
+body.spider-sense-mode .section-dot.active .dot,
+body.spider-sense-mode .section-dot:hover .dot {
+  color: #1E90FF !important;
+}
+
+body.spider-sense-mode .section-eyebrow::before,
+body.spider-sense-mode .section-divider,
+body.spider-sense-mode .case-card::before,
+body.spider-sense-mode .matrix-readout::before,
+body.spider-sense-mode .readout-bar-fill,
+body.spider-sense-mode .radar-area,
+body.spider-sense-mode .radar-point,
+body.spider-sense-mode .outcome-marker,
+body.spider-sense-mode .section-dot.active .dot,
+body.spider-sense-mode .project-card::before,
+body.spider-sense-mode .stat-card::before,
+body.spider-sense-mode .contact-card::after,
+body.spider-sense-mode .skill-category::after {
+  background: #1E90FF !important;
+  border-color: #1E90FF !important;
+}
+
+/* ── Static gold/red accent bars → cyan ──
+   Section-top gradient bars (gold→red→gold), solid accent ticks,
+   1px translucent section dividers, timeline elements, and border
+   accents. All static (always visible, not hover-triggered). */
+
+/* Section-top gradient bars: cyan gradient (matches modal top stripe) */
+body.spider-sense-mode .hero::before,
+body.spider-sense-mode .case-files::before,
+body.spider-sense-mode .about::before {
+  background: linear-gradient(90deg, transparent, #1E90FF, #B3E5FC, #1E90FF, transparent) !important;
+}
+
+/* Hero solid accent bars/ticks → cyan */
+body.spider-sense-mode .st-eyebrow::before,
+body.spider-sense-mode .right-eyebrow::before,
+body.spider-sense-mode .right::before {
+  background: #1E90FF !important;
+}
+
+/* Hero eyebrow text ("Platform Engineer" typed title + "Architect of Systems") → cyan */
+body.spider-sense-mode .st-eyebrow,
+body.spider-sense-mode .right-eyebrow,
+body.spider-sense-mode .typed-title,
+body.spider-sense-mode .typed-cursor {
+  color: #1E90FF !important;
+}
+
+/* "View The Arsenal" button — border + hover slide-in fill → cyan */
+body.spider-sense-mode .st-btn {
+  border-color: #1E90FF !important;
+}
+body.spider-sense-mode .st-btn:hover {
+  border-color: #B3E5FC !important;
+}
+body.spider-sense-mode .st-btn::after {
+  background: #1E90FF !important;
+}
+
+/* Hero title glow ("Nawaf Al Hussain" + "The Code Behind The Cape") → cyan */
+body.spider-sense-mode .st-title {
+  text-shadow:
+    3px 3px 0px #021222,
+    0 0 12px rgba(30, 144, 255, 0.65),
+    0 0 30px rgba(30, 144, 255, 0.35) !important;
+}
+
+/* 1px translucent section-top accents → translucent cyan */
+body.spider-sense-mode .skills::before,
+body.spider-sense-mode .skill-matrix::before,
+body.spider-sense-mode .projects::before,
+body.spider-sense-mode .experience::before,
+body.spider-sense-mode .resume-section::before,
+body.spider-sense-mode .contact::before {
+  background: rgba(30, 144, 255, 0.2) !important;
+}
+
+/* Case summary left border → cyan (text color already overridden above) */
+body.spider-sense-mode .case-summary {
+  border-left-color: #1E90FF !important;
+}
+
+/* Experience timeline → cyan */
+body.spider-sense-mode .timeline::before {
+  background: rgba(30, 144, 255, 0.15) !important;
+}
+body.spider-sense-mode .timeline-dot,
+body.spider-sense-mode .timeline-dot.edu-dot {
+  background: #1E90FF !important;
+  border-color: #021222 !important;
+}
+body.spider-sense-mode .timeline-bullets li::before {
+  background: rgba(30, 144, 255, 0.5) !important;
+}
+body.spider-sense-mode .column-title {
+  border-bottom-color: rgba(30, 144, 255, 0.2) !important;
+}
+
+/* Navbar mobile drawer left border + contact footer top border → cyan */
+body.spider-sense-mode .nav-links {
+  border-left-color: rgba(30, 144, 255, 0.3) !important;
+}
+body.spider-sense-mode .footer {
+  border-top-color: rgba(30, 144, 255, 0.2) !important;
+}
+
+body.spider-sense-mode .radar-area {
+  fill: rgba(30, 144, 255, 0.18) !important;
+  stroke: #1E90FF !important;
+  filter: drop-shadow(0 0 8px rgba(30, 144, 255, 0.4)) !important;
+}
+
+body.spider-sense-mode .radar-point {
+  fill: #1E90FF !important;
+  stroke: #021222 !important;
+}
+
+/* Body text → soft cyan */
+body.spider-sense-mode .about-text p,
+body.spider-sense-mode .case-summary,
+body.spider-sense-mode .case-narrative,
+body.spider-sense-mode .readout-intro,
+body.spider-sense-mode .readout-detail {
+  color: rgba(179, 229, 252, 0.75) !important;
+}
+
+/* Borders → cyan tint */
+body.spider-sense-mode .skill-category,
+body.spider-sense-mode .case-card,
+body.spider-sense-mode .matrix-readout,
+body.spider-sense-mode .radar-frame,
+body.spider-sense-mode .stat-card,
+body.spider-sense-mode .project-card,
+body.spider-sense-mode .contact-card {
+  border-color: rgba(30, 144, 255, 0.25) !important;
+}
+
+body.spider-sense-mode .navbar {
+  background: rgba(2, 18, 34, 0.85) !important;
+  border-bottom-color: rgba(30, 144, 255, 0.3) !important;
+}
+
+body.spider-sense-mode .nav-links li a {
+  color: rgba(179, 229, 252, 0.7) !important;
+}
+
+body.spider-sense-mode .scroll-top {
+  background: rgba(2, 18, 34, 0.9) !important;
+  border-color: rgba(30, 144, 255, 0.3) !important;
+  color: #1E90FF !important;
+}
+
+/* Section titles get a subtle cyan glow */
+body.spider-sense-mode .section-title {
+  color: #B3E5FC !important;
+  text-shadow: 0 0 12px rgba(30, 144, 255, 0.3) !important;
+}
+
+/* Keep venom-mode priority if both are somehow on */
+body.spider-sense-mode.venom-mode {
+  background: #0a0a0a !important;
+}
+
+/* ── Crosshair cursor (replaces bat cursor while DM is on) ── */
+body.spider-sense-mode,
+body.spider-sense-mode a,
+body.spider-sense-mode button,
+body.spider-sense-mode [role="button"],
+body.spider-sense-mode .ss-room,
+body.spider-sense-mode .ss-toggle,
+body.spider-sense-mode .ss-evidence {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231E90FF' stroke-width='1'%3E%3Ccircle cx='12' cy='12' r='7'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='%231E90FF'/%3E%3Cline x1='12' y1='0' x2='12' y2='5'/%3E%3Cline x1='12' y1='19' x2='12' y2='24'/%3E%3Cline x1='0' y1='12' x2='5' y2='12'/%3E%3Cline x1='19' y1='12' x2='24' y2='12'/%3E%3C/svg%3E") 12 12, crosshair !important;
+}
+
+@keyframes jokerLaugh {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE — "Wayne Manor" Theme
+   ══════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  --lm-bg: #f8f5ef;
+  --lm-bg-alt: #f0ebe3;
+  --lm-bg-card: #e8e2d8;
+  --lm-text: #1c1917;
+  --lm-text-secondary: rgba(28, 25, 23, 0.65);
+  --lm-text-muted: rgba(28, 25, 23, 0.4);
+  --lm-gold: #7a000f;
+  --lm-gold-light: rgba(146, 101, 10, 0.08);
+  --lm-gold-border: rgba(146, 101, 10, 0.2);
+  --lm-red: #991b1b;
+  --lm-border: rgba(28, 25, 23, 0.08);
+}
+
+/* ── Global body & scrollbar ── */
+[data-theme="light"] body {
+  background: var(--lm-bg);
+  color: var(--lm-text);
+}
+
+[data-theme="light"] ::selection {
+  background: rgba(146, 101, 10, 0.2);
+  color: var(--lm-text);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: var(--lm-bg);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(146, 101, 10, 0.25);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(146, 101, 10, 0.4);
+}
+
+/* ── Section divider ── */
+[data-theme="light"] section::after {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(146, 101, 10, 0.12),
+    rgba(153, 27, 27, 0.08),
+    rgba(146, 101, 10, 0.12),
+    transparent
+  );
+}
+
+/* ── About ── */
+[data-theme="light"] .about {
+  background: var(--lm-bg);
+}
+
+[data-theme="light"] .about::before {
+  background: linear-gradient(90deg, transparent, var(--lm-gold), var(--lm-red), var(--lm-gold), transparent);
+}
+
+[data-theme="light"] .section-eyebrow {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .section-eyebrow::before {
+  background: var(--lm-gold);
+}
+
+[data-theme="light"] .section-title {
+  color: var(--lm-text);
+  text-shadow: none;
+}
+
+[data-theme="light"] .section-divider {
+  background: linear-gradient(90deg, var(--lm-gold), var(--lm-red));
+}
+
+[data-theme="light"] .about-text p {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .about-text strong {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .about-text em {
+  color: var(--lm-red);
+}
+
+[data-theme="light"] .stat-card {
+  background: var(--lm-bg-alt);
+  border-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .stat-card::before {
+  background: linear-gradient(90deg, var(--lm-gold), var(--lm-red));
+}
+
+[data-theme="light"] .stat-card:hover {
+  border-color: rgba(146, 101, 10, 0.4);
+  background: var(--lm-bg-card);
+}
+
+[data-theme="light"] .stat-number {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .stat-label {
+  color: var(--lm-text-muted);
+}
+
+/* ── Skills ── */
+[data-theme="light"] .skills {
+  background: var(--lm-bg-alt);
+}
+
+[data-theme="light"] .skills::before {
+  background: rgba(146, 101, 10, 0.15);
+}
+
+[data-theme="light"] .skill-category {
+  background: rgba(146, 101, 10, 0.03);
+  border-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .skill-category::after {
+  background: linear-gradient(90deg, var(--lm-gold), var(--lm-red));
+}
+
+[data-theme="light"] .skill-category:hover {
+  border-color: rgba(146, 101, 10, 0.4);
+  background: rgba(146, 101, 10, 0.06);
+}
+
+[data-theme="light"] .skill-cat-title {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .skill-icon {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .skill-tag {
+  color: var(--lm-text-secondary);
+  background: rgba(28, 25, 23, 0.03);
+  border-color: var(--lm-border);
+}
+
+[data-theme="light"] .skill-tag:hover {
+  color: var(--lm-text);
+  border-color: rgba(146, 101, 10, 0.4);
+  background: var(--lm-gold-light);
+}
+
+/* ── Projects ── */
+[data-theme="light"] .projects {
+  background: var(--lm-bg);
+}
+
+[data-theme="light"] .projects::before {
+  background: rgba(146, 101, 10, 0.15);
+}
+
+[data-theme="light"] .project-card {
+  background: var(--lm-bg-alt);
+  border-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .project-card::before {
+  background: linear-gradient(90deg, var(--lm-gold), var(--lm-red));
+}
+
+[data-theme="light"] .project-card:hover {
+  border-color: rgba(146, 101, 10, 0.4);
+  background: var(--lm-bg-card);
+}
+
+[data-theme="light"] .project-title {
+  color: var(--lm-text);
+}
+
+[data-theme="light"] .project-subtitle {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .project-desc {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .tech-tag {
+  color: var(--lm-text-muted);
+  background: rgba(28, 25, 23, 0.03);
+  border-color: var(--lm-border);
+}
+
+[data-theme="light"] .project-link {
+  color: var(--lm-gold);
+  border-top-color: var(--lm-border);
+}
+
+[data-theme="light"] .project-link:hover {
+  color: var(--lm-text);
+}
+
+[data-theme="light"] .project-preview {
+  border-color: var(--lm-gold-border);
+  background: rgba(28, 25, 23, 0.03);
+}
+
+[data-theme="light"] .project-status.ongoing {
+  color: var(--lm-gold);
+  border-color: rgba(146, 101, 10, 0.3);
+  background: var(--lm-gold-light);
+}
+
+/* ── Experience ── */
+[data-theme="light"] .experience {
+  background: var(--lm-bg-alt);
+}
+
+[data-theme="light"] .experience::before {
+  background: rgba(146, 101, 10, 0.15);
+}
+
+[data-theme="light"] .column-title {
+  color: var(--lm-gold);
+  border-bottom-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .timeline::before {
+  background: rgba(146, 101, 10, 0.2);
+}
+
+[data-theme="light"] .timeline-dot {
+  background: var(--lm-gold);
+  border-color: var(--lm-bg-alt);
+}
+
+[data-theme="light"] .timeline-dot.edu-dot {
+  background: var(--lm-red);
+  border-color: var(--lm-bg-alt);
+}
+
+[data-theme="light"] .timeline-period {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .timeline-role {
+  color: var(--lm-text);
+}
+
+[data-theme="light"] .timeline-company {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .timeline-location {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .timeline-bullets li {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .timeline-bullets li::before {
+  background: rgba(146, 101, 10, 0.4);
+}
+
+[data-theme="light"] .timeline-details {
+  color: var(--lm-text-muted);
+}
+
+/* ── Contact ── */
+[data-theme="light"] .contact {
+  background: var(--lm-bg);
+}
+
+[data-theme="light"] .contact::before {
+  background: rgba(146, 101, 10, 0.15);
+}
+
+[data-theme="light"] .contact-tagline {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .contact-card {
+  background: var(--lm-bg-alt);
+  border-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .contact-card::after {
+  background: linear-gradient(90deg, var(--lm-gold), var(--lm-red));
+}
+
+[data-theme="light"] .contact-card:hover {
+  border-color: rgba(146, 101, 10, 0.4);
+  background: var(--lm-bg-card);
+}
+
+[data-theme="light"] .contact-icon {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .contact-label {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .contact-value {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .copy-btn {
+  color: var(--lm-gold);
+  background: var(--lm-gold-light);
+  border-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .footer {
+  border-top-color: var(--lm-gold-border);
+  background: rgba(232, 226, 216, 0.5);
+}
+
+[data-theme="light"] .footer-logo {
+  color: var(--lm-text);
+}
+
+[data-theme="light"] .footer-logo span {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .footer-text {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .footer-disclaimer {
+  color: rgba(28, 25, 23, 0.25);
+}
+
+/* ── Hero ── */
+[data-theme="light"] .hero::before {
+  background: linear-gradient(90deg, transparent, var(--lm-gold), var(--lm-red), var(--lm-gold), transparent);
+}
+
+[data-theme="light"] .st-eyebrow {
+  color: #C0001A;
+}
+
+[data-theme="light"] .st-eyebrow::before {
+  background: #C0001A;
+}
+
+[data-theme="light"] .right-eyebrow {
+  color: #C0001A;
+}
+
+[data-theme="light"] .right-eyebrow::before {
+  background: #C0001A;
+}
+
+[data-theme="light"] .st-title {
+  color: #fff;
+  text-shadow:
+    3px 3px 0px #7A000F,
+    0 0 12px rgba(192, 0, 26, 0.55),
+    0 0 30px rgba(192, 0, 26, 0.25);
+}
+
+[data-theme="light"] .st-desc,
+[data-theme="light"] .st-text {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+[data-theme="light"] .st-btn {
+  color: #fff;
+  border-color: var(--lm-red);
+}
+
+[data-theme="light"] .st-btn::after {
+  background: var(--lm-red);
+}
+
+[data-theme="light"] .st-btn:hover {
+  border-color: #b91c1c;
+}
+
+[data-theme="light"] .scroll-hint-text,
+[data-theme="light"] .scroll-hint-chevron {
+  color: var(--lm-gold);
+}
+
+/* ── Mobile Reveal Button ── */
+[data-theme="light"] .hero-reveal-btn {
+  background: rgba(248, 245, 238, 0.8);
+  border-color: rgba(146, 101, 10, 0.3);
+  color: #7a000f;
+}
+
+[data-theme="light"] .hero-reveal-btn:active,
+[data-theme="light"] .hero-reveal-btn.active {
+  border-color: #7a000f;
+  background: rgba(146, 101, 10, 0.12);
+  box-shadow: 0 0 20px rgba(146, 101, 10, 0.2);
+}
+
+[data-theme="light"] .reveal-label {
+  color: #7a000f;
+}
+
+/* ── ScrollTop ── */
+[data-theme="light"] .scroll-top {
+  background: rgba(248, 245, 238, 0.9);
+  border-color: rgba(146, 101, 10, 0.2);
+  color: #7a000f;
+}
+
+[data-theme="light"] .scroll-top-label {
+  color: #7a000f;
+}
+
+[data-theme="light"] .scroll-top:hover {
+  background: rgba(248, 245, 238, 0.98);
+  border-color: rgba(146, 101, 10, 0.5);
+  box-shadow: 0 0 20px rgba(146, 101, 10, 0.12);
+}
+
+/* ── SectionNav ── */
+[data-theme="light"] .dot {
+  background: rgba(28, 25, 23, 0.2);
+  border-color: rgba(146, 101, 10, 0.2);
+}
+
+[data-theme="light"] .section-dot:hover .dot {
+  background: rgba(146, 101, 10, 0.4);
+  border-color: rgba(146, 101, 10, 0.5);
+}
+
+[data-theme="light"] .section-dot.active .dot {
+  background: var(--lm-gold);
+  border-color: var(--lm-gold);
+  box-shadow: 0 0 8px rgba(146, 101, 10, 0.4);
+}
+
+[data-theme="light"] .dot-label {
+  color: var(--lm-gold);
+}
+
+/* ── Particles ── */
+[data-theme="light"] .particles-canvas {
+  opacity: 0.3;
+}
+
+/* ── Loader ── */
+[data-theme="light"] .loader {
+  background: var(--lm-bg);
+}
+
+[data-theme="light"] .loader-title {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .loader-progress {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .spider-loader circle {
+  stroke: rgba(146, 101, 10, 0.2);
+}
+
+[data-theme="light"] .loader-ring {
+  stroke: var(--lm-gold) !important;
+}
+
+[data-theme="light"] .spider-loader path {
+  fill: var(--lm-gold);
+  stroke: none;
+}
+
+/* ── Resume ── */
+[data-theme="light"] .resume-section {
+  background: var(--lm-bg-alt);
+}
+
+[data-theme="light"] .resume-section::before {
+  background: rgba(146, 101, 10, 0.2);
+}
+
+[data-theme="light"] .resume-tagline {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .resume-btn {
+  color: var(--lm-text);
+  border-color: var(--lm-gold-border);
+}
+
+[data-theme="light"] .resume-btn:hover {
+  border-color: var(--lm-gold);
+  background: var(--lm-gold-light);
+}
+
+[data-theme="light"] .resume-btn .btn-icon {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .resume-modal-overlay {
+  background: rgba(248, 245, 238, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+[data-theme="light"] .resume-modal {
+  background: var(--lm-bg);
+  border-color: var(--lm-gold-border);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.15), 0 0 20px rgba(146, 101, 10, 0.08);
+}
+
+[data-theme="light"] .resume-modal::before {
+  background: linear-gradient(90deg, transparent, var(--lm-gold), var(--lm-red), var(--lm-gold), transparent);
+}
+
+[data-theme="light"] .rmodal-header {
+  border-bottom-color: var(--lm-gold-border);
+  background: var(--lm-gold-light);
+}
+
+[data-theme="light"] .rmodal-eyebrow {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-title {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-close {
+  border-color: var(--lm-border);
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-close:hover {
+  border-color: var(--lm-gold);
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-name {
+  color: var(--lm-text);
+  text-shadow: none;
+}
+
+[data-theme="light"] .rmodal-titles {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-contact-item {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .rmodal-contact-icon {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-separator {
+  background: linear-gradient(90deg, rgba(146, 101, 10, 0.25), rgba(153, 27, 27, 0.15), transparent);
+}
+
+[data-theme="light"] .rmodal-section-title {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-section-title::before {
+  background: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-summary {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .rmodal-skill-cat {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-skill-items {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .rmodal-project-name {
+  color: var(--lm-text);
+}
+
+[data-theme="light"] .rmodal-project-link {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-project-subtitle {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-project-tech {
+  color: rgba(146, 101, 10, 0.6);
+}
+
+[data-theme="light"] .rmodal-project-bullets li {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .rmodal-project-bullets li::before {
+  background: rgba(146, 101, 10, 0.4);
+}
+
+[data-theme="light"] .rmodal-exp-role {
+  color: var(--lm-text);
+}
+
+[data-theme="light"] .rmodal-exp-period {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-exp-company {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-exp-dash {
+  color: rgba(28, 25, 23, 0.2);
+}
+
+[data-theme="light"] .rmodal-exp-location {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-exp-bullets li {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .rmodal-exp-bullets li::before {
+  background: rgba(146, 101, 10, 0.4);
+}
+
+[data-theme="light"] .rmodal-edu-details {
+  color: var(--lm-text-muted);
+}
+
+[data-theme="light"] .rmodal-additional span {
+  color: var(--lm-text-secondary);
+}
+
+[data-theme="light"] .rmodal-additional strong {
+  color: var(--lm-gold);
+}
+
+[data-theme="light"] .rmodal-body::-webkit-scrollbar-thumb {
+  background: rgba(146, 101, 10, 0.25);
+}
