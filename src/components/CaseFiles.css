@@ -1,0 +1,461 @@
+.case-files {
+  padding: 100px 0;
+  background: #0a0a0a;
+  position: relative;
+}
+
+.case-files::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C0001A, #C0001A, #C0001A, transparent);
+}
+
+.case-subtitle {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 580px;
+  margin-top: -20px;
+  margin-bottom: 50px;
+  font-style: italic;
+}
+
+/* ── Stack of case cards ── */
+.case-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Case card ── */
+.case-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(192, 0, 26, 0.12);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+.case-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #C0001A, #C0001A);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.case-card.open::before {
+  opacity: 1;
+}
+.case-card.open {
+  border-color: rgba(192, 0, 26, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Classification stamp ── */
+.case-stamp {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: rgba(192, 0, 26, 0.85);
+  border: 1.5px solid rgba(192, 0, 26, 0.5);
+  padding: 4px 10px;
+  transform: rotate(3deg);
+  z-index: 2;
+  pointer-events: none;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(2px);
+}
+.case-stamp.active {
+  color: #ff6b4a;
+  border-color: rgba(255, 107, 74, 0.6);
+}
+
+/* ── Header (clickable) ── */
+.case-head {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 26px 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  position: relative;
+}
+.case-head:focus-visible {
+  outline: 2px solid #C0001A;
+  outline-offset: -2px;
+}
+
+.case-head-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 150px;
+  padding-top: 4px;
+}
+.case-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: #C0001A;
+}
+.case-date {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.case-head-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 60px;
+}
+.case-subject {
+  font-family: 'Anton', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.1;
+  transition: color 0.2s ease;
+}
+.case-card.open .case-subject {
+  color: #C0001A;
+}
+.case-threat {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.case-chevron {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  color: #C0001A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+.case-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* ── Body ── */
+.case-body {
+  overflow: hidden;
+}
+.case-body-inner {
+  padding: 0 30px 30px 30px;
+  border-top: 1px dashed rgba(192, 0, 26, 0.18);
+  margin-top: 0;
+  padding-top: 24px;
+}
+
+/* ── Summary ── */
+.case-summary {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  border-left: 2px solid #C0001A;
+  padding-left: 18px;
+  margin-bottom: 24px;
+}
+
+/* ── Narrative ── */
+.case-narrative {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.72);
+}
+.case-narrative p {
+  margin-bottom: 14px;
+}
+.case-narrative p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Redacted spans ── */
+.redact {
+  position: relative;
+  display: inline-block;
+  margin: 0 2px;
+  vertical-align: baseline;
+  cursor: help;
+}
+.redact-bar,
+.redact-text {
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
+}
+.redact-bar {
+  color: transparent;
+  background: #1a1a1a;
+  border: 1px solid rgba(192, 0, 26, 0.3);
+  padding: 0 6px;
+  border-radius: 1px;
+  position: relative;
+  user-select: none;
+}
+.redact-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(255, 255, 255, 0.04) 3px,
+    rgba(255, 255, 255, 0.04) 4px
+  );
+}
+.redact-text {
+  position: absolute;
+  inset: 0;
+  color: #C0001A;
+  opacity: 0;
+  padding: 0 6px;
+  background: rgba(192, 0, 26, 0.08);
+  border: 1px solid rgba(192, 0, 26, 0.4);
+  white-space: nowrap;
+}
+.redact:hover .redact-bar,
+.redact:focus .redact-bar {
+  opacity: 0;
+}
+.redact:hover .redact-text,
+.redact:focus .redact-text {
+  opacity: 1;
+}
+
+/* ── Evidence tags ── */
+.case-evidence {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(192, 0, 26, 0.18);
+}
+.evidence-label {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 10px;
+}
+.evidence-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.evidence-tag {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #C0001A;
+  background: rgba(192, 0, 26, 0.08);
+  border: 1px solid rgba(192, 0, 26, 0.3);
+  padding: 4px 11px;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+}
+.evidence-tag:hover {
+  background: rgba(192, 0, 26, 0.15);
+  border-color: rgba(192, 0, 26, 0.55);
+  color: #fff;
+}
+
+/* ── Outcome ── */
+.case-outcome {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.outcome-marker {
+  width: 8px;
+  height: 8px;
+  background: #C0001A;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(192, 0, 26, 0.7);
+  flex-shrink: 0;
+}
+.outcome-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: #C0001A;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .case-head {
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px 22px;
+  }
+  .case-head-meta {
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 0;
+    width: 100%;
+    padding-top: 0;
+  }
+  .case-head-main {
+    padding-right: 40px;
+  }
+  .case-subject {
+    font-size: 20px;
+  }
+  .case-chevron {
+    top: 22px;
+    right: 22px;
+  }
+  .case-body-inner {
+    padding: 22px 22px 24px;
+  }
+  .case-summary {
+    font-size: 14px;
+  }
+  .case-narrative {
+    font-size: 14px;
+  }
+  .case-stamp {
+    top: 12px;
+    right: 12px;
+    font-size: 9px;
+    padding: 3px 7px;
+  }
+}
+
+@media (max-width: 640px) {
+  .case-files {
+    padding: 70px 0;
+  }
+  .case-subtitle {
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+}
+
+/* ── Light mode ── */
+[data-theme="light"] .case-files {
+  background: var(--lm-bg);
+}
+[data-theme="light"] .case-files::before {
+  background: linear-gradient(90deg, transparent, var(--lm-gold), var(--lm-red), var(--lm-gold), transparent);
+}
+[data-theme="light"] .case-subtitle {
+  color: var(--lm-text-secondary);
+}
+[data-theme="light"] .case-card {
+  background: rgba(28, 25, 23, 0.02);
+  border-color: rgba(146, 101, 10, 0.15);
+}
+[data-theme="light"] .case-card.open {
+  background: rgba(28, 25, 23, 0.03);
+  border-color: rgba(146, 101, 10, 0.3);
+}
+[data-theme="light"] .case-stamp {
+  color: var(--lm-gold);
+  border-color: rgba(146, 101, 10, 0.5);
+  background: rgba(248, 245, 239, 0.8);
+}
+[data-theme="light"] .case-stamp.active {
+  color: var(--lm-red);
+  border-color: rgba(153, 27, 27, 0.5);
+}
+[data-theme="light"] .case-number {
+  color: var(--lm-gold);
+}
+[data-theme="light"] .case-date {
+  color: var(--lm-text-muted);
+}
+[data-theme="light"] .case-subject {
+  color: var(--lm-text);
+}
+[data-theme="light"] .case-card.open .case-subject {
+  color: var(--lm-gold);
+}
+[data-theme="light"] .case-threat {
+  color: var(--lm-text-secondary);
+}
+[data-theme="light"] .case-chevron {
+  color: var(--lm-gold);
+}
+[data-theme="light"] .case-body-inner {
+  border-top-color: rgba(146, 101, 10, 0.2);
+}
+[data-theme="light"] .case-summary {
+  color: var(--lm-text-secondary);
+  border-left-color: var(--lm-gold);
+}
+[data-theme="light"] .case-narrative {
+  color: var(--lm-text);
+}
+[data-theme="light"] .redact-bar {
+  background: var(--lm-text);
+  border-color: rgba(146, 101, 10, 0.3);
+}
+[data-theme="light"] .redact-bar::before {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(255, 255, 255, 0.06) 3px,
+    rgba(255, 255, 255, 0.06) 4px
+  );
+}
+[data-theme="light"] .redact-text {
+  color: var(--lm-gold);
+  background: rgba(146, 101, 10, 0.08);
+  border-color: rgba(146, 101, 10, 0.4);
+}
+[data-theme="light"] .case-evidence {
+  border-top-color: rgba(146, 101, 10, 0.2);
+}
+[data-theme="light"] .evidence-label {
+  color: var(--lm-text-muted);
+}
+[data-theme="light"] .evidence-tag {
+  color: var(--lm-gold);
+  background: rgba(146, 101, 10, 0.08);
+  border-color: rgba(146, 101, 10, 0.3);
+}
+[data-theme="light"] .evidence-tag:hover {
+  background: rgba(146, 101, 10, 0.15);
+  border-color: rgba(146, 101, 10, 0.55);
+  color: var(--lm-text);
+}
+[data-theme="light"] .outcome-marker {
+  background: var(--lm-gold);
+  box-shadow: 0 0 8px rgba(146, 101, 10, 0.7);
+}
+[data-theme="light"] .outcome-text {
+  color: var(--lm-gold);
+}
