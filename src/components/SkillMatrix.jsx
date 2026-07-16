@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
-import SpiderPath from './SpiderIcon'
 import './SkillMatrix.css'
 
 /* ── Proficiency data — Spider-Verse readout style ──
@@ -201,11 +200,6 @@ const SkillMatrix = () => {
                     />
                   )
                 })}
-
-                {/* ── Center bat sigil ── */}
-                <g className="radar-center-spider" transform={`translate(${CENTER - 14}, ${CENTER - 6}) scale(7)`}>
-                  <SpiderPath fill="currentColor" />
-                </g>
 
                 {/* ── Scan line (animated sweep) ── */}
                 {progress < 1 && (

@@ -119,12 +119,6 @@
   fill: var(--red);
 }
 
-/* ── Center bat ── */
-.radar-center-spider {
-  color: rgba(230, 36, 41, 0.6);
-  filter: drop-shadow(0 0 4px rgba(230, 36, 41, 0.4));
-}
-
 /* ── Scan line animation (during reveal) ── */
 .radar-scan-line {
   stroke: rgba(230, 36, 41, 0.85);
@@ -362,9 +356,6 @@
 }
 [data-theme="light"] .radar-label-group.active .radar-value {
   fill: var(--lm-gold);
-}
-[data-theme="light"] .radar-center-spider {
-  color: rgba(200, 30, 30, 0.55);
 }
 [data-theme="light"] .radar-hud {
   border-top-color: rgba(200, 30, 30, 0.25);

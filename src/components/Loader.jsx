@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import SpiderPath from './SpiderIcon'
 import './Loader.css'
 
 const Loader = ({ onComplete }) => {
@@ -45,10 +44,6 @@ const Loader = ({ onComplete }) => {
                   strokeLinecap="round"
                   transform="rotate(-90 40 40)"
                   className="loader-ring"/>
-          {/* Spider silhouette centered in the ring */}
-          <g transform="translate(14, 27) scale(12.5)">
-            <SpiderPath fill="#E62429" opacity="0.85"/>
-          </g>
         </svg>
         <div className="loader-text">
           <span className="loader-title">THE WEB DEV</span>
