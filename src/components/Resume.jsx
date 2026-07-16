@@ -2,6 +2,49 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './Resume.css'
 
+/* ── Bugle crest SVG ──
+ * Stylized bugle horn inside a laurel wreath, rendered in
+ *currentColor so it inherits white on the black masthead panel.
+ */
+const BugleCrest = () => (
+  <svg viewBox="0 0 100 100" className="rmodal-crest-svg" aria-hidden="true">
+    {/* Outer wreath rings */}
+    <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="1.2"/>
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+
+    {/* Left laurel branch */}
+    <g fill="currentColor" stroke="currentColor">
+      <path d="M 20 68 Q 26 48 38 34" fill="none" strokeWidth="1.1"/>
+      <ellipse cx="22" cy="60" rx="3.5" ry="1.6" transform="rotate(-32 22 60)" stroke="none"/>
+      <ellipse cx="26" cy="52" rx="3.8" ry="1.7" transform="rotate(-48 26 52)" stroke="none"/>
+      <ellipse cx="31" cy="44" rx="3.5" ry="1.6" transform="rotate(-64 31 44)" stroke="none"/>
+    </g>
+
+    {/* Right laurel branch (mirrored) */}
+    <g fill="currentColor" stroke="currentColor">
+      <path d="M 80 68 Q 74 48 62 34" fill="none" strokeWidth="1.1"/>
+      <ellipse cx="78" cy="60" rx="3.5" ry="1.6" transform="rotate(32 78 60)" stroke="none"/>
+      <ellipse cx="74" cy="52" rx="3.8" ry="1.7" transform="rotate(48 74 52)" stroke="none"/>
+      <ellipse cx="69" cy="44" rx="3.5" ry="1.6" transform="rotate(64 69 44)" stroke="none"/>
+    </g>
+
+    {/* Bugle horn — mouthpiece left, bell right */}
+    <g>
+      {/* Mouthpiece */}
+      <circle cx="34" cy="54" r="2" fill="currentColor"/>
+      {/* Tube */}
+      <rect x="35" y="52.5" width="22" height="3" fill="currentColor"/>
+      {/* Bell flare */}
+      <path d="M 57 50 L 70 42 L 70 66 L 57 58 Z" fill="currentColor"/>
+      {/* Bell rim */}
+      <rect x="68" y="42" width="2.5" height="24" fill="currentColor"/>
+    </g>
+
+    {/* Star above the horn */}
+    <path d="M 50 16 L 51.5 21 L 56.5 21 L 52.5 24 L 54 29 L 50 26 L 46 29 L 47.5 24 L 43.5 21 L 48.5 21 Z" fill="currentColor"/>
+  </svg>
+)
+
 const resumeData = {
   name: 'Nawaf Al Hussain Khondokar',
   titles: ['Platform Engineer', 'Cloud Architect', 'Backend Specialist'],
@@ -30,6 +73,7 @@ const resumeData = {
       name: 'NexHire',
       subtitle: 'High-Scale Recruitment Management System',
       link: 'nexhire-frontend.vercel.app',
+      pullQuote: '94% precision',
       tech: 'SQL Server, C# .NET, Node.js, Express.js, React, Vite, Tailwind CSS, PostgreSQL, Redis, JWT',
       bullets: [
         'Designed normalized 3NF database schema across 60+ entities with temporal data modeling and state machine formalization',
@@ -43,6 +87,7 @@ const resumeData = {
       name: 'Syllab AI',
       subtitle: 'Advanced AI Learning Platform',
       link: 'syllabai-frontend.vercel.app',
+      pullQuote: '95% accuracy',
       tech: 'Python, PyTorch, Transformers, FastAPI, SQLite, sentence-transformers, Gradio, PEFT/LoRA, GGUF',
       bullets: [
         'Hybrid AI system: fine-tuned LMs + SQLite vector DB for RAG architecture',
@@ -56,6 +101,7 @@ const resumeData = {
       name: 'Multiplayer Game Engine',
       subtitle: 'Universal Event-Driven Board Game Platform',
       link: 'github.com/nawaf-al-hussain',
+      pullQuote: 'Full game replayability',
       tech: 'Java 17, Spring Boot 3.2, WebSocket/STOMP, Redis, PostgreSQL, Docker, React 18, Konva.js, JavaFX',
       bullets: [
         'Universal event-driven board game engine using DDD + event sourcing principles',
@@ -138,6 +184,15 @@ const resumeData = {
 const Resume = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
+  // Today's date for the masthead editor bar — formatted like a
+  // newspaper folio: "THURSDAY, JULY 16, 2026"
+  const todayDate = new Date().toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).toUpperCase()
+
   // Lock body scroll when modal is open
   useEffect(() => {
     if (modalOpen) {
@@ -203,18 +258,25 @@ const Resume = () => {
                 <span className="rmodal-close-x">✕</span>
               </button>
 
-              {/* ── Masthead ── */}
-              <header className="rmodal-masthead">
-                <div className="rmodal-masthead-left">
-                  <span className="rmodal-vol">VOL. I · NO. 1</span>
-                  <span className="rmodal-date">EST. 2024 · DHAKA</span>
-                </div>
-                <h1 className="rmodal-masthead-title">The Daily Bugle</h1>
-                <div className="rmodal-masthead-right">
-                  <span className="rmodal-price">PRICE: ONE CLICK</span>
-                  <span className="rmodal-edition">PORTFOLIO EDITION</span>
-                </div>
+              {/* ── Top tagline bar (thin black bar above banner) ── */}
+              <div className="rmodal-tagline-bar">
+                QUEENS' MOST WANTED ENGINEERING DESK · EST. 2024
+              </div>
+
+              {/* ── Red banner masthead: DAILY | crest | BUGLE ── */}
+              <header className="rmodal-banner">
+                <span className="rmodal-banner-half rmodal-banner-left">DAILY</span>
+                <span className="rmodal-banner-crest" aria-hidden="true">
+                  <BugleCrest />
+                </span>
+                <span className="rmodal-banner-half rmodal-banner-right">BUGLE</span>
               </header>
+
+              {/* ── Bottom editor bar (thin black bar below banner) ── */}
+              <div className="rmodal-editor-bar">
+                <span className="rmodal-editor-left">EDITOR-IN-CHIEF · NAWAF AL HUSSAIN</span>
+                <span className="rmodal-editor-right">{todayDate}</span>
+              </div>
 
               {/* ── Dateline strip ── */}
               <div className="rmodal-dateline">
@@ -308,6 +370,13 @@ const Resume = () => {
                           <ul className="rmodal-project-bullets">
                             {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
                           </ul>
+                          {p.pullQuote && (
+                            <blockquote className="rmodal-pullquote">
+                              <span className="rmodal-pullquote-mark">“</span>
+                              {p.pullQuote}
+                              <span className="rmodal-pullquote-mark">”</span>
+                            </blockquote>
+                          )}
                           <p className="rmodal-project-tech">{p.tech}</p>
                         </article>
                       ))}
