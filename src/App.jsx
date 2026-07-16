@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -12,12 +12,9 @@ import Contact from './components/Contact'
 import ScrollTop from './components/ScrollTop'
 import SectionNav from './components/SectionNav'
 import Particles from './components/Particles'
-import Loader from './components/Loader'
 import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
-  const [loading, setLoading] = useState(true)
-
   // Konami code Easter egg: ↑↑↓↓←→←→BA
   useEffect(() => {
     const konamiCode = [
@@ -45,23 +42,20 @@ function App() {
 
   return (
     <ThemeProvider>
-      {loading && <Loader onComplete={() => setLoading(false)} />}
-      {!loading && (
-        <>
-          <Particles />
-          <SectionNav />
-          <Hero />
-          <About />
-          <Skills />
-          <SkillMatrix />
-          <Projects />
-          <Experience />
-          <BugleArchive />
-          <Resume />
-          <Contact />
-          <ScrollTop />
-        </>
-      )}
+      <>
+        <Particles />
+        <SectionNav />
+        <Hero />
+        <About />
+        <Skills />
+        <SkillMatrix />
+        <Projects />
+        <Experience />
+        <BugleArchive />
+        <Resume />
+        <Contact />
+        <ScrollTop />
+      </>
     </ThemeProvider>
   )
 }
