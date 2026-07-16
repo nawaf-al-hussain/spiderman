@@ -902,15 +902,30 @@ body.spider-sense-mode .ss-evidence {
 
 [data-theme="light"] .st-title {
   color: #fff;
+  /* Same multi-layer legibility stack as dark mode, tuned for the
+     cream-background hero image in light mode. The 8-direction black
+     outline keeps glyphs readable over light comic-panel art, the
+     dark halo adds mid-frequency separation, and the red offset
+     preserves the Spider-Man comic-print vibe. */
   text-shadow:
+    1px 1px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    0 0 14px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(0, 0, 0, 0.45),
     3px 3px 0px var(--red-deep),
-    0 0 12px rgba(230, 36, 41, 0.55),
-    0 0 30px rgba(230, 36, 41, 0.25);
+    0 0 18px rgba(230, 36, 41, 0.55);
 }
 
 [data-theme="light"] .st-desc,
 [data-theme="light"] .st-text {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="light"] .st-eyebrow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme="light"] .st-btn {
