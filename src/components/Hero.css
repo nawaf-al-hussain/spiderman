@@ -105,6 +105,31 @@
   z-index: 10;
 }
 
+/* Option 1: corner scrim behind left text panel.
+   Pseudo-element extends a soft dark gradient anchored to the
+   bottom-left corner of the screen, fading toward center. The text
+   sits on top of it (z-index: 1) so the comic art in the middle of
+   the hero stays fully visible. */
+.left::after {
+  content: '';
+  position: absolute;
+  /* Extend well past the text bounds toward the screen edges so the
+     gradient feels anchored to the corner, not to the text box. */
+  top: -60px;
+  left: -120px;
+  right: -80px;
+  bottom: -80px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 80% at 0% 100%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.55) 35%,
+    rgba(0, 0, 0, 0.25) 65%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
 .st-eyebrow {
   display: inline-block;
   font-family: 'Bebas Neue', sans-serif;
@@ -238,6 +263,28 @@
   margin-bottom: -10px;
 }
 
+/* Option 1: corner scrim behind right text panel.
+   Mirrored version of .left::after, anchored to the bottom-right
+   corner. Uses ::after so it doesn't clobber the .right::before
+   accent line above. */
+.right::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -80px;
+  right: -120px;
+  bottom: -80px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 80% at 100% 100%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.55) 35%,
+    rgba(0, 0, 0, 0.25) 65%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
 .right .st-title {
   font-size: 60px;
   max-width: 470px;
@@ -341,6 +388,15 @@
   }
 
   .right::before {
+    display: none;
+  }
+
+  /* Disable corner scrims on mobile — the canvas already draws a
+     scroll-linked dark overlay in the draw() function, and the
+     stacked relative layout would make the absolute-positioned
+     ::after elements poke out of the text blocks awkwardly. */
+  .left::after,
+  .right::after {
     display: none;
   }
 
