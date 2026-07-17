@@ -1,3 +1,4 @@
+/* ── Dark mode (default) ─────────────────────────────────────── */
 .loader {
   position: fixed;
   inset: 0;
@@ -7,6 +8,7 @@
   justify-content: center;
   align-items: center;
   transition: opacity 0.5s ease;
+  --loader-track: rgba(230, 36, 41, 0.18);
 }
 
 .loader.fade-out {
@@ -56,4 +58,14 @@
   font-size: 12px;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Light mode (Daily Bugle cream) ──────────────────────────── */
+[data-theme="light"] .loader {
+  background: #faf6ee;
+  --loader-track: rgba(230, 36, 41, 0.22);
+}
+
+[data-theme="light"] .loader-progress {
+  color: rgba(0, 0, 0, 0.45);
 }
